@@ -232,6 +232,11 @@ main.floors.MT1=
                             "\t[勇者,hero]......感觉这人气场完全变了啊。",
                             "\t[商人,trader]老夫这里正好有一颗珍藏多年的特殊宝石，在你手里大概能派得上用场。",
                             {
+                                "type": "sleep",
+                                "time": 500,
+                                "noSkip": true
+                            },
+                            {
                                 "type": "setValue",
                                 "name": "item:I1445",
                                 "value": "1"
