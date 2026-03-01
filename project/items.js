@@ -240,17 +240,19 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"itemEffectTip": "，防御+10"
 	},
 	"shield2": {
-		"cls": "items",
+		"cls": "equips",
 		"name": "银盾",
-		"text": "一个很普通的银盾",
+		"text": "秘银制造的盾，大幅降低熔岩造成的伤害",
 		"equip": {
 			"type": 1,
 			"value": {
-				"def": 20
-			}
+				"mdef": 35,
+				"def": 35
+			},
+			"percentage": {}
 		},
-		"itemEffect": "core.status.hero.def += 20",
-		"itemEffectTip": "，防御+20"
+		"itemEffect": null,
+		"itemEffectTip": null
 	},
 	"shield3": {
 		"cls": "items",
