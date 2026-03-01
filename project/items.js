@@ -1512,9 +1512,17 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"canUseItemEffect": "true"
 	},
 	"I1445": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
+		"cls": "equips",
+		"name": "高纯度宝石-红",
+		"canUseItemEffect": "true",
+		"text": "较为纯粹的红色宝石",
+		"equip": {
+			"type": 4,
+			"value": {
+				"atk": 3
+			},
+			"percentage": {}
+		}
 	},
 	"I1446": {
 		"cls": "items",

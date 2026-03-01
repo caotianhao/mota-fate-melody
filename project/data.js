@@ -172,7 +172,10 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 		],
 		"equipName": [
 			"武器",
-			"盾牌"
+			"盾牌",
+			"饰品1",
+			"饰品2",
+			"特殊宝石"
 		],
 		"startBgm": null,
 		"styles": {
@@ -622,7 +625,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 				"id": "shop1",
 				"text": "\t[贪婪之神,moneyShop]勇敢的武士啊, 给我${20+2*flag:shop1}金币就可以：",
 				"textInList": "1F金币商店",
-				"mustEnable": false,
+				"mustEnable": true,
 				"disablePreview": false,
 				"choices": [
 					{
@@ -687,7 +690,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 				"id": "shop2",
 				"text": "\t[贪婪之神,expShop]勇敢的武士啊, 给我一定经验就可以：",
 				"textInList": "1F经验商店",
-				"mustEnable": false,
+				"mustEnable": true,
 				"disablePreview": true,
 				"choices": [
 					{
@@ -720,7 +723,8 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 				"id": "itemShop",
 				"item": true,
 				"textInList": "道具商店",
-				"mustEnable": false,
+				"use": "money",
+				"mustEnable": true,
 				"choices": [
 					{
 						"id": "yellowKey",
@@ -733,7 +737,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 			{
 				"id": "keyShop",
 				"textInList": "回收钥匙商店",
-				"mustEnable": false,
+				"mustEnable": true,
 				"commonEvent": "回收钥匙商店"
 			}
 		],
