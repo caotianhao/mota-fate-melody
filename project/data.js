@@ -749,7 +749,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 				]
 			},
 			{
-				"need": "20",
+				"need": "9999999999999999",
 				"title": "",
 				"action": [
 					{
@@ -767,7 +767,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 				]
 			},
 			{
-				"need": "40",
+				"need": "99999999999999999",
 				"title": "",
 				"action": [
 					{
@@ -802,11 +802,11 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 		"statusBarItems": [
 			"enableFloor",
 			"enableHP",
-			"enableMana",
 			"enableAtk",
 			"enableDef",
 			"enableMDef",
 			"enableMoney",
+			"enableExp",
 			"enableKeys"
 		],
 		"autoScale": true,
