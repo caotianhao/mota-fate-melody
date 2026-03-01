@@ -528,5 +528,81 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"name": "钱袋",
 		"itemEffect": "core.status.hero.money += 500",
 		"itemEffectTip": "，金币+500"
+	},
+	"I1255": {
+		"cls": "items",
+		"name": "新物品",
+		"canUseItemEffect": "true"
+	},
+	"I1256": {
+		"cls": "items",
+		"name": "新物品",
+		"canUseItemEffect": "true"
+	},
+	"I1257": {
+		"cls": "items",
+		"name": "新物品",
+		"canUseItemEffect": "true"
+	},
+	"I1258": {
+		"cls": "items",
+		"name": "新物品",
+		"canUseItemEffect": "true"
+	},
+	"I1259": {
+		"cls": "items",
+		"name": "新物品",
+		"canUseItemEffect": "true"
+	},
+	"I1260": {
+		"cls": "items",
+		"name": "新物品",
+		"canUseItemEffect": "true"
+	},
+	"I1261": {
+		"cls": "items",
+		"name": "新物品",
+		"canUseItemEffect": "true"
+	},
+	"I1262": {
+		"cls": "items",
+		"name": "新物品",
+		"canUseItemEffect": "true"
+	},
+	"I1263": {
+		"cls": "items",
+		"name": "新物品",
+		"canUseItemEffect": "true"
+	},
+	"I1264": {
+		"cls": "items",
+		"name": "新物品",
+		"canUseItemEffect": "true"
+	},
+	"I1265": {
+		"cls": "constants",
+		"name": "血瓶数据显示开关",
+		"canUseItemEffect": "true",
+		"text": "开启或者关闭血瓶宝石数据显示",
+		"useItemEvent": [
+			{
+				"type": "confirm",
+				"text": "是否开启血瓶宝石显示数据(默认开启)",
+				"yes": [
+					{
+						"type": "setValue",
+						"name": "flag:itemDetail",
+						"value": "true"
+					}
+				],
+				"no": [
+					{
+						"type": "setValue",
+						"name": "flag:itemDetail",
+						"value": "false"
+					}
+				]
+			}
+		]
 	}
 }
