@@ -131,10 +131,9 @@ main.floors.MT1=
                         "type": "if",
                         "condition": "(flag:buy3Fcnt<7)",
                         "true": [
-                            "\t[商人,trader]桀桀桀桀......勇者大人......宝石要伐？价格公道，童叟无欺。",
                             {
                                 "type": "choices",
-                                "text": "\t[商人,trader]",
+                                "text": "\t[商人,trader]桀桀桀桀，勇者大人，宝石要伐？价格公道，童叟无欺！",
                                 "choices": [
                                     {
                                         "text": "购买红宝石（10金币）",
