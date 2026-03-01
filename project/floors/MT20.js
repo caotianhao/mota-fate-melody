@@ -58,6 +58,24 @@ main.floors.MT20=
                     6,
                     1
                 ]
+            },
+            {
+                "type": "openDoor",
+                "loc": [
+                    8,
+                    10
+                ],
+                "floorId": "MT19"
+            },
+            {
+                "type": "show",
+                "loc": [
+                    [
+                        6,
+                        11
+                    ]
+                ],
+                "floorId": "MT19"
             }
         ]
     },
