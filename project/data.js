@@ -18,7 +18,6 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 			"MT13",
 			"MT14",
 			"MT15",
-			"EX1",
 			"MT16",
 			"MT17",
 			"MT18",
@@ -53,7 +52,8 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 			"MT47",
 			"MT48",
 			"MT49",
-			"MT50"
+			"MT50",
+			"EX1"
 		],
 		"floorPartitions": [],
 		"images": [
