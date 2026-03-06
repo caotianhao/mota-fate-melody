@@ -524,8 +524,9 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"canUseItemEffect": "true"
 	},
 	"wand": {
-		"cls": "items",
-		"name": "新物品"
+		"cls": "constants",
+		"name": "圣洁权杖",
+		"text": "被注入神圣力量的权杖，对分身系怪物伤害加倍"
 	},
 	"pack": {
 		"cls": "items",

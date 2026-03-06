@@ -1263,16 +1263,15 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 				height = core.floors[floorId].height;
 			var blocks = core.getMapBlocksObj(floorId);
 
-			var damage = {}, // 每个点的伤害值
-				type = {}, // 每个点的伤害类型
-				repulse = {}, // 每个点的阻击怪信息
-				ambush = {}; // 每个点的捕捉信息
-			var betweenAttackLocs = {}; // 所有可能的夹击点
+			var damage = {},
+				type = {},
+				repulse = {},
+				ambush = {};
+			var betweenAttackLocs = {};
 			var needCache = false;
 			var canGoDeadZone = core.flags.canGoDeadZone;
 			core.flags.canGoDeadZone = true;
 
-			// 计算血网和领域、阻击、激光的伤害，计算捕捉信息
 			for (var loc in blocks) {
 				var block = blocks[loc],
 					x = block.x,
@@ -1283,22 +1282,17 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 
 				type[loc] = type[loc] || {};
 
-				// 血网
-				// 如需调用当前楼层的ratio可使用  core.status.maps[floorId].ratio
 				if (id == 'lavaNet' && !core.hasItem('amulet')) {
-					damage[loc] = (damage[loc] || 0) + core.values.lavaDamage;
+					var lavaDmg = (core.getEquip(1) == 'shield2') ? core.values.lavaDamage / 10 : core.values.lavaDamage;
+					damage[loc] = (damage[loc] || 0) + lavaDmg;
 					type[loc][(block.event.name || "血网") + "伤害"] = true;
 				}
 
-				// 领域
 				// 如果要防止领域伤害，可以直接简单的将 flag:no_zone 设为true
 				if (enemy && core.hasSpecial(enemy.special, 15) && !core.hasFlag('no_zone')) {
-					// 领域范围，默认为1
 					var range = enemy.range || 1;
-					// 是否是九宫格领域
 					var zoneSquare = false;
 					if (enemy.zoneSquare != null) zoneSquare = enemy.zoneSquare;
-					// 在范围内进行搜索，增加领域伤害值
 					for (var dx = -range; dx <= range; dx++) {
 						for (var dy = -range; dy <= range; dy++) {
 							if (dx == 0 && dy == 0) continue;
@@ -1306,7 +1300,6 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 								ny = y + dy,
 								currloc = nx + "," + ny;
 							if (nx < 0 || nx >= width || ny < 0 || ny >= height) continue;
-							// 如果是十字领域，则还需要满足 |dx|+|dy|<=range
 							if (!zoneSquare && Math.abs(dx) + Math.abs(dy) > range) continue;
 							damage[currloc] = (damage[currloc] || 0) + (enemy.zone || 0);
 							type[currloc] = type[currloc] || {};
@@ -1315,7 +1308,6 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 					}
 				}
 
-				// 阻击
 				// 如果要防止阻击伤害，可以直接简单的将 flag:no_repulse 设为true
 				if (enemy && core.hasSpecial(enemy.special, 18) && !core.hasFlag('no_repulse')) {
 					var scan = enemy.zoneSquare ? core.utils.scan2 : core.utils.scan;
@@ -1329,11 +1321,9 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 						type[currloc]["阻击伤害"] = true;
 
 						var rdir = core.turnDirection(":back", dir);
-						// 检查下一个点是否存在事件（从而判定是否移动）
 						var rnx = x + scan[rdir].x,
 							rny = y + scan[rdir].y;
 						if (rnx < 0 || rnx >= width || rny < 0 || rny >= height) continue;
-						// 如需禁止阻击被推到已隐藏的事件处（如重生怪处），可将这一句的false改为true
 						if (core.getBlock(rnx, rny, floorId, false) != null) continue;
 						if (core.utils.scan[rdir] && !core.canMoveHero(x, y, rdir, floorId)) continue;
 						repulse[currloc] = (repulse[currloc] || []).concat([
@@ -1342,7 +1332,6 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 					}
 				}
 
-				// 激光
 				// 如果要防止激光伤害，可以直接简单的将 flag:no_laser 设为true
 				if (enemy && core.hasSpecial(enemy.special, 24) && !core.hasFlag("no_laser")) {
 					for (var nx = 0; nx < width; nx++) {
@@ -1363,11 +1352,9 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 					}
 				}
 
-				// 捕捉
 				// 如果要防止捕捉效果，可以直接简单的将 flag:no_ambush 设为true
 				if (enemy && core.enemys.hasSpecial(enemy.special, 27) && !core.hasFlag("no_ambush")) {
 					var scan = enemy.zoneSquare ? core.utils.scan2 : core.utils.scan;
-					// 给周围格子加上【捕捉】记号
 					for (var dir in scan) {
 						var nx = x + scan[dir].x,
 							ny = y + scan[dir].y,
@@ -1379,7 +1366,6 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 					}
 				}
 
-				// 夹击；在这里提前计算所有可能的夹击点，具体计算逻辑在下面
 				// 如果要防止夹击伤害，可以简单的将 flag:no_betweenAttack 设为true
 				if (enemy && core.enemys.hasSpecial(enemy.special, 16) && !core.hasFlag('no_betweenAttack')) {
 					for (var dir in core.utils.scan) {
@@ -1391,22 +1377,18 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 					}
 				}
 
-				// 检查地图范围类技能
 				var specialFlag = core.getSpecialFlag(enemy);
 				if (specialFlag & 1) needCache = true;
 				if (core.status.event.id == 'viewMaps') needCache = true;
 				if ((core.status.event.id == 'book' || core.status.event.id == 'bool-detail') && core.status.event.ui) needCache = true;
 			}
 
-			// 对每个可能的夹击点计算夹击伤害
 			for (var loc in betweenAttackLocs) {
 				var xy = loc.split(","),
 					x = parseInt(xy[0]),
 					y = parseInt(xy[1]);
-				// 夹击怪物的ID
 				var enemyId1 = null,
 					enemyId2 = null;
-				// 检查左右夹击
 				var leftBlock = blocks[(x - 1) + "," + y],
 					rightBlock = blocks[(x + 1) + "," + y];
 				var leftId = core.getFaceDownId(leftBlock),
@@ -1415,7 +1397,6 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 					if (core.hasSpecial(leftId, 16))
 						enemyId1 = leftId;
 				}
-				// 检查上下夹击
 				var topBlock = blocks[x + "," + (y - 1)],
 					bottomBlock = blocks[x + "," + (y + 1)];
 				var topId = core.getFaceDownId(topBlock),
@@ -1428,9 +1409,7 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 				if (enemyId1 != null || enemyId2 != null) {
 					var leftHp = core.status.hero.hp - (damage[loc] || 0);
 					if (leftHp > 1) {
-						// 夹击伤害值
 						var value = Math.floor(leftHp / 2);
-						// 是否不超过怪物伤害值
 						if (core.flags.betweenAttackMax) {
 							var enemyDamage1 = core.getDamage(enemyId1, x, y, floorId);
 							if (enemyDamage1 != null && enemyDamage1 < value)
@@ -1466,19 +1445,9 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 			};
 		},
 		"moveOneStep": function (callback) {
-			// 勇士每走一步后执行的操作。callback为行走完毕后的回调
-			// 这个函数执行在“刚走完”的时候，即还没有检查该点的事件和领域伤害等。
-			// 请注意：瞬间移动不会执行该函数。如果要控制能否瞬间移动有三种方法：
-			// 1. 将全塔属性中的cannotMoveDirectly这个开关勾上，即可在全塔中全程禁止使用瞬移。
-			// 2, 将楼层属性中的cannotMoveDirectly这个开关勾上，即禁止在该层楼使用瞬移。
-			// 3. 将flag:cannotMoveDirectly置为true，即可使用flag控制在某段剧情范围内禁止瞬移。
-
-			// 增加步数
 			core.status.hero.steps++;
-			// 更新跟随者状态，并绘制
 			core.updateFollowers();
 			core.drawHero();
-			// 检查中毒状态的扣血和死亡
 			if (core.hasFlag('poison')) {
 				core.status.hero.statistics.poisonDamage += core.values.poisonDamage;
 				core.status.hero.hp -= core.values.poisonDamage;
@@ -1491,16 +1460,8 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 					core.updateStatusBar(false, true);
 				}
 			}
-
-			// 从v2.7开始，每一步行走不会再刷新状态栏。
-			// 如果有特殊要求（如每走一步都加buff之类），可手动取消注释下面这一句：
-			// core.updateStatusBar(true, true);
-
-			// 检查自动事件
 			core.checkAutoEvents();
 
-			// ------ 检查目标点事件 ------ //
-			// 无事件的道具（如血瓶）需要优先于阻激夹域判定
 			var nowx = core.getHeroLoc('x'),
 				nowy = core.getHeroLoc('y');
 			var block = core.getBlock(nowx, nowy);
@@ -1510,32 +1471,20 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 				hasTrigger = true;
 				core.trigger(nowx, nowy, callback);
 			}
-			// 执行目标点的阻激夹域事件
 			core.checkBlock();
 
-			// 执行目标点的script和事件
 			if (!hasTrigger)
 				core.trigger(nowx, nowy, callback);
-
-			// 检查该点是否是滑冰
 			if (core.onSki()) {
-				// 延迟到事件最后执行，因为这之前可能有阻激夹域动画
 				core.insertAction({ "type": "moveAction" }, null, null, null, true);
 			}
-
-			// ------ 检查目标点事件 END ------ //
 
 			// 如需强行终止行走可以在这里条件判定：
 			// core.stopAutomaticRoute();
 		},
 		"moveDirectly": function (x, y, ignoreSteps) {
-			// 瞬间移动；x,y为要瞬间移动的点；ignoreSteps为减少的步数，可能之前已经被计算过
-			// 返回true代表成功瞬移，false代表没有成功瞬移
-
-			// 判定能否瞬移到该点
 			if (ignoreSteps == null) ignoreSteps = core.canMoveDirectly(x, y);
 			if (ignoreSteps >= 0) {
-				// 中毒也允许瞬移
 				if (core.hasFlag('poison')) {
 					var damage = ignoreSteps * core.values.poisonDamage;
 					if (damage >= core.status.hero.hp) return false;
@@ -1544,18 +1493,14 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 				}
 
 				core.clearMap('hero');
-				// 获得勇士最后的朝向
 				var lastDirection = core.status.route[core.status.route.length - 1];
 				if (['left', 'right', 'up', 'down'].indexOf(lastDirection) >= 0)
 					core.setHeroLoc('direction', lastDirection);
-				// 设置坐标，并绘制
 				core.control._moveDirectyFollowers(x, y);
 				core.status.hero.loc.x = x;
 				core.status.hero.loc.y = y;
 				core.drawHero();
-				// 记录录像
 				core.status.route.push("move:" + x + ":" + y);
-				// 统计信息
 				core.status.hero.statistics.moveDirectly++;
 				core.status.hero.statistics.ignoreSteps += ignoreSteps;
 				if (core.hasFlag('poison')) {
@@ -1568,14 +1513,8 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 			return false;
 		},
 		"parallelDo": function (timestamp) {
-			// 并行事件处理，可以在这里写任何需要并行处理的脚本或事件
-			// 该函数将被系统反复执行，每次执行间隔视浏览器或设备性能而定，一般约为16.6ms一次
-			// 参数timestamp为“从游戏资源加载完毕到当前函数执行时”的时间差，以毫秒为单位
-
-			// 检查当前是否处于游戏开始状态
 			if (!core.isPlaying()) return;
 
-			// 执行当前楼层的并行事件处理
 			if (core.status.floorId) {
 				try {
 					eval(core.floors[core.status.floorId].parallelDo);
@@ -1587,25 +1526,19 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 	},
 	"ui": {
 		"getToolboxItems": function (cls) {
-			// 获得道具栏中当前某类型道具的显示项和显示顺序
-			// cls为道具类型，只可能是 tools, constants 和 equips
-			// 返回一个数组，代表当前某类型道具的显示内容和顺序
-			// 默认按id升序排列，您可以取消下面的注释改为按名称排列
-
 			return Object.keys(core.status.hero.items[cls] || {})
 				.filter(function (id) { return !core.material.items[id].hideInToolbox; })
 				.sort( /*function (id1, id2) { return core.material.items[id1].name <= core.material.items[id2].name ? -1 : 1 }*/);
 		},
 		"drawStatusBar": function () {
-			// 这真的是人能写出来的东西？
 			var ctx, fill = function (text, x, y, style) {
 				core.ui.setFont(ctx, (/\w+/.test(text) ? 'italic ' : '') + 'bold 18px Verdana');
 				core.ui.fillBoldText(ctx, text, x, y, style);
 			};
-			if (core.flags.statusCanvas) { // 系统开关「自绘状态栏」开启
-				core.ui.clearMap(ctx = core.dom.statusCanvasCtx); // 清空状态栏
+			if (core.flags.statusCanvas) {
+				core.ui.clearMap(ctx = core.dom.statusCanvasCtx);
 				core.ui.setFillStyle(ctx, core.status.globalAttribute.statusBarColor);
-				if (core.domStyle.isVertical) { // 竖屏
+				if (core.domStyle.isVertical) {
 					core.drawImage(ctx, core.statusBar.icons.floor, 6, 6, 25, 25);
 					fill((core.status.thisMap || {}).name || "Loading", 42, 26);
 					core.drawImage(ctx, core.statusBar.icons.hp, 137, 6, 25, 25);
@@ -1620,7 +1553,7 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 					fill(core.formatBigNumber(core.status.hero.money), 304, 58);
 					core.drawImage(ctx, core.statusBar.icons.exp, 6, 70, 25, 25);
 					fill(core.formatBigNumber(core.status.hero.exp), 42, 90);
-				} else if (!core.flags.hideLeftStatusBar) { // 横屏且未隐藏状态栏
+				} else if (!core.flags.hideLeftStatusBar) {
 					core.drawImage(ctx, core.statusBar.icons.floor, 6, 9, 25, 25);
 					fill((core.status.thisMap || {}).name || "Loading", 42, 29);
 					core.drawImage(ctx, core.statusBar.icons.hp, 6, 43, 25, 25);
@@ -1639,9 +1572,9 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 					fill(core.setTwoDigits(core.itemCount('blueKey')), 46, 267, '#AAAADD');
 					fill(core.setTwoDigits(core.itemCount('redKey')), 81, 267, '#FF8888');
 				}
-			} else if (core.flags.hideLeftStatusBar && !core.domStyle.isVertical) { // 横屏且隐藏状态栏
+			} else if (core.flags.hideLeftStatusBar && !core.domStyle.isVertical) {
 				if (!core.dymCanvas['status'])
-					core.ui.createCanvas('status', 0, 0, core._PX_, core._PY_, 66); // 刚好盖过显伤层
+					core.ui.createCanvas('status', 0, 0, core._PX_, core._PY_, 66);
 				core.ui.clearMap(ctx = core.dymCanvas['status']);
 				core.ui.setFillStyle(ctx, core.status.globalAttribute.statusBarColor);
 				var offset = core.status.hero.loc.x - core.bigmap.offsetX / 32 >= core._HEIGHT_ ? 0 : core._PY_;
@@ -1668,8 +1601,6 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 			}
 		},
 		"drawStatistics": function () {
-			// 浏览地图时参与的统计项目
-
 			return [
 				'yellowDoor', 'blueDoor', 'redDoor', 'greenDoor', 'steelDoor',
 				'yellowKey', 'blueKey', 'redKey', 'greenKey', 'steelKey',
@@ -1684,7 +1615,6 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 			];
 		},
 		"drawAbout": function () {
-			// 绘制“关于”界面
 			core.ui.closePanel();
 			core.lockControl();
 			core.status.event.id = 'about';
@@ -1700,15 +1630,12 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 			core.strokeRect('ui', left - 1, top - 1, right + 1, bottom + 1, '#FFFFFF', 2);
 
 			var text_start = left + 24;
-
-			// 名称
 			core.setTextAlign('ui', 'left');
 			var globalAttribute = core.status.globalAttribute || core.initStatus.globalAttribute;
 			core.fillText('ui', "HTML5 魔塔样板", text_start, top + 35, globalAttribute.selectColor, "bold 22px " + globalAttribute.font);
 			core.fillText('ui', "版本： " + main.__VERSION__, text_start, top + 80, "#FFFFFF", "bold 17px " + globalAttribute.font);
 			core.fillText('ui', "作者： 艾之葵", text_start, top + 112);
 			core.fillText('ui', 'HTML5魔塔交流群：539113091', text_start, top + 112 + 32);
-			// TODO: 写自己的“关于”页面，每次增加32像素即可
 			core.playSound('打开界面');
 		}
 	}
