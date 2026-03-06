@@ -60,6 +60,7 @@ main.floors.MT15=
                 }
             ],
             "false": [
+                "\t[蝙蝠幼崽,bat]这勇者真穷，身上连件值钱的宝物都没有！",
                 {
                     "type": "hide",
                     "loc": [
@@ -68,7 +69,8 @@ main.floors.MT15=
                             11
                         ]
                     ],
-                    "remove": true
+                    "remove": true,
+                    "time": 1000
                 }
             ]
         }
@@ -81,9 +83,21 @@ main.floors.MT15=
                 "type": "if",
                 "condition": "(flag:15_HAVE_FLY===1)",
                 "true": [
-                    "\t[普通老人,man]你看见你的楼层传送器被抢到哪去了吗？"
+                    "\t[普通老人,man]你看见你的楼层传送器被抢到哪去了吗？",
+                    "\t[勇者,hero]嗯......在左面那个墙里面的空间。"
                 ],
                 "false": [
+                    {
+                        "type": "hide",
+                        "loc": [
+                            [
+                                2,
+                                1
+                            ]
+                        ],
+                        "floorId": "EX1",
+                        "remove": true
+                    },
                     "\t[普通老人,man]厉害了，没有楼层传送器都能打到这里，看来你是个绝世高手！"
                 ]
             },
@@ -101,6 +115,14 @@ main.floors.MT15=
         "11,1": {
             "floorId": ":next",
             "stair": "downFloor"
+        },
+        "0,5": {
+            "floorId": "EX1",
+            "loc": [
+                6,
+                12
+            ],
+            "direction": "down"
         }
     },
     "beforeBattle": {},
