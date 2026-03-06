@@ -686,8 +686,8 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 				hero_atk *= 2; // 计算时攻击力翻倍	
 			}
 
-			// 持有圣洁权杖时，对量产型鬼奴、量产型追魂攻击力加倍（按怪物名称 O(1) 判断）
-			if (core.hasItem('wand') && (enemy.name == '量产型·鬼奴' || enemy.name == '量产型·追魂'))
+			// 持有圣洁权杖时，对分身系怪物攻击力加倍
+			if (core.hasItem('wand') && (enemy.id == 'vampire' || enemy.id == 'poisonSkeleton'))
 				hero_atk *= 2;
 
 			// 如果是无敌属性，且勇士未持有十字架
