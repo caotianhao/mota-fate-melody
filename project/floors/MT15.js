@@ -50,14 +50,49 @@ main.floors.MT15=
                 {
                     "type": "waitAsync"
                 },
-                "\t[勇者,hero]可恶！楼层传送器被蝙蝠幼崽抢走了！"
+                "\t[勇者,hero]可恶！楼层传送器被蝙蝠幼崽抢走了！",
+                "\t[勇者,hero]没有那件宝物的话简直寸步难行......",
+                "\t[勇者,hero]必须得想办法找回来才行。",
+                {
+                    "type": "setValue",
+                    "name": "flag:15_HAVE_FLY",
+                    "value": "1"
+                }
             ],
-            "false": []
+            "false": [
+                {
+                    "type": "hide",
+                    "loc": [
+                        [
+                            4,
+                            11
+                        ]
+                    ],
+                    "remove": true
+                }
+            ]
         }
     ],
     "eachArrive": [],
     "parallelDo": "",
-    "events": {},
+    "events": {
+        "5,11": [
+            {
+                "type": "if",
+                "condition": "(flag:15_HAVE_FLY===1)",
+                "true": [
+                    "\t[普通老人,man]你看见你的楼层传送器被抢到哪去了吗？"
+                ],
+                "false": [
+                    "\t[普通老人,man]厉害了，没有楼层传送器都能打到这里，看来你是个绝世高手！"
+                ]
+            },
+            {
+                "type": "hide",
+                "remove": true
+            }
+        ]
+    },
     "changeFloor": {
         "1,11": {
             "floorId": ":before",
