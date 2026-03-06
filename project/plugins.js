@@ -1816,13 +1816,12 @@ var plugins_bb40132b_638b_4a9f_b028_d3fe47acc8d1 =
 			}
 		})();
 	},
-	"血瓶数据显示": function () {
+	"drawGemAndPotion": function () {
 		var origin = core.control.updateStatusBar;
 		core.updateStatusBar = core.control.updateStatusBar = function () {
 			if (core.getFlag('__statistics__')) return;
 			else return origin.apply(core.control, arguments);
 		}
-
 		core.bigmap.threshold = 256;
 
 		core.control.updateDamage = function (floorId, ctx) {
@@ -1843,7 +1842,7 @@ var plugins_bb40132b_638b_4a9f_b028_d3fe47acc8d1 =
 			core.getItemDetail(floorId);
 			this.drawDamage(ctx);
 		};
-		// 绘制地图显示
+
 		control.prototype._drawDamage_draw = function (ctx, onMap) {
 			if (!core.hasItem('book')) return;
 			core.setFont(ctx, "bold 11px Arial");
@@ -1873,7 +1872,7 @@ var plugins_bb40132b_638b_4a9f_b028_d3fe47acc8d1 =
 			});
 		};
 		this.getItemDetail = function (floorId) {
-			if (!core.getFlag("itemDetail")) return;
+			if (core.getFlag("itemDetail") === false) return;
 			floorId = floorId || core.status.thisMap.floorId;
 			core.status.maps[floorId].blocks.forEach(function (block) {
 				if (block.event.cls !== 'items' || block.event.id === 'superPotion') return;
