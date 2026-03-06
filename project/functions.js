@@ -271,9 +271,14 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 			// 你也可以在这里根据自己的需要，比如enemyId或special或flag来修改播放的动画效果
 			// if (enemyId == '...') animate = '...';
 
-			// 检查该动画是否存在SE，如果不存在则使用默认音效
-			if (!(core.material.animates[animate] || {}).se)
+			// 武器动画（如 sword）通常没有内置 se，统一用 attack.mp3；徒手 hand 用动画自带的 se
+			if (animate !== 'hand')
 				core.playSound('attack.mp3');
+			else {
+				var animSe = (core.material.animates[animate] || {}).se;
+				var hasSe = animSe && (typeof animSe === 'string' || Object.keys(animSe).length > 0);
+				if (!hasSe) core.playSound('attack.mp3');
+			}
 
 			// 播放动画；如果不存在坐标（强制战斗）则播放到勇士自身
 			if (x != null && y != null)

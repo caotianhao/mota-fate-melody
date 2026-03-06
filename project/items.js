@@ -978,9 +978,19 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"canUseItemEffect": "true"
 	},
 	"I1338": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
+		"cls": "equips",
+		"name": "蝠翼",
+		"canUseItemEffect": "true",
+		"text": "神秘的饰品，提升佩戴者全属性",
+		"equip": {
+			"type": 2,
+			"value": {
+				"mdef": 5,
+				"def": 10,
+				"atk": 10
+			},
+			"percentage": {}
+		}
 	},
 	"I1339": {
 		"cls": "items",
