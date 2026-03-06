@@ -159,18 +159,19 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"itemEffectTip": null
 	},
 	"sword2": {
-		"cls": "items",
+		"cls": "equips",
 		"name": "银剑",
-		"text": "一把很普通的银剑",
+		"text": "秘银制造的剑，装备时与蝙蝠或不死系魔物战斗前获得恢复（已折算为最终伤害）",
 		"equip": {
 			"type": 0,
 			"animate": "sword",
 			"value": {
-				"atk": 20
-			}
+				"atk": 40
+			},
+			"percentage": {}
 		},
-		"itemEffect": "core.status.hero.atk += 20",
-		"itemEffectTip": "，攻击+20"
+		"itemEffect": null,
+		"itemEffectTip": null
 	},
 	"sword3": {
 		"cls": "items",

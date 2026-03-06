@@ -15,7 +15,15 @@ main.floors.MT14=
     "firstArrive": [],
     "eachArrive": [],
     "parallelDo": "",
-    "events": {},
+    "events": {
+        "8,10": [
+            "\t[普通老人,man]银剑对这个区域的不死系魔物有特殊效果，务必好好利用。",
+            {
+                "type": "hide",
+                "remove": true
+            }
+        ]
+    },
     "changeFloor": {
         "1,11": {
             "floorId": ":next",
@@ -27,8 +35,228 @@ main.floors.MT14=
         }
     },
     "beforeBattle": {},
-    "afterBattle": {},
-    "afterGetItem": {},
+    "afterBattle": {
+        "5,2": [
+            {
+                "type": "if",
+                "condition": "(flag:MT14_6_3>=1)",
+                "true": [
+                    {
+                        "type": "openDoor",
+                        "loc": [
+                            6,
+                            3
+                        ]
+                    }
+                ],
+                "false": [
+                    {
+                        "type": "setValue",
+                        "name": "flag:MT14_6_3",
+                        "operator": "+=",
+                        "value": "1"
+                    }
+                ]
+            }
+        ],
+        "7,2": [
+            {
+                "type": "if",
+                "condition": "(flag:MT14_6_3>=1)",
+                "true": [
+                    {
+                        "type": "openDoor",
+                        "loc": [
+                            6,
+                            3
+                        ]
+                    }
+                ],
+                "false": [
+                    {
+                        "type": "setValue",
+                        "name": "flag:MT14_6_3",
+                        "operator": "+=",
+                        "value": "1"
+                    }
+                ]
+            }
+        ],
+        "5,4": [
+            {
+                "type": "if",
+                "condition": "(flag:MT14_6_5>=1)",
+                "true": [
+                    {
+                        "type": "openDoor",
+                        "loc": [
+                            6,
+                            5
+                        ]
+                    }
+                ],
+                "false": [
+                    {
+                        "type": "setValue",
+                        "name": "flag:MT14_6_5",
+                        "operator": "+=",
+                        "value": "1"
+                    }
+                ]
+            }
+        ],
+        "7,4": [
+            {
+                "type": "if",
+                "condition": "(flag:MT14_6_5>=1)",
+                "true": [
+                    {
+                        "type": "openDoor",
+                        "loc": [
+                            6,
+                            5
+                        ]
+                    }
+                ],
+                "false": [
+                    {
+                        "type": "setValue",
+                        "name": "flag:MT14_6_5",
+                        "operator": "+=",
+                        "value": "1"
+                    }
+                ]
+            }
+        ],
+        "5,6": [
+            {
+                "type": "if",
+                "condition": "(flag:MT14_6_7>=1)",
+                "true": [
+                    {
+                        "type": "openDoor",
+                        "loc": [
+                            6,
+                            7
+                        ]
+                    }
+                ],
+                "false": [
+                    {
+                        "type": "setValue",
+                        "name": "flag:MT14_6_7",
+                        "operator": "+=",
+                        "value": "1"
+                    }
+                ]
+            }
+        ],
+        "7,6": [
+            {
+                "type": "if",
+                "condition": "(flag:MT14_6_7>=1)",
+                "true": [
+                    {
+                        "type": "openDoor",
+                        "loc": [
+                            6,
+                            7
+                        ]
+                    }
+                ],
+                "false": [
+                    {
+                        "type": "setValue",
+                        "name": "flag:MT14_6_7",
+                        "operator": "+=",
+                        "value": "1"
+                    }
+                ]
+            }
+        ],
+        "5,8": [
+            {
+                "type": "if",
+                "condition": "(flag:MT14_6_10>=1)",
+                "true": [
+                    {
+                        "type": "openDoor",
+                        "loc": [
+                            6,
+                            10
+                        ]
+                    }
+                ],
+                "false": [
+                    {
+                        "type": "setValue",
+                        "name": "flag:MT14_6_10",
+                        "operator": "+=",
+                        "value": "1"
+                    }
+                ]
+            }
+        ],
+        "7,8": [
+            {
+                "type": "if",
+                "condition": "(flag:MT14_6_10>=1)",
+                "true": [
+                    {
+                        "type": "openDoor",
+                        "loc": [
+                            6,
+                            10
+                        ]
+                    }
+                ],
+                "false": [
+                    {
+                        "type": "setValue",
+                        "name": "flag:MT14_6_10",
+                        "operator": "+=",
+                        "value": "1"
+                    }
+                ]
+            }
+        ]
+    },
+    "afterGetItem": {
+        "6,1": [
+            {
+                "type": "closeDoor",
+                "id": "specialDoor",
+                "loc": [
+                    6,
+                    3
+                ]
+            },
+            {
+                "type": "closeDoor",
+                "id": "specialDoor",
+                "loc": [
+                    6,
+                    5
+                ]
+            },
+            {
+                "type": "closeDoor",
+                "id": "specialDoor",
+                "loc": [
+                    6,
+                    7
+                ]
+            },
+            {
+                "type": "closeDoor",
+                "id": "specialDoor",
+                "loc": [
+                    6,
+                    10
+                ]
+            }
+        ]
+    },
     "afterOpenDoor": {},
     "autoEvent": {},
     "cannotMove": {},
