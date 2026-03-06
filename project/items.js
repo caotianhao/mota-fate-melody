@@ -244,7 +244,7 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	"shield2": {
 		"cls": "equips",
 		"name": "银盾",
-		"text": "秘银制造的盾，大幅降低熔岩造成的伤害",
+		"text": "秘银制造的盾，装备时能够大幅降低熔岩造成的伤害",
 		"equip": {
 			"type": 1,
 			"value": {
@@ -526,7 +526,7 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	"wand": {
 		"cls": "constants",
 		"name": "圣洁权杖",
-		"text": "被注入神圣力量的权杖，对分身系怪物伤害加倍"
+		"text": "被注入神圣力量的权杖，持有时对分身系怪物攻击力加倍"
 	},
 	"pack": {
 		"cls": "items",
