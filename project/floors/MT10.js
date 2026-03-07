@@ -230,10 +230,12 @@ main.floors.MT10=
                 "remove": true
             },
             {
-                "type": "trigger",
+                "type": "show",
                 "loc": [
-                    2,
-                    1
+                    [
+                        2,
+                        1
+                    ]
                 ]
             }
         ],
@@ -329,10 +331,12 @@ main.floors.MT10=
                 "remove": true
             },
             {
-                "type": "trigger",
+                "type": "show",
                 "loc": [
-                    10,
-                    1
+                    [
+                        10,
+                        1
+                    ]
                 ]
             }
         ],
@@ -589,10 +593,12 @@ main.floors.MT10=
                 "multiExecute": false,
                 "data": [
                     {
-                        "type": "trigger",
+                        "type": "show",
                         "loc": [
-                            2,
-                            8
+                            [
+                                2,
+                                8
+                            ]
                         ]
                     },
                     {
@@ -610,10 +616,12 @@ main.floors.MT10=
                 "multiExecute": false,
                 "data": [
                     {
-                        "type": "trigger",
+                        "type": "show",
                         "loc": [
-                            10,
-                            8
+                            [
+                                10,
+                                8
+                            ]
                         ]
                     },
                     {
