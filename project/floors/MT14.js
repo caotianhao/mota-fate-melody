@@ -224,35 +224,59 @@ main.floors.MT14=
     "afterGetItem": {
         "6,1": [
             {
-                "type": "closeDoor",
-                "id": "specialDoor",
-                "loc": [
-                    6,
-                    3
+                "type": "if",
+                "condition": "(flag:MT14_6_3===0)",
+                "true": [
+                    {
+                        "type": "closeDoor",
+                        "id": "specialDoor",
+                        "loc": [
+                            6,
+                            3
+                        ]
+                    }
                 ]
             },
             {
-                "type": "closeDoor",
-                "id": "specialDoor",
-                "loc": [
-                    6,
-                    5
+                "type": "if",
+                "condition": "(flag:MT14_6_5===0)",
+                "true": [
+                    {
+                        "type": "closeDoor",
+                        "id": "specialDoor",
+                        "loc": [
+                            6,
+                            5
+                        ]
+                    }
                 ]
             },
             {
-                "type": "closeDoor",
-                "id": "specialDoor",
-                "loc": [
-                    6,
-                    7
+                "type": "if",
+                "condition": "(flag:MT14_6_7===0)",
+                "true": [
+                    {
+                        "type": "closeDoor",
+                        "id": "specialDoor",
+                        "loc": [
+                            6,
+                            7
+                        ]
+                    }
                 ]
             },
             {
-                "type": "closeDoor",
-                "id": "specialDoor",
-                "loc": [
-                    6,
-                    10
+                "type": "if",
+                "condition": "(flag:MT14_6_10===0)",
+                "true": [
+                    {
+                        "type": "closeDoor",
+                        "id": "specialDoor",
+                        "loc": [
+                            6,
+                            10
+                        ]
+                    }
                 ]
             }
         ]
