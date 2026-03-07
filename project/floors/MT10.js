@@ -81,7 +81,72 @@ main.floors.MT10=
         }
     },
     "beforeBattle": {},
-    "afterBattle": {},
+    "afterBattle": {
+        "1,7": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_2_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "2,7": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_2_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "3,7": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_2_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "3,8": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_2_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "3,9": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_2_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "2,9": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_2_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "1,9": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_2_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "1,8": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_2_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ]
+    },
     "afterGetItem": {},
     "afterOpenDoor": {},
     "autoEvent": {},
