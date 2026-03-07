@@ -15,7 +15,18 @@ main.floors.MT8=
     "firstArrive": [],
     "eachArrive": [],
     "parallelDo": "",
-    "events": {},
+    "events": {
+        "7,1": [
+            "\t[普通老人,man]骷髅的锉刀只会斩向贪婪者。",
+            "\t[普通老人,man]同样的话我不会说第二遍。",
+            "\t[勇者,hero]你这不是已经说了么......",
+            {
+                "type": "hide",
+                "remove": true,
+                "time": 500
+            }
+        ]
+    },
     "bgm": "bgm.mp3",
     "changeFloor": {
         "8,0": {
@@ -28,15 +39,72 @@ main.floors.MT8=
         }
     },
     "beforeBattle": {},
-    "afterBattle": {},
-    "afterGetItem": {},
+    "afterBattle": {
+        "6,4": [
+            {
+                "type": "setValue",
+                "name": "flag:MT8_AUTO_FIGHT",
+                "value": "-5"
+            }
+        ]
+    },
+    "afterGetItem": {
+        "5,3": [
+            {
+                "type": "setValue",
+                "name": "flag:MT8_AUTO_FIGHT",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "5,5": [
+            {
+                "type": "setValue",
+                "name": "flag:MT8_AUTO_FIGHT",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "7,5": [
+            {
+                "type": "setValue",
+                "name": "flag:MT8_AUTO_FIGHT",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "7,3": [
+            {
+                "type": "setValue",
+                "name": "flag:MT8_AUTO_FIGHT",
+                "operator": "+=",
+                "value": "1"
+            }
+        ]
+    },
     "afterOpenDoor": {},
-    "autoEvent": {},
+    "autoEvent": {
+        "6,4": {
+            "0": {
+                "condition": "flag:MT8_AUTO_FIGHT>3",
+                "currentFloor": true,
+                "priority": 0,
+                "delayExecute": false,
+                "multiExecute": false,
+                "data": [
+                    "\t[骷髅士官,skeletonCaptain]贪婪者，受死吧！",
+                    {
+                        "type": "battle"
+                    }
+                ]
+            }
+        }
+    },
     "cannotMove": {},
     "cannotMoveIn": {},
     "map": [
     [  1,  1,  1,  1,  1,  1,  1,  1, 88,  1,  1,  1,  1],
-    [  1, 27,  1,  0,210,209,  0,  0,  0,  0,  1, 32,  1],
+    [  1, 27,  1,  0,210,209,  0,121,  0,  0,  1, 32,  1],
     [  1, 31,204,  0,  1,  1,  1,  1,  1,  0,210,203,  1],
     [  1,  1, 81,  1,  1, 32,  0, 27,  1,  1, 81,  1,  1],
     [  1, 27, 32,  0,  1,  0,211,  0,  1,  0,219, 21,  1],
