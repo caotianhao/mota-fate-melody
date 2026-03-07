@@ -53,10 +53,48 @@ main.floors.MT6=
         }
     },
     "beforeBattle": {},
-    "afterBattle": {},
+    "afterBattle": {
+        "9,7": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MT6_10_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "11,7": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MT6_10_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ]
+    },
     "afterGetItem": {},
     "afterOpenDoor": {},
-    "autoEvent": {},
+    "autoEvent": {
+        "10,8": {
+            "0": {
+                "condition": "flag:door_MT6_10_8==2",
+                "currentFloor": true,
+                "priority": 0,
+                "delayExecute": false,
+                "multiExecute": false,
+                "data": [
+                    {
+                        "type": "openDoor"
+                    },
+                    {
+                        "type": "setValue",
+                        "name": "flag:door_MT6_10_8",
+                        "operator": "=",
+                        "value": "null"
+                    }
+                ]
+            }
+        }
+    },
     "cannotMove": {},
     "cannotMoveIn": {},
     "map": [
@@ -64,7 +102,7 @@ main.floors.MT6=
     [  1,  0, 81,124, 32,209,  0,210,210,203,  0, 87,  1],
     [  1, 88,  1, 81,  1,  1,205,  1,  1,  1, 81,  1,  1],
     [  1,  1,  1,203,  1,  1,206,  1,205,202,  0, 22,  1],
-    [  1, 22,204,  0, 31,  0,  0, 81,202,  1, 85,  1,  1],
+    [  1, 22,204,  0, 31,  0,  0, 81,202,  1, 86,  1,  1],
     [  1, 29,  1, 21,  1, 82,  1,  1,  1,  1,206,  1,  1],
     [  1,  1, 32,  1,  1,  0,202,  0,  0, 28, 32, 27,  1],
     [  1, 31,  0,203,  0, 32,  1, 81,  1,210,  0,210,  1],
