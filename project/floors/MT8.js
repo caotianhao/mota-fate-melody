@@ -27,7 +27,7 @@ main.floors.MT8=
             }
         ]
     },
-    "bgm": "bgm.mp3",
+    "bgm": null,
     "changeFloor": {
         "8,0": {
             "floorId": ":before",
