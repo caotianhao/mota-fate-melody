@@ -12,7 +12,7 @@ var enemys_fcae963b_31c9_42b4_b48c_bb48d09f3f80 =
 	"skeletonCaptain": {"name":"骷髅队长","hp":280,"atk":120,"def":25,"money":6,"exp":3,"point":0,"special":0},
 	"zombie": {"name":"魔性人","hp":400,"atk":175,"def":70,"money":8,"exp":5,"point":0,"special":0},
 	"zombieKnight": {"name":"驯化魔性人","hp":550,"atk":275,"def":70,"money":12,"exp":5,"point":0,"special":0},
-	"rock": {"name":"有生土墙","hp":500,"atk":200,"def":170,"money":10,"exp":15,"point":0,"special":3},
+	"rock": {"name":"有生土墙","hp":500,"atk":200,"def":170,"money":10,"exp":15,"point":0,"special":[]},
 	"bluePriest": {"name":"初级法师","hp":100,"atk":120,"def":0,"money":3,"exp":0,"point":1,"special":[9]},
 	"redPriest": {"name":"高级法师","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":0},
 	"brownWizard": {"name":"蹩脚巫师","hp":100,"atk":35,"def":30,"money":5,"exp":3,"point":0,"special":[2],"value":null,"range":2},
