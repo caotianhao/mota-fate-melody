@@ -1,4 +1,4 @@
-var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
+var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d = 
 {
 	"main": {
 		"floorIds": [
@@ -225,7 +225,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 		"hero": {
 			"image": "brave.png",
 			"animate": false,
-			"name": "阳光",
+			"name": "勇者",
 			"lv": 1,
 			"hpmax": 9999,
 			"hp": 1000,
@@ -686,6 +686,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 	"flags": {
 		"statusBarItems": [
 			"enableFloor",
+			"enableName",
 			"enableHP",
 			"enableAtk",
 			"enableDef",
@@ -693,6 +694,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 			"enableMoney",
 			"enableExp",
 			"enableKeys",
+			"enableGreenKey",
 			"enableDebuff"
 		],
 		"autoScale": true,
