@@ -67,8 +67,374 @@ main.floors.MT10=
                     3,
                     6
                 ]
+            },
+            {
+                "type": "hide",
+                "remove": true
             }
-        ]
+        ],
+        "2,8": {
+            "trigger": null,
+            "enable": false,
+            "noPass": null,
+            "displayDamage": true,
+            "opacity": 1,
+            "filter": {
+                "blur": 0,
+                "hue": 0,
+                "grayscale": 0,
+                "invert": false,
+                "shadow": 0
+            },
+            "data": [
+                "\t[勇者,hero]这似曾相识的行走图，莫非你是......？",
+                "\t[败亡勇者,N1582]没错，我是被骷髅将军残杀并炼化成骷髅人的勇者，感谢你解放了我的灵魂。",
+                "\t[勇者,hero]那个混账东西......居然干出这种让人反胃的事情。",
+                "\t[败亡勇者,N1582]不要过于在意，败者的下场就是这样，我已经坦然接受了。",
+                "\t[败亡勇者,N1582]所以趁我的亡魂还没有完全消散，赶快吸收我的力量吧！",
+                "\t[勇者,hero]！！......可是这样的话，你就会......",
+                "\t[败亡勇者,N1582]没关系的，我现在这副样子什么都无法做到，但你不一样——你是我们最后的希望！",
+                "\t[败亡勇者,N1582]就算是为了你自己也好，一定要打败骷髅将军啊！",
+                {
+                    "type": "animate",
+                    "name": "zone"
+                },
+                {
+                    "type": "hide",
+                    "remove": true
+                },
+                "吸收了败亡勇者的力量，血量和能力得到了补充。",
+                {
+                    "type": "setValue",
+                    "name": "status:hp",
+                    "operator": "+=",
+                    "value": "1000"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:atk",
+                    "operator": "+=",
+                    "value": "5"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:def",
+                    "operator": "+=",
+                    "value": "5"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:mdef",
+                    "operator": "+=",
+                    "value": "5"
+                },
+                {
+                    "type": "openDoor",
+                    "loc": [
+                        9,
+                        6
+                    ]
+                },
+                "\t[勇者,hero]......"
+            ]
+        },
+        "10,8": {
+            "trigger": null,
+            "enable": false,
+            "noPass": null,
+            "displayDamage": true,
+            "opacity": 1,
+            "filter": {
+                "blur": 0,
+                "hue": 0,
+                "grayscale": 0,
+                "invert": false,
+                "shadow": 0
+            },
+            "data": [
+                "\t[败亡勇者,N1582]感谢你解放了我的灵魂！",
+                "\t[败亡勇者,N1582]无需多言，请马上接受我最后的力量吧！",
+                {
+                    "type": "animate",
+                    "name": "zone"
+                },
+                {
+                    "type": "hide",
+                    "remove": true
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:hp",
+                    "operator": "+=",
+                    "value": "1000"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:atk",
+                    "operator": "+=",
+                    "value": "5"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:def",
+                    "operator": "+=",
+                    "value": "5"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:mdef",
+                    "operator": "+=",
+                    "value": "5"
+                },
+                {
+                    "type": "openDoor",
+                    "loc": [
+                        3,
+                        4
+                    ]
+                },
+                "\t[勇者,hero]......"
+            ]
+        },
+        "3,3": [
+            {
+                "type": "battle",
+                "loc": [
+                    1,
+                    1
+                ]
+            },
+            {
+                "type": "battle",
+                "loc": [
+                    3,
+                    1
+                ]
+            },
+            {
+                "type": "battle",
+                "loc": [
+                    1,
+                    3
+                ]
+            },
+            {
+                "type": "battle",
+                "loc": [
+                    2,
+                    2
+                ]
+            },
+            {
+                "type": "hide",
+                "remove": true
+            },
+            {
+                "type": "trigger",
+                "loc": [
+                    2,
+                    1
+                ]
+            }
+        ],
+        "2,1": {
+            "trigger": null,
+            "enable": false,
+            "noPass": null,
+            "displayDamage": true,
+            "opacity": 1,
+            "filter": {
+                "blur": 0,
+                "hue": 0,
+                "grayscale": 0,
+                "invert": false,
+                "shadow": 0
+            },
+            "data": [
+                "\t[败亡勇者,N1582]感谢你解放了我的灵魂！",
+                "\t[败亡勇者,N1582]无需多言，请马上接受我最后的力量吧！",
+                {
+                    "type": "animate",
+                    "name": "zone"
+                },
+                {
+                    "type": "hide",
+                    "remove": true
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:hp",
+                    "operator": "+=",
+                    "value": "1000"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:atk",
+                    "operator": "+=",
+                    "value": "5"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:def",
+                    "operator": "+=",
+                    "value": "5"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:mdef",
+                    "operator": "+=",
+                    "value": "5"
+                },
+                {
+                    "type": "openDoor",
+                    "loc": [
+                        9,
+                        4
+                    ]
+                },
+                "\t[勇者,hero]......已经没有放弃的理由了。"
+            ]
+        },
+        "9,3": [
+            {
+                "type": "battle",
+                "loc": [
+                    9,
+                    1
+                ]
+            },
+            {
+                "type": "battle",
+                "loc": [
+                    11,
+                    1
+                ]
+            },
+            {
+                "type": "battle",
+                "loc": [
+                    10,
+                    2
+                ]
+            },
+            {
+                "type": "battle",
+                "loc": [
+                    11,
+                    3
+                ]
+            },
+            {
+                "type": "hide",
+                "remove": true
+            },
+            {
+                "type": "trigger",
+                "loc": [
+                    10,
+                    1
+                ]
+            }
+        ],
+        "10,1": {
+            "trigger": null,
+            "enable": false,
+            "noPass": null,
+            "displayDamage": true,
+            "opacity": 1,
+            "filter": {
+                "blur": 0,
+                "hue": 0,
+                "grayscale": 0,
+                "invert": false,
+                "shadow": 0
+            },
+            "data": [
+                "\t[败亡勇者,N1582]感谢你解放了我的灵魂！",
+                "\t[败亡勇者,N1582]无需多言，请马上接受我最后的力量吧！",
+                {
+                    "type": "animate",
+                    "name": "zone"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:hp",
+                    "operator": "+=",
+                    "value": "1000"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:atk",
+                    "operator": "+=",
+                    "value": "5"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:def",
+                    "operator": "+=",
+                    "value": "5"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:mdef",
+                    "operator": "+=",
+                    "value": "5"
+                },
+                {
+                    "type": "openDoor",
+                    "loc": [
+                        6,
+                        6
+                    ]
+                },
+                "\t[败亡勇者,N1582]让那家伙见识一下我们人类的骨气吧！",
+                {
+                    "type": "hide",
+                    "remove": true
+                },
+                "\t[勇者,hero]嗯，我会奋战到最后一刻......连你们的份一起。"
+            ]
+        },
+        "6,7": {
+            "trigger": "action",
+            "enable": true,
+            "noPass": null,
+            "displayDamage": true,
+            "opacity": 1,
+            "filter": {
+                "blur": 0,
+                "hue": 0,
+                "grayscale": 0,
+                "invert": false,
+                "shadow": 0
+            },
+            "data": [
+                "\t[骷髅将军,skeletonKnight]没想到你竟然真的能拼命到这种程度...",
+                "\t[勇者,hero]我也没有想到，毕竟我就是个没什么志气的人这种事情，我自己是再清楚不过的了。",
+                "\t[勇者,hero]我是踩在无数亡魂肩上才得以与你正面对决的......各种意义上。",
+                "\t[骷髅将军,skeletonKnight]恼人至极！为什么你们就是不肯放弃呢？",
+                "\t[骷髅将军,skeletonKnight]难道乖乖引颈受戮，然后作为一具骷髅人轻轻松松地活下去有什么不好吗？！",
+                "\t[勇者,hero]可笑，我们就是为了活下去才会站在你这种混账东西的面前啊！",
+                "\t[骷髅将军,skeletonKnight]不可理喻，简直不可理喻！",
+                "\t[勇者,hero]活人跟死人本来就没什么道理可讲，拔剑吧！",
+                "\t[骷髅将军,skeletonKnight]呵呵......很好！你果然是个值得一战的对手。",
+                {
+                    "type": "battle",
+                    "loc": [
+                        6,
+                        8
+                    ]
+                },
+                {
+                    "type": "function",
+                    "function": "function(){\nfunction(){   var d = core.status.event.data, x = d.x, y = d.y;   var b = core.getBlock(x, y);   if (b && b.event) {     b.event.displayDamage = false;     core.updateDamage();   } }\n}"
+                },
+                {
+                    "type": "hide",
+                    "remove": true
+                }
+            ]
+        }
     },
     "changeFloor": {
         "6,0": {
@@ -145,23 +511,132 @@ main.floors.MT10=
                 "operator": "+=",
                 "value": "1"
             }
+        ],
+        "9,7": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_10_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "10,7": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_10_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "11,7": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_10_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "11,8": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_10_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "11,9": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_10_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "10,9": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_10_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "9,9": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_10_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "9,8": [
+            {
+                "type": "setValue",
+                "name": "flag:10F_EVENT_10_8",
+                "operator": "+=",
+                "value": "1"
+            }
         ]
     },
     "afterGetItem": {},
     "afterOpenDoor": {},
-    "autoEvent": {},
+    "autoEvent": {
+        "0,5": {
+            "0": {
+                "condition": "flag:10F_EVENT_2_8===8",
+                "currentFloor": true,
+                "priority": 0,
+                "delayExecute": false,
+                "multiExecute": false,
+                "data": [
+                    {
+                        "type": "trigger",
+                        "loc": [
+                            2,
+                            8
+                        ]
+                    },
+                    {
+                        "type": "setValue",
+                        "name": "flag:10F_EVENT_2_8",
+                        "value": "null"
+                    }
+                ]
+            },
+            "1": {
+                "condition": "flag:10F_EVENT_10_8===8",
+                "currentFloor": true,
+                "priority": 0,
+                "delayExecute": false,
+                "multiExecute": false,
+                "data": [
+                    {
+                        "type": "trigger",
+                        "loc": [
+                            10,
+                            8
+                        ]
+                    },
+                    {
+                        "type": "setValue",
+                        "name": "flag:10F_EVENT_10_8",
+                        "value": "null"
+                    }
+                ]
+            }
+        }
+    },
     "cannotMove": {},
     "cannotMoveIn": {},
     "map": [
     [  1,  1,  1,  1,  1,  1, 88,  1,  1,  1,  1,  1,  1],
-    [  1,211,  0,211,  1,  1,  0,  1,  1,389,  0,389,  1],
+    [  1,211,1582,211,  1,  1,  0,  1,  1,389,1582,389,  1],
     [  1,  0,211,  0,  1,  1,  0,  1,  1,  0,389,  0,  1],
     [  1,211,  0,  0,  1,  1,  0,  1,  1,  0,  0,389,  1],
     [  1,  1,  1, 85,  1,  1, 83,  1,  1, 85,  1,  1,  1],
     [  1,  1,  1,  0,  0,  0,  0,  0,  0,  0,  1,  1,  1],
     [  1,  1,  1, 85,  1,  1, 85,  1,  1, 85,  1,  1,  1],
     [  1,210,210,210,  1,  0,  0,  0,  1,212,212,212,  1],
-    [  1,210,  0,210,  1,  0,240,  0,  1,212,  0,212,  1],
+    [  1,210,1582,210,  1,  0,240,  0,  1,212,1582,212,  1],
     [  1,210,210,210,  1,  0,  0,  0,  1,212,212,212,  1],
     [  1,  1,  1,  1,  1,  1, 85,  1,  1,  1,  1,  1,  1],
     [ 87,  0,  0, 85,  0,  0,  0,  0,  0, 85,  0, 27,  1],
