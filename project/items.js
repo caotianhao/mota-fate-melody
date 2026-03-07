@@ -667,9 +667,9 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"name": "二阶红宝石",
 		"canUseItemEffect": "true",
 		"text": "，攻击+3",
-		"itemEffect": "core.status.hero.atk += 3 * core.status.thisMap.ratio",
-		"itemEffectTip": "，攻击+${3 * core.status.thisMap.ratio}",
-		"useItemEffect": "core.status.hero.atk += 3"
+		"itemEffect": "core.status.hero.atk += 3",
+		"itemEffectTip": "，攻击+3",
+		"useItemEffect": null
 	},
 	"I1277": {
 		"cls": "items",
@@ -706,9 +706,9 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"name": "二阶蓝宝石",
 		"canUseItemEffect": "true",
 		"text": "，防御+3",
-		"itemEffect": "core.status.hero.def += 3 * core.status.thisMap.ratio",
-		"itemEffectTip": "，防御+${3 * core.status.thisMap.ratio}",
-		"useItemEffect": "core.status.hero.def += 3"
+		"itemEffect": "core.status.hero.def += 3",
+		"itemEffectTip": "，防御+3 ",
+		"useItemEffect": null
 	},
 	"I1284": {
 		"cls": "items",
@@ -742,8 +742,11 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	},
 	"I1290": {
 		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
+		"name": "二阶绿宝石",
+		"canUseItemEffect": "true",
+		"text": "，护盾+15",
+		"itemEffect": "core.status.hero.mdef += 15",
+		"itemEffectTip": "，护盾+15"
 	},
 	"I1291": {
 		"cls": "items",
@@ -1511,9 +1514,19 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"canUseItemEffect": "true"
 	},
 	"I1438": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
+		"cls": "equips",
+		"name": "高纯度宝石-黄",
+		"canUseItemEffect": "true",
+		"text": "材质特殊的极致宝石",
+		"equip": {
+			"type": 4,
+			"value": {
+				"mdef": 25,
+				"def": 25,
+				"atk": 40
+			},
+			"percentage": {}
+		}
 	},
 	"I1439": {
 		"cls": "items",
