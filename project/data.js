@@ -233,8 +233,8 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 			"mana": 0,
 			"atk": 100000,
 			"def": 100000,
-			"mdef": 0,
-			"money": 0,
+			"mdef": 100000,
+			"money": 100000,
 			"exp": 0,
 			"equipment": [],
 			"items": {
