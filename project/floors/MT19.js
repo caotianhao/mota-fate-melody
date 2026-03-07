@@ -86,6 +86,16 @@ main.floors.MT19=
                 "\t[勇者,hero]嗯，似乎现在也只有这一条路可以走了。",
                 "\t[小妖精,fairy]好，咱在0层等你。",
                 {
+                    "type": "show",
+                    "loc": [
+                        [
+                            6,
+                            11
+                        ]
+                    ],
+                    "floorId": "MT0"
+                },
+                {
                     "type": "hide",
                     "remove": true,
                     "time": 500
