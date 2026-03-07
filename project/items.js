@@ -229,17 +229,19 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"itemEffectTip": "，防御+0"
 	},
 	"shield1": {
-		"cls": "items",
+		"cls": "equips",
 		"name": "铁盾",
-		"text": "一个很普通的铁盾",
+		"text": "最常见的盾",
 		"equip": {
 			"type": 1,
 			"value": {
-				"def": 10
-			}
+				"mdef": 5,
+				"def": 5
+			},
+			"percentage": {}
 		},
-		"itemEffect": "core.status.hero.def += 10",
-		"itemEffectTip": "，防御+10"
+		"itemEffect": null,
+		"itemEffectTip": null
 	},
 	"shield2": {
 		"cls": "equips",
@@ -1529,9 +1531,17 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"canUseItemEffect": "true"
 	},
 	"I1444": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
+		"cls": "equips",
+		"name": "高纯度宝石-红II",
+		"canUseItemEffect": "true",
+		"text": "魔力浓度达到峰值的红色宝石",
+		"equip": {
+			"type": 4,
+			"value": {
+				"atk": 10
+			},
+			"percentage": {}
+		}
 	},
 	"I1445": {
 		"cls": "equips",
