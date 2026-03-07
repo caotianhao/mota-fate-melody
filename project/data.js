@@ -1,7 +1,17 @@
-var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
+var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d = 
 {
 	"main": {
 		"floorIds": [
+			"MU10",
+			"MU9",
+			"MU8",
+			"MU7",
+			"MU6",
+			"MU5",
+			"MU4",
+			"MU3",
+			"MU2",
+			"MU1",
 			"MT0",
 			"MT1",
 			"MT2",
