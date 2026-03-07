@@ -118,7 +118,8 @@ var icons_4665ee12_3a1f_44a4_bea3_0fccba634dc1 =
 		"princess": 11,
 		"greenMan": 12,
 		"blueTrader": 13,
-		"N1581": 14
+		"N1581": 14,
+		"N1582": 15
 	},
 	"npc48": {
 		"npc0": 0,
