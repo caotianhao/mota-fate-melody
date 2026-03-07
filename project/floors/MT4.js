@@ -83,9 +83,104 @@ main.floors.MT4=
                 "operator": "+=",
                 "value": "1"
             }
+        ],
+        "1,9": [
+            {
+                "type": "setValue",
+                "name": "flag:4F_SPECIAL",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "3,9": [
+            {
+                "type": "setValue",
+                "name": "flag:4F_SPECIAL",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "1,11": [
+            {
+                "type": "setValue",
+                "name": "flag:4F_SPECIAL",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "3,11": [
+            {
+                "type": "setValue",
+                "name": "flag:4F_SPECIAL",
+                "operator": "+=",
+                "value": "1"
+            }
         ]
     },
-    "afterGetItem": {},
+    "afterGetItem": {
+        "2,10": [
+            {
+                "type": "setBlock",
+                "number": "skeletonCaptain",
+                "loc": [
+                    [
+                        1,
+                        9
+                    ]
+                ]
+            },
+            {
+                "type": "setBlock",
+                "number": "skeletonCaptain",
+                "loc": [
+                    [
+                        3,
+                        9
+                    ]
+                ]
+            },
+            {
+                "type": "setBlock",
+                "number": "skeletonCaptain",
+                "loc": [
+                    [
+                        1,
+                        11
+                    ]
+                ]
+            },
+            {
+                "type": "setBlock",
+                "number": "skeletonCaptain",
+                "loc": [
+                    [
+                        3,
+                        11
+                    ]
+                ]
+            },
+            {
+                "type": "setBlock",
+                "number": "specialDoor",
+                "loc": [
+                    [
+                        2,
+                        8
+                    ]
+                ]
+            },
+            {
+                "type": "setBlock",
+                "number": "specialDoor",
+                "loc": [
+                    [
+                        10,
+                        6
+                    ]
+                ]
+            }
+        ]
+    },
     "afterOpenDoor": {},
     "autoEvent": {
         "2,4": {
@@ -147,6 +242,74 @@ main.floors.MT4=
                     }
                 ]
             }
+        },
+        "3,11": {
+            "1": null
+        },
+        "2,10": {
+            "0": {
+                "condition": "flag:4F_SPECIAL===4",
+                "currentFloor": true,
+                "priority": 0,
+                "delayExecute": false,
+                "multiExecute": false,
+                "data": [
+                    {
+                        "type": "openDoor",
+                        "loc": [
+                            2,
+                            8
+                        ]
+                    },
+                    {
+                        "type": "openDoor",
+                        "loc": [
+                            10,
+                            6
+                        ]
+                    },
+                    {
+                        "type": "setBlock",
+                        "number": "redGem",
+                        "loc": [
+                            [
+                                1,
+                                10
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "setBlock",
+                        "number": "redGem",
+                        "loc": [
+                            [
+                                2,
+                                11
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "setBlock",
+                        "number": "bluePotion",
+                        "loc": [
+                            [
+                                2,
+                                9
+                            ]
+                        ]
+                    },
+                    {
+                        "type": "setBlock",
+                        "number": "bluePotion",
+                        "loc": [
+                            [
+                                3,
+                                10
+                            ]
+                        ]
+                    }
+                ]
+            }
         }
     },
     "cannotMove": {},
@@ -161,9 +324,9 @@ main.floors.MT4=
     [  1, 32, 32, 27, 82,  0,  0, 85, 82, 82,  0,  0,  1],
     [  1, 32, 28, 28,  1,212,212,  1,  1,  1,  1,  0,  1],
     [  1,  1,  0,  1,  1,  1, 85,  1,  1,  1,209,  0,  1],
-    [  1,211, 27,211,  1,  0,  0,  0,  0,  1,  0,  0,  1],
-    [  1, 32,1339, 32,  1, 31, 31, 31, 27,  1,  0,  0,  1],
-    [  1,211, 27,211,  1, 32, 32, 32, 27,  1, 87,  0,  1],
+    [  1,  0,  0,  0,  1,  0,  0,  0,  0,  1,  0,  0,  1],
+    [  1,  0,1339,  0,  1, 31, 31, 31, 27,  1,  0,  0,  1],
+    [  1,  0,  0,  0,  1, 32, 32, 32, 27,  1, 87,  0,  1],
     [  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1]
 ],
     "bgmap": [
