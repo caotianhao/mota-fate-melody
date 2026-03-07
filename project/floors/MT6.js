@@ -37,7 +37,8 @@ main.floors.MT6=
             "\t[勇者,hero]如果我有权力决定自己的生死的话，不管怎样都不会走上勇者这条不归路的啊。",
             {
                 "type": "hide",
-                "remove": true
+                "remove": true,
+                "time": 500
             }
         ]
     },
