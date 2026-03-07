@@ -27,10 +27,140 @@ main.floors.MT4=
         }
     },
     "beforeBattle": {},
-    "afterBattle": {},
+    "afterBattle": {
+        "5,5": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MT4_2_4",
+                "operator": "+=",
+                "value": "1"
+            },
+            {
+                "type": "setValue",
+                "name": "flag:door_MT4_6_4",
+                "operator": "+=",
+                "value": "1"
+            },
+            {
+                "type": "setValue",
+                "name": "flag:door_MT4_6_4",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "6,5": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MT4_2_4",
+                "operator": "+=",
+                "value": "1"
+            },
+            {
+                "type": "setValue",
+                "name": "flag:door_MT4_6_4",
+                "operator": "+=",
+                "value": "1"
+            },
+            {
+                "type": "setValue",
+                "name": "flag:door_MT4_6_4",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "5,7": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MT4_2_4",
+                "operator": "+=",
+                "value": "1"
+            },
+            {
+                "type": "setValue",
+                "name": "flag:door_MT4_6_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "6,7": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MT4_2_4",
+                "operator": "+=",
+                "value": "1"
+            },
+            {
+                "type": "setValue",
+                "name": "flag:door_MT4_6_8",
+                "operator": "+=",
+                "value": "1"
+            }
+        ]
+    },
     "afterGetItem": {},
     "afterOpenDoor": {},
-    "autoEvent": {},
+    "autoEvent": {
+        "2,4": {
+            "0": {
+                "condition": "flag:door_MT4_2_4==4",
+                "currentFloor": true,
+                "priority": 0,
+                "delayExecute": false,
+                "multiExecute": false,
+                "data": [
+                    {
+                        "type": "openDoor"
+                    },
+                    {
+                        "type": "setValue",
+                        "name": "flag:door_MT4_2_4",
+                        "operator": "=",
+                        "value": "null"
+                    }
+                ]
+            }
+        },
+        "6,4": {
+            "0": {
+                "condition": "flag:door_MT4_6_4==2",
+                "currentFloor": true,
+                "priority": 0,
+                "delayExecute": false,
+                "multiExecute": false,
+                "data": [
+                    {
+                        "type": "openDoor"
+                    },
+                    {
+                        "type": "setValue",
+                        "name": "flag:door_MT4_6_4",
+                        "operator": "=",
+                        "value": "null"
+                    }
+                ]
+            }
+        },
+        "6,8": {
+            "0": {
+                "condition": "flag:door_MT4_6_8==2",
+                "currentFloor": true,
+                "priority": 0,
+                "delayExecute": false,
+                "multiExecute": false,
+                "data": [
+                    {
+                        "type": "openDoor"
+                    },
+                    {
+                        "type": "setValue",
+                        "name": "flag:door_MT4_6_8",
+                        "operator": "=",
+                        "value": "null"
+                    }
+                ]
+            }
+        }
+    },
     "cannotMove": {},
     "cannotMoveIn": {},
     "map": [
@@ -43,9 +173,9 @@ main.floors.MT4=
     [  1, 32, 32, 27, 82,  0,  0, 85, 82, 82,  0,  0,  1],
     [  1, 32, 28, 28,  1,212,212,  1,  1,  1,  1,  0,  1],
     [  1,  1,  0,  1,  1,  1, 85,  1,  1,  1,209,  0,  1],
-    [  1,  0,  0,  0,  1,  0,  0,  0,  0,  1,  0,  0,  1],
-    [  1,  0, 50,  0,  1, 31, 31, 31, 27,  1,  0,  0,  1],
-    [  1,  0,  0,  0,  1, 32, 32, 32, 27,  1, 87,  0,  1],
+    [  1,211, 27,211,  1,  0,  0,  0,  0,  1,  0,  0,  1],
+    [  1, 32,1339, 32,  1, 31, 31, 31, 27,  1,  0,  0,  1],
+    [  1,211, 27,211,  1, 32, 32, 32, 27,  1, 87,  0,  1],
     [  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1]
 ],
     "bgmap": [
