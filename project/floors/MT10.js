@@ -431,6 +431,27 @@ main.floors.MT10=
                     "remove": true
                 }
             ]
+        },
+        "6,9": {
+            "trigger": null,
+            "enable": false,
+            "noPass": null,
+            "displayDamage": true,
+            "opacity": 1,
+            "filter": {
+                "blur": 0,
+                "hue": 0,
+                "grayscale": 0,
+                "invert": false,
+                "shadow": 0
+            },
+            "data": [
+                "\t[骷髅将军的亡魂,N1583]......我是不是犯下了很多不可挽回的过错。",
+                "\t[勇者,hero]......原来你也是受害者吗？",
+                "\t[勇者,hero]告诉我，是谁把你变成魔物的？",
+                "\t[骷髅将军的亡魂,N1583]可恶......头好痛，我作为骷髅将军经历了很多，同时也忘记了很多身为人类时的事情。",
+                "\t[骷髅将军的亡魂,N1583]但是，唯独他的名字我是绝对不会忘记的，把我变成魔物的人是——"
+            ]
         }
     },
     "changeFloor": {
