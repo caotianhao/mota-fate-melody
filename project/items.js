@@ -1011,9 +1011,19 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		}
 	},
 	"I1340": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
+		"cls": "equips",
+		"name": "雏鹰之翎（右）",
+		"canUseItemEffect": "true",
+		"text": "神秘的饰品，提升佩戴者全属性",
+		"equip": {
+			"type": 3,
+			"value": {
+				"mdef": 10,
+				"def": 5,
+				"atk": 5
+			},
+			"percentage": {}
+		}
 	},
 	"I1341": {
 		"cls": "items",
