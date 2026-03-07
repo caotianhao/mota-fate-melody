@@ -424,14 +424,7 @@ main.floors.MT10=
                 "\t[骷髅将军,skeletonKnight]呵呵......很好！你果然是个值得一战的对手。",
                 {
                     "type": "battle",
-                    "loc": [
-                        6,
-                        8
-                    ]
-                },
-                {
-                    "type": "function",
-                    "function": "function(){\nfunction(){   var d = core.status.event.data, x = d.x, y = d.y;   var b = core.getBlock(x, y);   if (b && b.event) {     b.event.displayDamage = false;     core.updateDamage();   } }\n}"
+                    "id": "skeletonKnight"
                 },
                 {
                     "type": "hide",
