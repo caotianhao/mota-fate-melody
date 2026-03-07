@@ -673,7 +673,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 		"redPotion": 100,
 		"bluePotion": 250,
 		"yellowPotion": 500,
-		"greenPotion": 800,
+		"greenPotion": 1000,
 		"breakArmor": 0.9,
 		"counterAttack": 0.1,
 		"purify": 3,
