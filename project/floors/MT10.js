@@ -450,7 +450,119 @@ main.floors.MT10=
                 "\t[勇者,hero]......原来你也是受害者吗？",
                 "\t[勇者,hero]告诉我，是谁把你变成魔物的？",
                 "\t[骷髅将军的亡魂,N1583]可恶......头好痛，我作为骷髅将军经历了很多，同时也忘记了很多身为人类时的事情。",
-                "\t[骷髅将军的亡魂,N1583]但是，唯独他的名字我是绝对不会忘记的，把我变成魔物的人是——"
+                "\t[骷髅将军的亡魂,N1583]但是，唯独他的名字我是绝对不会忘记的，把我变成魔物的人是——",
+                {
+                    "type": "animate",
+                    "name": "thunder",
+                    "loc": [
+                        6,
+                        9
+                    ]
+                },
+                {
+                    "type": "hide",
+                    "remove": true
+                },
+                {
+                    "type": "jumpHero",
+                    "time": 500
+                },
+                {
+                    "type": "changePos",
+                    "direction": ":right"
+                },
+                {
+                    "type": "sleep",
+                    "time": 500
+                },
+                {
+                    "type": "changePos",
+                    "direction": ":right"
+                },
+                {
+                    "type": "sleep",
+                    "time": 500
+                },
+                {
+                    "type": "changePos",
+                    "direction": ":right"
+                },
+                {
+                    "type": "sleep",
+                    "time": 500
+                },
+                {
+                    "type": "changePos",
+                    "direction": ":right"
+                },
+                "\t[勇者,hero]是谁？！",
+                "\t[勇者,hero]可恶......偏偏挑在如此关键的时候出手，这绝对不是巧合。",
+                "\t[勇者,hero]等等，刚才的攻击方式，我好像曾经在哪里见过？",
+                {
+                    "type": "sleep",
+                    "time": 800
+                },
+                "\t[勇者,hero]......啧，想破头也想不出个结果，只能前往下个区域寻找答案了。",
+                {
+                    "type": "openDoor",
+                    "loc": [
+                        6,
+                        1
+                    ]
+                },
+                {
+                    "type": "openDoor",
+                    "loc": [
+                        6,
+                        10
+                    ]
+                },
+                {
+                    "type": "openDoor",
+                    "loc": [
+                        3,
+                        11
+                    ]
+                },
+                {
+                    "type": "openDoor",
+                    "loc": [
+                        9,
+                        11
+                    ]
+                },
+                {
+                    "type": "openDoor",
+                    "loc": [
+                        2,
+                        9
+                    ],
+                    "floorId": "MT9"
+                },
+                {
+                    "type": "openDoor",
+                    "loc": [
+                        10,
+                        9
+                    ],
+                    "floorId": "MT9"
+                },
+                {
+                    "type": "openDoor",
+                    "loc": [
+                        3,
+                        7
+                    ],
+                    "floorId": "MT9"
+                },
+                {
+                    "type": "openDoor",
+                    "loc": [
+                        9,
+                        7
+                    ],
+                    "floorId": "MT9"
+                }
             ]
         }
     },
