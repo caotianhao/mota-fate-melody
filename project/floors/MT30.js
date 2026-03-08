@@ -88,7 +88,13 @@ main.floors.MT30=
                     5
                 ],
                 "floorId": "MT29"
-            }
+            },
+            {
+                "type": "sleep",
+                "time": 500,
+                "noSkip": true
+            },
+            "\t[勇者,hero]......哈哈哈哈，我很期待，再次与你兵刃相见的那一天。"
         ]
     },
     "afterGetItem": {},
