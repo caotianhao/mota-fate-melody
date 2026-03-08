@@ -675,6 +675,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 		]
 	},
 	"values": {
+		"silverSwordDamageReduceEnemies": ["bat", "bigBat", "redBat", "vampire", "poisonBat", "frostBat", "skeleton", "skeletonCaptain", "skeletonWarrior", "skeletonPriest", "skeletonKnight", "ghostSoldier", "zombie", "zombieKnight", "poisonSkeleton", "poisonZombie"],
 		"lavaDamage": 100,
 		"poisonDamage": 10,
 		"weakValue": 20,
