@@ -556,16 +556,20 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 
 			var damage = init_damage + (turn - 1) * per_damage + turn * counterDamage;
 			damage -= hero_mdef;
-			var silverSwordEnemies = core.values.silverSwordDamageReduceEnemies || [];
-			var isSilverSwordReduce = core.getEquip(0) == 'sword2' && silverSwordEnemies.indexOf(enemy.id) >= 0;
-			if (isSilverSwordReduce) damage -= 100;
-			if (!isSilverSwordReduce && !core.flags.enableNegativeDamage)
+			if (!core.flags.enableNegativeDamage)
 				damage = Math.max(0, damage);
 			if (core.hasSpecial(mon_special, 17)) {
 				damage += core.getFlag('hatred', 0);
 			}
 			if (core.hasSpecial(mon_special, 22)) {
 				damage += enemy.damage || 0;
+			}
+			var silverSwordEnemies = core.values.silverSwordDamageReduceEnemies || [];
+			var isSilverSwordReduce = core.getEquip(0) == 'sword2' && silverSwordEnemies.indexOf(enemy.id) >= 0;
+			if (isSilverSwordReduce) {
+				damage -= core.values.silverSwordDamageReduceValue ?? 100;
+			} else if (!core.flags.enableNegativeDamage) {
+				damage = Math.max(0, damage);
 			}
 
 			return {
