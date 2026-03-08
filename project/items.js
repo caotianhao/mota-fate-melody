@@ -1,4 +1,4 @@
-var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
+var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a = 
 {
 	"yellowKey": {
 		"cls": "tools",
@@ -188,18 +188,20 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"itemEffectTip": "，攻击+40"
 	},
 	"sword4": {
-		"cls": "items",
+		"cls": "equips",
 		"name": "圣剑",
-		"text": "一把很普通的圣剑",
+		"text": "有神圣力量加护的稀有剑种，大幅提升护盾",
 		"equip": {
 			"type": 0,
 			"animate": "sword",
 			"value": {
-				"atk": 80
-			}
+				"mdef": 100,
+				"atk": 90
+			},
+			"percentage": {}
 		},
-		"itemEffect": "core.status.hero.atk += 80",
-		"itemEffectTip": "，攻击+80"
+		"itemEffect": null,
+		"itemEffectTip": null
 	},
 	"sword5": {
 		"cls": "items",
