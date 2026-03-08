@@ -1,9 +1,3 @@
-
-/*
-actions.js：用户交互的事件的处理
-键盘、鼠标、触摸屏事件相关
- */
-
 "use strict";
 
 function actions () {
@@ -57,15 +51,6 @@ actions.prototype._init = function () {
 
 }
 
-//////  注册一个用户交互行为 //////
-/*
- * 此函数将注册一个用户交互行为。
- * action：要注册的交互类型，如 ondown, onup, keyDown 等等。
- * name：你的自定义名称，可被注销使用；同名重复注册将后者覆盖前者。
- * func：执行函数。
- * priority：优先级；优先级高的将会被执行。此项可不填，默认为0。
- * 返回：如果func返回true，则不会再继续执行其他的交互函数；否则会继续执行其他的交互函数。
- */
 actions.prototype.registerAction = function (action, name, func, priority) {
     if (!name || !func)
         return;
@@ -84,7 +69,6 @@ actions.prototype.registerAction = function (action, name, func, priority) {
     });
 }
 
-////// 注销一个用户交互行为 //////
 actions.prototype.unregisterAction = function (action, name) {
     // 将onclick视为ondown处理
     if (action == 'onclick') action = 'ondown';
@@ -94,7 +78,6 @@ actions.prototype.unregisterAction = function (action, name) {
     });
 }
 
-////// 执行一个用户交互行为 //////
 actions.prototype.doRegisteredAction = function (action) {
     var actions = this.actions[action];
     if (!actions) return false;
@@ -118,12 +101,10 @@ actions.prototype._checkReplaying = function () {
     return false;
 }
 
-////// 检查是否在录像播放中，如果是，则停止交互
 actions.prototype._sys_checkReplay = function () {
     if (this._checkReplaying()) return true;
 }
 
-////// 检查左手模式
 actions.prototype.__checkLeftHandPrefer = function (e) {
     if (!core.flags.leftHandPrefer) return e;
     var map = {
@@ -151,7 +132,6 @@ actions.prototype.__checkLeftHandPrefer = function (e) {
     return newEvent;
 }
 
-////// 按下某个键时 //////
 actions.prototype.onkeyDown = function (e) {
     this.doRegisteredAction('onkeyDown', this.__checkLeftHandPrefer(e));
 }
@@ -211,7 +191,7 @@ actions.prototype._sys_onkeyUp_replay = function (e) {
             core.setReplaySpeed(6);
         else if (e.keyCode == 53) // 5
             core.setReplaySpeed(12);
-        else if (e.keyCode == 54) // 6
+        else if (e.keyCode == 54)
             core.setReplaySpeed(24);
         return true;
     }
@@ -235,7 +215,6 @@ actions.prototype._sys_onkeyUp = function (e) {
     }
 }
 
-////// 按住某个键时 //////
 actions.prototype.pressKey = function (keyCode) {
     this.doRegisteredAction('pressKey', keyCode);
 }
@@ -249,14 +228,12 @@ actions.prototype._sys_pressKey = function (keyCode) {
     }
 }
 
-////// 根据按下键的code来执行一系列操作 //////
 actions.prototype.keyDown = function (keyCode) {
     this.doRegisteredAction('keyDown', keyCode);
 }
 
 actions.prototype._sys_keyDown_lockControl = function (keyCode) {
     if (!core.status.lockControl) return false;
-    // Ctrl跳过对话
     if (keyCode == 17) {
         this.keyDownCtrl();
         return true;
@@ -329,7 +306,6 @@ actions.prototype._sys_keyDown = function (keyCode) {
     return true;
 }
 
-////// 根据放开键的code来执行一系列操作 //////
 actions.prototype.keyUp = function (keyCode, altKey, fromReplay) {
     this.doRegisteredAction('keyUp', keyCode, altKey, fromReplay);
 }
