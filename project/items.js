@@ -1,4 +1,4 @@
-var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a = 
+var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 {
 	"yellowKey": {
 		"cls": "tools",
@@ -272,17 +272,19 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"itemEffectTip": "，防御+40"
 	},
 	"shield4": {
-		"cls": "items",
+		"cls": "equips",
 		"name": "圣盾",
-		"text": "一个很普通的圣盾",
+		"text": "神圣力量加护的稀有护盾，装备时免疫魔法冲击效果和异常状态",
 		"equip": {
 			"type": 1,
 			"value": {
+				"mdef": 140,
 				"def": 80
-			}
+			},
+			"percentage": {}
 		},
-		"itemEffect": "core.status.hero.def += 80",
-		"itemEffectTip": "，防御+80"
+		"itemEffect": null,
+		"itemEffectTip": null
 	},
 	"shield5": {
 		"cls": "items",

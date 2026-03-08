@@ -27,10 +27,64 @@ main.floors.MU7=
         }
     },
     "beforeBattle": {},
-    "afterBattle": {},
+    "afterBattle": {
+        "5,6": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU7_6_5",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "7,8": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU7_6_5",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "7,6": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU7_6_5",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "5,8": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU7_6_5",
+                "operator": "+=",
+                "value": "1"
+            }
+        ]
+    },
     "afterGetItem": {},
     "afterOpenDoor": {},
-    "autoEvent": {},
+    "autoEvent": {
+        "6,5": {
+            "0": {
+                "condition": "flag:door_MU7_6_5==4",
+                "currentFloor": true,
+                "priority": 0,
+                "delayExecute": false,
+                "multiExecute": false,
+                "data": [
+                    {
+                        "type": "openDoor"
+                    },
+                    {
+                        "type": "setValue",
+                        "name": "flag:door_MU7_6_5",
+                        "operator": "=",
+                        "value": "null"
+                    }
+                ]
+            }
+        }
+    },
     "cannotMove": {},
     "cannotMoveIn": {},
     "map": [
