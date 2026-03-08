@@ -174,18 +174,19 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"itemEffectTip": null
 	},
 	"sword3": {
-		"cls": "items",
+		"cls": "equips",
 		"name": "骑士剑",
-		"text": "一把很普通的骑士剑",
+		"text": "骑士专用佩剑，纯粹的力量代表纯粹的强大",
 		"equip": {
 			"type": 0,
 			"animate": "sword",
 			"value": {
-				"atk": 40
-			}
+				"atk": 160
+			},
+			"percentage": {}
 		},
-		"itemEffect": "core.status.hero.atk += 40",
-		"itemEffectTip": "，攻击+40"
+		"itemEffect": null,
+		"itemEffectTip": null
 	},
 	"sword4": {
 		"cls": "equips",
@@ -261,17 +262,19 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"itemEffectTip": null
 	},
 	"shield3": {
-		"cls": "items",
+		"cls": "equips",
 		"name": "骑士盾",
-		"text": "一个很普通的骑士盾",
+		"text": "骑士专用配盾，边缘有刃可用于进攻",
 		"equip": {
 			"type": 1,
 			"value": {
-				"def": 40
-			}
+				"def": 160,
+				"atk": 60
+			},
+			"percentage": {}
 		},
-		"itemEffect": "core.status.hero.def += 40",
-		"itemEffectTip": "，防御+40"
+		"itemEffect": null,
+		"itemEffectTip": null
 	},
 	"shield4": {
 		"cls": "equips",
