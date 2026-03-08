@@ -1114,12 +1114,10 @@ control.prototype._moveDirectyFollowers = function (x, y) {
     }
 }
 
-////// 更新领域、夹击、阻击的伤害地图 //////
 control.prototype.updateCheckBlock = function (floorId) {
     return this.controldata.updateCheckBlock(floorId);
 }
 
-////// 检查并执行领域、夹击、阻击事件 //////
 control.prototype.checkBlock = function () {
     var x = core.getHeroLoc('x'), y = core.getHeroLoc('y'), loc = x + "," + y;
     var damage = core.status.checkBlock.damage[loc];
@@ -1127,6 +1125,7 @@ control.prototype.checkBlock = function () {
         core.status.hero.hp -= damage;
         var text = (Object.keys(core.status.checkBlock.type[loc] || {}).join("，")) || "伤害";
         core.drawTip("受到" + text + damage + "点");
+        core.stopSound();
         core.drawHeroAnimate("zone");
         this._checkBlock_disableQuickShop();
         core.status.hero.statistics.extraDamage += damage;
