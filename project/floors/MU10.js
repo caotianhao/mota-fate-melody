@@ -11,7 +11,7 @@ main.floors.MU10 =
     "cannotViewMap": false,
     "images": [],
     "ratio": 1,
-    "defaultGround": "ground",
+    "defaultGround": "T1585",
     "firstArrive": [
         "\t[勇者,hero]好热......地板上覆盖满了凝固的熔岩......可恶......",
         "\t[勇者,hero]你就是鬼帝的手下，追魂的正体吧？",
