@@ -488,6 +488,148 @@ main.floors.MU10=
                     ]
                 ],
                 "floorId": "MU9"
+            },
+            {
+                "type": "show",
+                "loc": [
+                    [
+                        6,
+                        4
+                    ]
+                ],
+                "floorId": "MT20"
+            },
+            {
+                "type": "hide",
+                "loc": [
+                    [
+                        5,
+                        4
+                    ]
+                ],
+                "floorId": "MT20",
+                "remove": true
+            },
+            {
+                "type": "setBlock",
+                "number": "T1585",
+                "loc": [
+                    [
+                        4,
+                        4
+                    ]
+                ],
+                "floorId": "MT20"
+            },
+            {
+                "type": "setBlock",
+                "number": "T1585",
+                "loc": [
+                    [
+                        3,
+                        4
+                    ]
+                ],
+                "floorId": "MT20"
+            },
+            {
+                "type": "setBlock",
+                "number": "T1585",
+                "loc": [
+                    [
+                        3,
+                        5
+                    ]
+                ],
+                "floorId": "MT20"
+            },
+            {
+                "type": "setBlock",
+                "number": "T1585",
+                "loc": [
+                    [
+                        3,
+                        6
+                    ]
+                ],
+                "floorId": "MT20"
+            },
+            {
+                "type": "setBlock",
+                "number": "T1585",
+                "loc": [
+                    [
+                        3,
+                        7
+                    ]
+                ],
+                "floorId": "MT20"
+            },
+            {
+                "type": "setBlock",
+                "number": "T1585",
+                "loc": [
+                    [
+                        3,
+                        8
+                    ]
+                ],
+                "floorId": "MT20"
+            },
+            {
+                "type": "setBlock",
+                "number": "T1585",
+                "loc": [
+                    [
+                        3,
+                        9
+                    ]
+                ],
+                "floorId": "MT20"
+            },
+            {
+                "type": "setBlock",
+                "number": "T1585",
+                "loc": [
+                    [
+                        3,
+                        10
+                    ]
+                ],
+                "floorId": "MT20"
+            },
+            {
+                "type": "setBlock",
+                "number": "T1585",
+                "loc": [
+                    [
+                        3,
+                        11
+                    ]
+                ],
+                "floorId": "MT20"
+            },
+            {
+                "type": "setBlock",
+                "number": "T1585",
+                "loc": [
+                    [
+                        4,
+                        11
+                    ]
+                ],
+                "floorId": "MT20"
+            },
+            {
+                "type": "setBlock",
+                "number": "T1585",
+                "loc": [
+                    [
+                        5,
+                        11
+                    ]
+                ],
+                "floorId": "MT20"
             }
         ]
     },

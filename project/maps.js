@@ -1478,6 +1478,6 @@ var maps_90f36752_8815_4be8_b32b_d7fad1d0542e =
 	"1582": {"cls":"npcs","id":"N1582"},
 	"1583": {"cls":"npcs","id":"N1583"},
 	"1584": {"cls":"npcs","id":"N1584"},
-	"1585": {"cls":"terrains","id":"T1585","canPass":false},
+	"1585": {"cls":"terrains","id":"T1585","canPass":true},
 	"1586": {"cls":"npcs","id":"N1586"}
 }
