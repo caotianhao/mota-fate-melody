@@ -17,7 +17,7 @@ var enemys_fcae963b_31c9_42b4_b48c_bb48d09f3f80 =
 	"redPriest": {"name":"狂暴施咒者","hp":450,"atk":280,"def":100,"money":19,"exp":12,"point":0,"special":[1,2,22],"damage":1000},
 	"brownWizard": {"name":"蹩脚巫师","hp":100,"atk":35,"def":30,"money":5,"exp":3,"point":0,"special":[2],"value":null,"range":2},
 	"redWizard": {"name":"熟练巫师","hp":220,"atk":65,"def":45,"money":8,"exp":5,"point":0,"special":[2],"value":200,"zoneSquare":true},
-	"swordsman": {"name":"双持武者","hp":400,"atk":650,"def":100,"money":19,"exp":12,"point":0,"special":[6],"value":4},
+	"swordsman": {"name":"双持武者","hp":400,"atk":650,"def":100,"money":19,"exp":12,"point":0,"special":[6],"value":null,"n":4},
 	"soldier": {"name":"冥战士","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":0},
 	"yellowKnight": {"name":"见习武者","hp":1000,"atk":560,"def":300,"money":20,"exp":14,"point":0,"special":0},
 	"redKnight": {"name":"赤色武者","hp":1000,"atk":620,"def":350,"money":20,"exp":14,"point":0,"special":[]},
