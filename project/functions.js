@@ -242,14 +242,16 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 				hint += '，' + core.getStatusLabel('exp') + '+' + exp;
 			core.drawTip(hint, enemy.id);
 
-			if (core.enemys.hasSpecial(special, 12)) {
-				core.triggerDebuff('get', 'poison');
-			}
-			if (core.enemys.hasSpecial(special, 13)) {
-				core.triggerDebuff('get', 'weak');
-			}
-			if (core.enemys.hasSpecial(special, 14)) {
-				core.triggerDebuff('get', 'curse');
+			if (core.getEquip(1) != 'shield4') {
+				if (core.enemys.hasSpecial(special, 12)) {
+					core.triggerDebuff('get', 'poison');
+				}
+				if (core.enemys.hasSpecial(special, 13)) {
+					core.triggerDebuff('get', 'weak');
+				}
+				if (core.enemys.hasSpecial(special, 14)) {
+					core.triggerDebuff('get', 'curse');
+				}
 			}
 			if (core.enemys.hasSpecial(special, 17)) {
 				core.setFlag('hatred', Math.floor(core.getFlag('hatred', 0) / 2));
@@ -561,7 +563,7 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 			if (core.hasSpecial(mon_special, 17)) {
 				damage += core.getFlag('hatred', 0);
 			}
-			if (core.hasSpecial(mon_special, 22)) {
+			if (core.hasSpecial(mon_special, 22) && core.getEquip(1) != 'shield4') {
 				damage += enemy.damage || 0;
 			}
 			var silverSwordEnemies = core.values.silverSwordDamageReduceEnemies || [];
