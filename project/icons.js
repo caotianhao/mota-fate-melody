@@ -63,7 +63,8 @@ var icons_4665ee12_3a1f_44a4_bea3_0fccba634dc1 =
 		"sWallBLR": 31,
 		"sWallTLR": 32,
 		"sWallTBR": 33,
-		"sWallTBL": 34
+		"sWallTBL": 34,
+		"T1585": 35
 	},
 	"animates": {
 		"star": 0,
