@@ -161,12 +161,12 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	"sword2": {
 		"cls": "equips",
 		"name": "银剑",
-		"text": "秘银制造的剑，装备时与蝙蝠或不死系魔物战斗前获得恢复（已折算为最终伤害）",
+		"text": "秘银制造的剑，装备时与蝙蝠族、骷髅族、魔性人族战斗前获得恢复（已折算为最终伤害）",
 		"equip": {
 			"type": 0,
 			"animate": "sword",
 			"value": {
-				"atk": 40
+				"atk": 50
 			},
 			"percentage": {}
 		},
@@ -250,8 +250,8 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"equip": {
 			"type": 1,
 			"value": {
-				"mdef": 35,
-				"def": 35
+				"mdef": 40,
+				"def": 40
 			},
 			"percentage": {}
 		},
@@ -991,9 +991,9 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"equip": {
 			"type": 2,
 			"value": {
-				"mdef": 5,
-				"def": 10,
-				"atk": 10
+				"mdef": 15,
+				"def": 15,
+				"atk": 15
 			},
 			"percentage": {}
 		}
@@ -1517,7 +1517,7 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"cls": "equips",
 		"name": "高纯度宝石-黄",
 		"canUseItemEffect": "true",
-		"text": "材质特殊的极致宝石",
+		"text": "材质特殊的极致宝石，提升全属性",
 		"equip": {
 			"type": 4,
 			"value": {
