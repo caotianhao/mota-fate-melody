@@ -1,7 +1,7 @@
 
 "use strict";
 
-function maps () {
+function maps() {
     this._init();
 }
 
@@ -1836,16 +1836,16 @@ maps.prototype._drawThumbnail_drawToTarget = function (floorId, options) {
     }
     else {
         // 只绘制可见窗口
-        var pw = core._PX_, 
-            ph = core._PY_, 
-            hw = core._HALF_WIDTH_, 
-            hh = core._HALF_HEIGHT_, 
-            W = core._WIDTH_, 
+        var pw = core._PX_,
+            ph = core._PY_,
+            hw = core._HALF_WIDTH_,
+            hh = core._HALF_HEIGHT_,
+            W = core._WIDTH_,
             H = core._HEIGHT_;
-        if (main.mode == 'editor') { 
-            pw = ph = core.__PIXELS__; 
-            hw = hh = core.__HALF_SIZE__; 
-            W = H = core.__SIZE__; 
+        if (main.mode == 'editor') {
+            pw = ph = core.__PIXELS__;
+            hw = hh = core.__HALF_SIZE__;
+            W = H = core.__SIZE__;
         }
         if (options.v2) {
             if (options.noHD) core.drawImage(ctx, tempCanvas.canvas, 0, 0, pw, ph, x, y, w, h);

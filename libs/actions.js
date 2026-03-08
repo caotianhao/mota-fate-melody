@@ -1,6 +1,6 @@
 "use strict";
 
-function actions () {
+function actions() {
     this._init();
     this._HX_ = core._HALF_WIDTH_;
     this._HY_ = core._HALF_HEIGHT_;
@@ -843,7 +843,7 @@ actions.prototype._sys_longClick_lockControl = function (x, y, px, py) {
     }
     // 长按SL上下页快速翻页
     if (["save", "load", "replayLoad", "replayRemain", "replaySince"].indexOf(core.status.event.id) >= 0) {
-        if ([this._HX_ - 2, this._HX_ - 3, this._HX_ + 2, this._HX_ + 3].indexOf(x) >= 0 && y===core._HEIGHT_-1) {
+        if ([this._HX_ - 2, this._HX_ - 3, this._HX_ + 2, this._HX_ + 3].indexOf(x) >= 0 && y === core._HEIGHT_ - 1) {
             this._clickSL(x, y);
             return true;
         }
@@ -1068,27 +1068,27 @@ actions.prototype._clickAction = function (x, y, px, py) {
         var choices = data.choices;
         if (choices.length == 0) return;
         if (this._out(x)) return;
-            var topIndex = this._getChoicesTopIndex(choices.length);
-            if (y >= topIndex && y < topIndex + choices.length) {
-                var choice = choices[y - topIndex];
-                if (choice.need != null && choice.need != '' && !core.calValue(choice.need)) {
-                    core.playSound('操作失败');
-                    core.drawTip("无法选择此项");
-                    return;
-                }
-                clearTimeout(core.status.event.interval);
-                var timeout = Math.max(0, core.status.event.timeout - new Date().getTime()) || 0;
-                delete core.status.event.timeout;
-                core.setFlag('timeout', timeout);
-                // 对全局商店特殊处理
-                var index = y - topIndex;
-                if (index == choices.length - 1 && core.hasFlag('@temp@shop')) {
-                    index = -1;
-                }
-                core.status.route.push("choices:" + (100 * timeout + index));
-                core.insertAction(choice.action);
-                core.doAction();
+        var topIndex = this._getChoicesTopIndex(choices.length);
+        if (y >= topIndex && y < topIndex + choices.length) {
+            var choice = choices[y - topIndex];
+            if (choice.need != null && choice.need != '' && !core.calValue(choice.need)) {
+                core.playSound('操作失败');
+                core.drawTip("无法选择此项");
+                return;
             }
+            clearTimeout(core.status.event.interval);
+            var timeout = Math.max(0, core.status.event.timeout - new Date().getTime()) || 0;
+            delete core.status.event.timeout;
+            core.setFlag('timeout', timeout);
+            // 对全局商店特殊处理
+            var index = y - topIndex;
+            if (index == choices.length - 1 && core.hasFlag('@temp@shop')) {
+                index = -1;
+            }
+            core.status.route.push("choices:" + (100 * timeout + index));
+            core.insertAction(choice.action);
+            core.doAction();
+        }
         return;
     }
 
@@ -1173,19 +1173,19 @@ actions.prototype._keyUpAction = function (keycode) {
 actions.prototype._clickBook = function (x, y) {
     var pageinfo = core.ui._drawBook_pageinfo();
     // 上一页
-    if ((x == this._HX_ - 2 || x == this._HX_ - 3) && y===core._HEIGHT_-1) {
+    if ((x == this._HX_ - 2 || x == this._HX_ - 3) && y === core._HEIGHT_ - 1) {
         core.playSound('光标移动');
         core.ui.drawBook(core.status.event.data - pageinfo.per_page);
         return;
     }
     // 下一页
-    if ((x == this._HX_ + 2 || x == this._HX_ + 3) && y===core._HEIGHT_-1) {
+    if ((x == this._HX_ + 2 || x == this._HX_ + 3) && y === core._HEIGHT_ - 1) {
         core.playSound('光标移动');
         core.ui.drawBook(core.status.event.data + pageinfo.per_page);
         return;
     }
     // 返回
-    if (x >= this.LAST - 2 && y===core._HEIGHT_-1) {
+    if (x >= this.LAST - 2 && y === core._HEIGHT_ - 1) {
         core.playSound('取消');
         if (core.events.recoverEvents(core.status.event.interval)) {
             return;
@@ -1199,7 +1199,7 @@ actions.prototype._clickBook = function (x, y) {
     }
     // 怪物信息
     var data = core.status.event.data;
-    if (data != null && y < core._HEIGHT_-1) {
+    if (data != null && y < core._HEIGHT_ - 1) {
         var per_page = pageinfo.per_page, page = parseInt(data / per_page);
         var u = (core._HEIGHT_ - 1) / per_page;
         for (var i = 0; i < per_page; ++i) {
@@ -1263,8 +1263,8 @@ actions.prototype._clickFly = function (x, y) {
     if ((x == core._WIDTH_ - 2 || x == core._WIDTH_ - 3) && y == this._HY_ - 1) { core.playSound('光标移动'); core.ui.drawFly(this._getNextFlyFloor(1)); }
     if ((x == core._WIDTH_ - 2 || x == core._WIDTH_ - 3) && y == this._HY_ + 4) { core.playSound('光标移动'); core.ui.drawFly(this._getNextFlyFloor(-10)); }
     if ((x == core._WIDTH_ - 2 || x == core._WIDTH_ - 3) && y == this._HY_ - 2) { core.playSound('光标移动'); core.ui.drawFly(this._getNextFlyFloor(10)); }
-    if (x >= this._HX_ - 1 && x <= this._HX_ + 1 && y===core._HEIGHT_-1) { core.playSound('取消'); core.ui.closePanel(); }
-    if (x >= 0 && x <= this._HX_ + 3 && y >= 3 && y <= core._HEIGHT_-1 - 1)
+    if (x >= this._HX_ - 1 && x <= this._HX_ + 1 && y === core._HEIGHT_ - 1) { core.playSound('取消'); core.ui.closePanel(); }
+    if (x >= 0 && x <= this._HX_ + 3 && y >= 3 && y <= core._HEIGHT_ - 1 - 1)
         core.flyTo(core.floorIds[core.status.event.data]);
     return;
 }
@@ -1393,12 +1393,12 @@ actions.prototype._keyDownViewMaps = function (keycode) {
 
     var floorId = core.floorIds[core.status.event.data.index], mh = core.floors[floorId].height;
 
-    if (keycode == 38 || keycode == 33)      this._clickViewMaps(this._HX_       , this._HY_ - 3    , core._PX_ / 2, core._PY_ / 5 * 1.5);
-    if (keycode == 40 || keycode == 34)      this._clickViewMaps(this._HX_       , this._HY_ + 3    , core._PX_ / 2, core._PY_ / 5 * 3.5);
-    if (keycode == 87 && mh > core._HEIGHT_) this._clickViewMaps(this._HX_       , 0                , core._PX_ / 2, 1                  );
-    if (keycode == 65)                       this._clickViewMaps(0               , this._HY_        , 1            , core._PY_ / 2      );
-    if (keycode == 83 && mh > core._HEIGHT_) this._clickViewMaps(this._HX_       , core._HEIGHT_ - 1, core._PX_ / 2, core._PY_ - 1      );
-    if (keycode == 68)                       this._clickViewMaps(core._WIDTH_ - 1, this._HY_        , core._PX_    , core._PY_ / 2 - 1  );
+    if (keycode == 38 || keycode == 33) this._clickViewMaps(this._HX_, this._HY_ - 3, core._PX_ / 2, core._PY_ / 5 * 1.5);
+    if (keycode == 40 || keycode == 34) this._clickViewMaps(this._HX_, this._HY_ + 3, core._PX_ / 2, core._PY_ / 5 * 3.5);
+    if (keycode == 87 && mh > core._HEIGHT_) this._clickViewMaps(this._HX_, 0, core._PX_ / 2, 1);
+    if (keycode == 65) this._clickViewMaps(0, this._HY_, 1, core._PY_ / 2);
+    if (keycode == 83 && mh > core._HEIGHT_) this._clickViewMaps(this._HX_, core._HEIGHT_ - 1, core._PX_ / 2, core._PY_ - 1);
+    if (keycode == 68) this._clickViewMaps(core._WIDTH_ - 1, this._HY_, core._PX_, core._PY_ / 2 - 1);
     return;
 }
 
@@ -1454,28 +1454,28 @@ actions.prototype._keyUpViewMaps = function (keycode) {
 actions.prototype._clickQuickShop = function (x, y) {
     var shopIds = core.listShopIds();
     if (this._out(x)) return;
-        var topIndex = this._HY_ - parseInt(shopIds.length / 2) + (core.status.event.ui.offset || 0);
-        if (y >= topIndex && y < topIndex + shopIds.length) {
-            var shopId = shopIds[y - topIndex];
-            if (!core.canOpenShop(shopId)) {
-                core.playSound('操作失败');
-                core.drawTip('当前项尚未开启');
-                return;
-            }
-            var message = core.canUseQuickShop(shopId);
-            if (message == null) {
-                // core.ui.closePanel();
-                core.openShop(shopIds[y - topIndex], false);
-            } else {
-                core.playSound('操作失败');
-                core.drawTip(message);
-            }
+    var topIndex = this._HY_ - parseInt(shopIds.length / 2) + (core.status.event.ui.offset || 0);
+    if (y >= topIndex && y < topIndex + shopIds.length) {
+        var shopId = shopIds[y - topIndex];
+        if (!core.canOpenShop(shopId)) {
+            core.playSound('操作失败');
+            core.drawTip('当前项尚未开启');
+            return;
         }
-        // 离开
-        else if (y == topIndex + shopIds.length) {
-            core.playSound('取消');
-            core.ui.closePanel();
+        var message = core.canUseQuickShop(shopId);
+        if (message == null) {
+            // core.ui.closePanel();
+            core.openShop(shopIds[y - topIndex], false);
+        } else {
+            core.playSound('操作失败');
+            core.drawTip(message);
         }
+    }
+    // 离开
+    else if (y == topIndex + shopIds.length) {
+        core.playSound('取消');
+        core.ui.closePanel();
+    }
 }
 
 ////// 快捷商店界面时，放开某个键的操作 //////
@@ -1503,7 +1503,7 @@ actions.prototype._clickToolbox = function (x, y) {
             core.openEquipbox();
         return;
     }
-    if (x >= this.LAST - 2 && y===core._HEIGHT_-1) {
+    if (x >= this.LAST - 2 && y === core._HEIGHT_ - 1) {
         core.playSound('取消');
         core.ui.closePanel();
         var last = core.status.route[core.status.route.length - 1] || '';
@@ -1518,12 +1518,12 @@ actions.prototype._clickToolbox = function (x, y) {
     var constantsPage = core.status.event.data.constantsPage;
     // 上一页
     if (x == this._HX_ - 2 || x == this._HX_ - 3) {
-        if (y===core._HEIGHT_-1 - 5 && toolsPage > 1) {
+        if (y === core._HEIGHT_ - 1 - 5 && toolsPage > 1) {
             core.status.event.data.toolsPage--;
             core.playSound('光标移动');
             core.ui._drawToolbox(core.status.event.selection);
         }
-        if (y===core._HEIGHT_-1 && constantsPage > 1) {
+        if (y === core._HEIGHT_ - 1 && constantsPage > 1) {
             core.status.event.data.constantsPage--;
             core.playSound('光标移动');
             core.ui._drawToolbox(core.status.event.selection);
@@ -1531,12 +1531,12 @@ actions.prototype._clickToolbox = function (x, y) {
     }
     // 下一页
     if (x == this._HX_ + 2 || x == this._HX_ + 3) {
-        if (y===core._HEIGHT_-1 - 5 && toolsPage < Math.ceil(tools.length / this.LAST)) {
+        if (y === core._HEIGHT_ - 1 - 5 && toolsPage < Math.ceil(tools.length / this.LAST)) {
             core.status.event.data.toolsPage++;
             core.playSound('光标移动');
             core.ui._drawToolbox(core.status.event.selection);
         }
-        if (y===core._HEIGHT_-1 && constantsPage < Math.ceil(constants.length / this.LAST)) {
+        if (y === core._HEIGHT_ - 1 && constantsPage < Math.ceil(constants.length / this.LAST)) {
             core.status.event.data.constantsPage++;
             core.playSound('光标移动');
             core.ui._drawToolbox(core.status.event.selection);
@@ -1544,10 +1544,10 @@ actions.prototype._clickToolbox = function (x, y) {
     }
 
     var index = parseInt(x / 2);
-    if (y===core._HEIGHT_-1 - 8) index += 0;
-    else if (y===core._HEIGHT_-1 - 6) index += this._HX_;
-    else if (y===core._HEIGHT_-1 - 3) index += this.LAST;
-    else if (y===core._HEIGHT_-1 - 1) index += this.LAST + this._HX_;
+    if (y === core._HEIGHT_ - 1 - 8) index += 0;
+    else if (y === core._HEIGHT_ - 1 - 6) index += this._HX_;
+    else if (y === core._HEIGHT_ - 1 - 3) index += this.LAST;
+    else if (y === core._HEIGHT_ - 1 - 1) index += this.LAST + this._HX_;
     else index = -1;
     if (index >= 0)
         this._clickToolboxIndex(index);
@@ -1712,7 +1712,7 @@ actions.prototype._clickEquipbox = function (x, y, px, py) {
             core.openToolbox();
         return;
     }
-    if (x >= this.LAST - 2 && y===core._HEIGHT_-1) {
+    if (x >= this.LAST - 2 && y === core._HEIGHT_ - 1) {
         core.playSound('取消');
         core.ui.closePanel();
         var last = core.status.route[core.status.route.length - 1] || '';
@@ -1722,7 +1722,7 @@ actions.prototype._clickEquipbox = function (x, y, px, py) {
         core.checkAutoEvents();
         return;
     }
-    if ((x == this._HX_ - 2 || x == this._HX_ - 3) && y===core._HEIGHT_-1) {
+    if ((x == this._HX_ - 2 || x == this._HX_ - 3) && y === core._HEIGHT_ - 1) {
         if (core.status.event.data.page > 1) {
             core.status.event.data.page--;
             core.playSound('光标移动');
@@ -1730,7 +1730,7 @@ actions.prototype._clickEquipbox = function (x, y, px, py) {
         }
         return;
     }
-    if ((x == this._HX_ + 2 || x == this._HX_ + 3) && y===core._HEIGHT_-1) {
+    if ((x == this._HX_ + 2 || x == this._HX_ + 3) && y === core._HEIGHT_ - 1) {
         var lastPage = Math.ceil(core.getToolboxItems('equips').length / this.LAST);
         if (core.status.event.data.page < lastPage) {
             core.status.event.data.page++;
@@ -1888,19 +1888,19 @@ actions.prototype._clickSL = function (x, y) {
     var index = page * 10 + offset;
 
     // 上一页
-    if ((x == this._HX_ - 2 || x == this._HX_ - 3) && y===core._HEIGHT_-1) {
+    if ((x == this._HX_ - 2 || x == this._HX_ - 3) && y === core._HEIGHT_ - 1) {
         core.playSound('光标移动');
         core.ui._drawSLPanel(10 * (page - 1) + offset);
         return;
     }
     // 下一页
-    if ((x == this._HX_ + 2 || x == this._HX_ + 3) && y===core._HEIGHT_-1) {
+    if ((x == this._HX_ + 2 || x == this._HX_ + 3) && y === core._HEIGHT_ - 1) {
         core.playSound('光标移动');
         core.ui._drawSLPanel(10 * (page + 1) + offset);
         return;
     }
     // 返回
-    if (x >= this.LAST - 2 && y===core._HEIGHT_-1) {
+    if (x >= this.LAST - 2 && y === core._HEIGHT_ - 1) {
         core.playSound('取消');
         if (core.events.recoverEvents(core.status.event.interval))
             return;
@@ -1911,7 +1911,7 @@ actions.prototype._clickSL = function (x, y) {
         return;
     }
     // 删除
-    if (x >= 0 && x <= 2 && y===core._HEIGHT_-1) {
+    if (x >= 0 && x <= 2 && y === core._HEIGHT_ - 1) {
         if (core.status.event.id == 'save') {
             core.status.event.selection = !core.status.event.selection;
             core.ui._drawSLPanel(index);

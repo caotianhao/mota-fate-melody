@@ -7,7 +7,7 @@
 
 "use strict";
 
-function ui () {
+function ui() {
     this._init();
 }
 

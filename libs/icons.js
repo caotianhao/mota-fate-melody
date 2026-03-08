@@ -1,7 +1,7 @@
 
 "use strict";
 
-function icons () {
+function icons() {
     this._init();
 }
 

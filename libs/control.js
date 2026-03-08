@@ -7,7 +7,7 @@ control.js：游戏主要逻辑控制
 
 "use strict";
 
-function control () {
+function control() {
     this._init();
 }
 

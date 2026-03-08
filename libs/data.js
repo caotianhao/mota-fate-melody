@@ -1,7 +1,7 @@
 
 "use strict";
 
-function data () {
+function data() {
     this._init();
 }
 

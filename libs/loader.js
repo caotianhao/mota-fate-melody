@@ -5,7 +5,7 @@ loader.js：负责对资源的加载
  */
 "use strict";
 
-function loader () {
+function loader() {
     this._init();
 }
 

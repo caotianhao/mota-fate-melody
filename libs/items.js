@@ -1,7 +1,7 @@
 
 "use strict";
 
-function items () {
+function items() {
     this._init();
 }
 
@@ -25,10 +25,9 @@ items.prototype.getItems = function () {
     return items;
 }
 
-////// “即捡即用类”道具的使用效果 //////
 items.prototype.getItemEffect = function (itemId, itemNum) {
     var itemCls = core.material.items[itemId].cls;
-    // 消耗品
+
     if (itemCls === 'items') {
         var curr_hp = core.status.hero.hp;
         var itemEffect = core.material.items[itemId].itemEffect;
@@ -59,10 +58,8 @@ items.prototype.getItemEffect = function (itemId, itemNum) {
     }
 }
 
-////// “即捡即用类”道具的文字提示 //////
 items.prototype.getItemEffectTip = function (itemId) {
     var itemCls = core.material.items[itemId].cls;
-    // 消耗品
     if (itemCls === 'items') {
         var itemEffectTip = core.material.items[itemId].itemEffectTip;
         if (itemEffectTip) {
@@ -77,7 +74,6 @@ items.prototype.getItemEffectTip = function (itemId) {
     return "";
 }
 
-////// 使用道具 //////
 items.prototype.useItem = function (itemId, noRoute, callback) {
     if (!this.canUseItem(itemId)) {
         if (callback) callback();

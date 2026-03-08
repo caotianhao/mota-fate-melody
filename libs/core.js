@@ -10,7 +10,7 @@
 //  */
 // const core = (() => {
 
-function core () {
+function core() {
     this._WIDTH_ = 13;
     this._HEIGHT_ = 13;
     this._PX_ = this._WIDTH_ * 32;
