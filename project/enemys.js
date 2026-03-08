@@ -27,7 +27,7 @@ var enemys_fcae963b_31c9_42b4_b48c_bb48d09f3f80 =
 	"poisonSkeleton": {"name":"量产型·追魂","hp":500,"atk":350,"def":50,"money":0,"exp":20,"point":0,"special":[2]},
 	"poisonBat": {"name":"毒牙蝙蝠","hp":550,"atk":180,"def":25,"money":10,"exp":5,"point":0,"special":[12]},
 	"skeletonPriest": {"name":"骷髅法师","hp":100,"atk":100,"def":0,"money":0,"exp":0,"point":0,"special":18,"value":20},
-	"skeletonKing": {"name":"骷髅王","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":0},
+	"skeletonKing": {"name":"鬼帝","hp":9800,"atk":835,"def":445,"money":50,"exp":2000,"point":0,"special":[20]},
 	"evilHero": {"name":"迷失勇者","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":0},
 	"demonPriest": {"name":"魔神法师","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":0},
 	"goldHornSlime": {"name":"稀有金属史莱姆","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":[3]},
