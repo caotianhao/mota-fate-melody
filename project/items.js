@@ -1036,9 +1036,18 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		}
 	},
 	"I1341": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
+		"cls": "equips",
+		"name": "骑士勋章",
+		"canUseItemEffect": "true",
+		"text": "骑士，至死都是骑士",
+		"equip": {
+			"type": 3,
+			"value": {
+				"def": 10,
+				"atk": 80
+			},
+			"percentage": {}
+		}
 	},
 	"I1342": {
 		"cls": "items",
