@@ -1,4 +1,4 @@
-main.floors.MU10 =
+main.floors.MU10=
 {
     "floorId": "MU10",
     "title": "地下 10 层",
@@ -13,6 +13,20 @@ main.floors.MU10 =
     "ratio": 1,
     "defaultGround": "T1585",
     "firstArrive": [
+        {
+            "type": "moveHero",
+            "steps": [
+                "up:2"
+            ]
+        },
+        {
+            "type": "closeDoor",
+            "id": "specialDoor",
+            "loc": [
+                6,
+                11
+            ]
+        },
         "\t[勇者,hero]好热......地板上覆盖满了凝固的熔岩......可恶......",
         "\t[勇者,hero]你就是鬼帝的手下，追魂的正体吧？",
         "\t[追魂,E679]鬼帝的手下？你是说那个只知道逃避的胆小鬼吗？",
@@ -35,39 +49,494 @@ main.floors.MU10 =
         "\t[勇者,hero]是吗？你看看自己现在的样子。",
         "\t[勇者,hero]已经越来越像血影的幼崽了啊。",
         "\t[追魂,E679]少啰嗦少啰嗦少啰嗦！！！！",
-        "\t[追魂,E679]上吧！本大爷的奴仆们！把这个满嘴胡话的家伙撕成碎片！！！"
+        "\t[追魂,E679]上吧！本大爷的奴仆们！把这个满嘴胡话的家伙撕成碎片！！！",
+        {
+            "type": "openDoor",
+            "loc": [
+                5,
+                8
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                7,
+                8
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                1,
+                6
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                2,
+                6
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                3,
+                6
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                4,
+                6
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                1,
+                10
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                2,
+                10
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                3,
+                10
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                4,
+                10
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                8,
+                6
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                9,
+                6
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                10,
+                6
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                11,
+                6
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                8,
+                10
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                9,
+                10
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                10,
+                10
+            ]
+        },
+        {
+            "type": "openDoor",
+            "loc": [
+                11,
+                10
+            ]
+        }
     ],
     "eachArrive": [],
     "parallelDo": "",
     "events": {},
-    "changeFloor": {},
-    "beforeBattle": {},
-    "afterBattle": {},
+    "changeFloor": {
+        "6,12": {
+            "floorId": ":next",
+            "stair": "downFloor"
+        }
+    },
+    "beforeBattle": {
+        "6,4": [
+            "\t[追魂,E679]可恶！居然能在那么多血影的攻击下存活下来......你这家伙！",
+            "\t[勇者,hero]我跟你这种为了力量而彻底舍弃尊严跟自我的人没什么好说的。",
+            "\t[勇者,hero]拔剑吧。",
+            "\t[追魂,E679]别太嚣张！有血影力量加护的本大爷可是无敌的！来吧！！！"
+        ]
+    },
+    "afterBattle": {
+        "1,4": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "2,4": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "3,4": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "4,4": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "4,5": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "3,5": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "2,5": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "1,5": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "1,11": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "2,11": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "3,11": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "4,11": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "4,12": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "3,12": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "2,12": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "1,12": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "8,12": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "9,12": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "10,12": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "11,12": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "11,11": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "10,11": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "9,11": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "8,11": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "8,5": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "9,5": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "10,5": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "11,5": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "11,4": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "10,4": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "9,4": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "8,4": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MU10_6_6",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "6,4": [
+            "\t[追魂,E679]啊！！本大爷居然，居然会输给你！！",
+            "\t[追魂,E679]力量......让血影吃更多......更多的力量......呃......",
+            "\t[勇者,hero]到死还满脑子力量，不知该说是可怜还是可恨......",
+            "\t[勇者,hero]好热，赶紧离开这里吧......",
+            {
+                "type": "openDoor",
+                "loc": [
+                    6,
+                    11
+                ]
+            },
+            {
+                "type": "openDoor",
+                "loc": [
+                    3,
+                    9
+                ],
+                "floorId": "MU9"
+            },
+            {
+                "type": "openDoor",
+                "loc": [
+                    9,
+                    9
+                ],
+                "floorId": "MU9"
+            },
+            {
+                "type": "show",
+                "loc": [
+                    [
+                        7,
+                        8
+                    ]
+                ],
+                "floorId": "MU9"
+            }
+        ]
+    },
     "afterGetItem": {},
     "afterOpenDoor": {},
-    "autoEvent": {},
+    "autoEvent": {
+        "6,6": {
+            "0": {
+                "condition": "flag:door_MU10_6_6==32",
+                "currentFloor": true,
+                "priority": 0,
+                "delayExecute": false,
+                "multiExecute": false,
+                "data": [
+                    {
+                        "type": "openDoor"
+                    },
+                    {
+                        "type": "setValue",
+                        "name": "flag:door_MU10_6_6",
+                        "operator": "=",
+                        "value": "null"
+                    }
+                ]
+            }
+        }
+    },
     "cannotMove": {},
     "cannotMoveIn": {},
     "map": [
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    ],
+    [  3,  5,  5,  5,  5,  5,  5,  5,  5,  5,  5,  5,  3],
+    [  3,  5,  5,  5,  5,  5,  5,  5,  5,  5,  5,  5,  3],
+    [  3,  5,  5,  5,  5,  5,  5,  5,  5,  5,  5,  5,  3],
+    [  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3,  3],
+    [  3,468,468,468,468,  3,679,  3,468,468,468,468,  3],
+    [  3,468,468,468,468,  3,  0,  3,468,468,468,468,  3],
+    [  3, 85, 85, 85, 85,  3, 85,  3, 85, 85, 85, 85,  3],
+    [  3,  0,  0,  0,  0,  3,  0,  3,  0,  0,  0,  0,  3],
+    [  3,  0,  0,  0,  0, 85,  0, 85,  0,  0,  0,  0,  3],
+    [  3,  0,  0,  0,  0,  3,  0,  3,  0,  0,  0,  0,  3],
+    [  3, 85, 85, 85, 85,  3,  0,  3, 85, 85, 85, 85,  3],
+    [  3,468,468,468,468,  3,  0,  3,468,468,468,468,  3],
+    [  3,468,468,468,468,  3, 87,  3,468,468,468,468,  3]
+],
     "underGround": true,
     "bgmap": [
 
-    ],
+],
     "fgmap": [
 
-    ]
+]
 }

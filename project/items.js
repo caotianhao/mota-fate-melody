@@ -248,7 +248,7 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	"shield2": {
 		"cls": "equips",
 		"name": "银盾",
-		"text": "秘银制造的盾，装备时能够大幅降低熔岩造成的伤害",
+		"text": "秘银制造的盾，装备时能够大幅降低熔岩网造成的伤害",
 		"equip": {
 			"type": 1,
 			"value": {
