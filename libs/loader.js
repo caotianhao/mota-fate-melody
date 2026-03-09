@@ -1,8 +1,3 @@
-
-/*
-loader.js：负责对资源的加载
-
- */
 "use strict";
 
 function loader() {
@@ -13,12 +8,10 @@ loader.prototype._init = function () {
 
 }
 
-////// 设置加载进度条进度 //////
 loader.prototype._setStartProgressVal = function (val) {
     core.dom.startTopProgress.style.width = val + '%';
 }
 
-////// 设置加载进度条提示文字 //////
 loader.prototype._setStartLoadTipText = function (text) {
     core.dom.startTopLoadTips.innerText = text;
 }
@@ -89,8 +82,6 @@ loader.prototype._load_async = function (callback) {
     this._loadTilesets_async(_makeOnProgress('tilesets'), _makeOnFinished('tilesets'));
 }
 
-// ----- 加载资源文件 ------ //
-
 loader.prototype._loadMaterials_sync = function (callback) {
     this._setStartLoadTipText("正在加载资源文件...");
     this.loadImages("materials", core.materials, core.material.images, function () {
@@ -117,8 +108,6 @@ loader.prototype._loadMaterials_afterLoad = function () {
     }
 }
 
-// ------ 加载使用的图片 ------ //
-
 loader.prototype._loadExtraImages_sync = function (callback) {
     core.material.images.images = {};
     this._setStartLoadTipText("正在加载图片文件...");
@@ -129,7 +118,6 @@ loader.prototype._loadExtraImages_async = function (onprogress, onfinished) {
     core.material.images.images = {};
     var images = core.images;
 
-    // Check .gif
     var gifs = images.filter(function (name) {
         return name.toLowerCase().endsWith('.gif');
     });
@@ -138,7 +126,6 @@ loader.prototype._loadExtraImages_async = function (onprogress, onfinished) {
     });
 
     this.loadImagesFromZip('project/images/images.h5data', images, core.material.images.images, onprogress, onfinished);
-    // gif没有被压缩在zip中，延迟加载...
     gifs.forEach(function (gif) {
         this.loadImage("images", gif, function (id, image) {
             if (image != null) {
@@ -147,8 +134,6 @@ loader.prototype._loadExtraImages_async = function (onprogress, onfinished) {
         });
     }, this);
 }
-
-// ------ 加载自动元件 ------ //
 
 loader.prototype._loadAutotiles_sync = function (callback) {
     core.material.images.autotile = {};
@@ -174,7 +159,6 @@ loader.prototype._loadAutotiles_async = function (onprogress, onfinished) {
 }
 
 loader.prototype._loadAutotiles_afterLoad = function (keys, autotiles) {
-    // autotile需要保证顺序
     keys.forEach(function (v) {
         core.material.images.autotile[v] = autotiles[v];
     });
@@ -184,8 +168,6 @@ loader.prototype._loadAutotiles_afterLoad = function (keys, autotiles) {
     });
 
 }
-
-// ------ 加载额外素材 ------ //
 
 loader.prototype._loadTilesets_sync = function (callback) {
     core.material.images.tilesets = {};
@@ -205,7 +187,6 @@ loader.prototype._loadTilesets_async = function (onprogress, onfinished) {
 }
 
 loader.prototype._loadTilesets_afterLoad = function () {
-    // 检查宽高是32倍数，如果出错在控制台报错
     for (var imgName in core.material.images.tilesets) {
         var img = core.material.images.tilesets[imgName];
         if (img.width % 32 != 0 || img.height % 32 != 0) {
@@ -216,8 +197,6 @@ loader.prototype._loadTilesets_afterLoad = function () {
         }
     }
 }
-
-// ------ 实际加载一系列图片 ------ //
 
 loader.prototype.loadImages = function (dir, names, toSave, callback) {
     if (!names || names.length == 0) {
@@ -266,8 +245,6 @@ loader.prototype.loadImage = function (dir, imgName, callback) {
     }
 }
 
-// ------ 从zip中加载一系列图片 ------ //
-
 loader.prototype.loadImagesFromZip = function (url, names, toSave, onprogress, onfinished) {
     if (!names || names.length == 0) {
         if (onfinished) onfinished();
@@ -298,8 +275,6 @@ loader.prototype.loadImagesFromZip = function (url, names, toSave, onprogress, o
         if (cnt == 0 && onfinished) onfinished();
     }, null, false, onprogress);
 }
-
-// ------ 加载动画文件 ------ //
 
 loader.prototype._loadAnimates_sync = function () {
     this._setStartLoadTipText("正在加载动画文件...");
@@ -391,8 +366,6 @@ loader.prototype._loadAnimate = function (content) {
     }
 }
 
-// ------ 加载音乐和音效 ------ //
-
 loader.prototype._loadMusic_sync = function () {
     this._setStartLoadTipText("正在加载音效文件...");
     core.bgms.forEach(function (t) {
@@ -401,7 +374,6 @@ loader.prototype._loadMusic_sync = function () {
     core.sounds.forEach(function (t) {
         core.loader.loadOneSound(t);
     });
-    // 直接开始播放
     core.playBgm(main.startBgm);
 }
 
@@ -410,7 +382,6 @@ loader.prototype._loadMusic_async = function (onprogress, onfinished) {
         core.loader.loadOneMusic(t);
     });
     core.unzip('project/sounds/sounds.h5data?v=' + main.version, function (data) {
-        // 延迟解析
         setTimeout(function () {
             for (var name in data) {
                 if (core.sounds.indexOf(name) >= 0) {
@@ -421,7 +392,6 @@ loader.prototype._loadMusic_async = function (onprogress, onfinished) {
         onfinished();
     }, null, false, onprogress);
 
-    // 直接开始播放
     core.playBgm(main.startBgm);
 }
 
@@ -470,23 +440,17 @@ loader.prototype._loadOneSound_decodeData = function (name, data) {
 loader.prototype.loadBgm = function (name) {
     name = core.getMappedName(name);
     if (!core.material.bgms[name]) return;
-    // 如果没开启音乐，则不预加载
     if (!core.musicStatus.bgmStatus) return;
-    // 是否已经预加载过
     var index = core.musicStatus.cachedBgms.indexOf(name);
     if (index >= 0) {
         core.musicStatus.cachedBgms.splice(index, 1);
     }
     else {
-        // 预加载BGM
         this._preloadBgm(core.material.bgms[name]);
-        // core.material.bgms[name].load();
-        // 清理尾巴
         if (core.musicStatus.cachedBgms.length == core.musicStatus.cachedBgmCount) {
             this.freeBgm(core.musicStatus.cachedBgms.pop());
         }
     }
-    // 移动到缓存最前方
     core.musicStatus.cachedBgms.unshift(name);
 }
 
@@ -498,18 +462,15 @@ loader.prototype._preloadBgm = function (bgm) {
 loader.prototype.freeBgm = function (name) {
     name = core.getMappedName(name);
     if (!core.material.bgms[name]) return;
-    // 从cachedBgms中删除
     core.musicStatus.cachedBgms = core.musicStatus.cachedBgms.filter(function (t) {
         return t != name;
     });
-    // 清掉缓存
     core.material.bgms[name].removeAttribute("src");
     core.material.bgms[name].load();
     core.material.bgms[name] = null;
     if (name == core.musicStatus.playingBgm) {
         core.musicStatus.playingBgm = null;
     }
-    // 三秒后重新加载
     setTimeout(function () {
         core.loader.loadOneMusic(name);
     }, 3000);
