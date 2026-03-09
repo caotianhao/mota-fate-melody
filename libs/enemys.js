@@ -1,11 +1,9 @@
-
 "use strict";
 
 function enemys() {
     this._init();
 }
 
-////// 初始化 //////
 enemys.prototype._init = function () {
     this.enemys = enemys_fcae963b_31c9_42b4_b48c_bb48d09f3f80;
     this.enemydata = functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a.enemys;
@@ -29,7 +27,6 @@ enemys.prototype.getEnemys = function () {
             }
         }
     }
-    // 将所有怪物的各项属性映射到朝下的
     for (var id in enemys) {
         if (enemys[id].faceIds) {
             var downId = enemys[id].faceIds.down;
@@ -52,7 +49,6 @@ enemys.prototype.getEnemys = function () {
     return enemys;
 }
 
-////// 判断是否含有某特殊属性 //////
 enemys.prototype.hasSpecial = function (special, test) {
     if (special == null) return false;
 
@@ -79,7 +75,6 @@ enemys.prototype.getSpecials = function () {
     return this.enemydata.getSpecials();
 }
 
-////// 获得所有特殊属性的名称 //////
 enemys.prototype.getSpecialText = function (enemy) {
     if (typeof enemy == 'string') enemy = core.material.enemys[enemy];
     if (!enemy) return [];
@@ -96,7 +91,6 @@ enemys.prototype.getSpecialText = function (enemy) {
     return text;
 }
 
-////// 获得所有特殊属性的颜色 //////
 enemys.prototype.getSpecialColor = function (enemy) {
     if (typeof enemy == 'string') enemy = core.material.enemys[enemy];
     if (!enemy) return [];
@@ -114,7 +108,6 @@ enemys.prototype.getSpecialColor = function (enemy) {
 
 }
 
-////// 获得所有特殊属性的额外标记 //////
 enemys.prototype.getSpecialFlag = function (enemy) {
     if (typeof enemy == 'string') enemy = core.material.enemys[enemy];
     if (!enemy) return [];
@@ -131,7 +124,6 @@ enemys.prototype.getSpecialFlag = function (enemy) {
     return flag;
 }
 
-////// 获得每个特殊属性的说明 //////
 enemys.prototype.getSpecialHint = function (enemy, special) {
     var specials = this.getSpecials();
 
@@ -163,7 +155,6 @@ enemys.prototype._calSpecialContent = function (enemy, content) {
     return "";
 }
 
-////// 获得某个点上某个怪物的某项属性 //////
 enemys.prototype.getEnemyValue = function (enemy, name, x, y, floorId) {
     floorId = floorId || core.status.floorId;
     if ((((flags.enemyOnPoint || {})[floorId] || {})[x + "," + y] || {})[name] != null) {
@@ -179,7 +170,6 @@ enemys.prototype.getEnemyValue = function (enemy, name, x, y, floorId) {
     return enemy[name];
 }
 
-////// 能否获胜 //////
 enemys.prototype.canBattle = function (enemy, x, y, floorId) {
     if (typeof enemy == 'string') enemy = core.material.enemys[enemy];
     var damage = this.getDamage(enemy, x, y, floorId);
@@ -218,7 +208,6 @@ enemys.prototype.getDamageString = function (enemy, x, y, floorId) {
     };
 }
 
-////// 接下来N个临界值和临界减伤计算 //////
 enemys.prototype.nextCriticals = function (enemy, number, x, y, floorId) {
     if (typeof enemy == 'string') enemy = core.material.enemys[enemy];
     number = number || 1;
@@ -226,7 +215,7 @@ enemys.prototype.nextCriticals = function (enemy, number, x, y, floorId) {
     var specialCriticals = this._nextCriticals_special(enemy, number, x, y, floorId);
     if (specialCriticals != null) return specialCriticals;
     var info = this.getDamageInfo(enemy, null, x, y, floorId);
-    if (info == null) { // 如果未破防...
+    if (info == null) {
         var overAtk = this._nextCriticals_overAtk(enemy, x, y, floorId);
         if (overAtk == null) return [];
         if (typeof overAtk[1] == 'number') return [[overAtk[0], -overAtk[1]]];
@@ -253,7 +242,6 @@ enemys.prototype.nextCriticals = function (enemy, number, x, y, floorId) {
     }
 }
 
-/// 未破防临界采用二分计算
 enemys.prototype._nextCriticals_overAtk = function (enemy, x, y, floorId) {
     var calNext = function (currAtk, maxAtk) {
         var start = currAtk, end = maxAtk;
@@ -275,7 +263,7 @@ enemys.prototype._nextCriticals_overAtk = function (enemy, x, y, floorId) {
 
 enemys.prototype._nextCriticals_special = function (enemy, number, x, y, floorId) {
     if (this.hasSpecial(enemy.special, 10) || this.hasSpecial(enemy.special, 3))
-        return []; // 模仿or坚固临界
+        return [];
     return null;
 }
 
@@ -340,9 +328,7 @@ enemys.prototype._nextCriticals_useBinarySearch = function (enemy, info, number,
 
 enemys.prototype._nextCriticals_useTurn = function (enemy, info, number, x, y, floorId) {
     var mon_hp = info.mon_hp, hero_atk = core.status.hero.atk, mon_def = info.mon_def, turn = info.turn;
-    // ------ 超大回合数强制使用二分算临界
-    // 以避免1攻10e回合，2攻5e回合导致下述循环卡死问题
-    if (turn >= 1e6) { // 100w回合以上强制二分计算临界
+    if (turn >= 1e6) {
         return this._nextCriticals_useBinarySearch(enemy, info, number, x, y, floorId);
     }
     var list = [], pre = null;
@@ -353,7 +339,6 @@ enemys.prototype._nextCriticals_useTurn = function (enemy, info, number, x, y, f
     }
     for (var t = turn - 1; t >= 1; t--) {
         var nextAtk = Math.ceil(mon_hp / t) + mon_def;
-        // 装备提升比例的计算临界
         nextAtk = Math.ceil(nextAtk / core.getBuff('atk'));
         if (nextAtk <= start_atk) break;
         if (nextAtk != pre) {
@@ -370,7 +355,6 @@ enemys.prototype._nextCriticals_useTurn = function (enemy, info, number, x, y, f
     return list;
 }
 
-////// N防减伤计算 //////
 enemys.prototype.getDefDamage = function (enemy, k, x, y, floorId) {
     if (typeof enemy == 'string') enemy = core.material.enemys[enemy];
     k = k || 1;
@@ -386,15 +370,12 @@ enemys.prototype.getEnemyInfo = function (enemy, hero, x, y, floorId) {
     return this.enemydata.getEnemyInfo(enemy, hero, x, y, floorId)
 }
 
-////// 获得战斗伤害信息（实际伤害计算函数） //////
 enemys.prototype.getDamageInfo = function (enemy, hero, x, y, floorId) {
     if (enemy == null) return null;
-    // 移动到了脚本编辑 - getDamageInfo中
     if (typeof enemy == 'string') enemy = core.material.enemys[enemy];
     return this.enemydata.getDamageInfo(enemy, hero, x, y, floorId);
 }
 
-////// 获得在某个勇士属性下怪物伤害 //////
 enemys.prototype.getDamage = function (enemy, x, y, floorId) {
     return this._getDamage(enemy, null, x, y, floorId);
 }
@@ -410,7 +391,6 @@ enemys.prototype._getDamage = function (enemy, hero, x, y, floorId) {
     return info.damage;
 }
 
-////// 获得当前楼层的怪物列表 //////
 enemys.prototype.getCurrentEnemys = function (floorId) {
     floorId = floorId || core.status.floorId;
     var enemys = [], used = {};
@@ -426,8 +406,6 @@ enemys.prototype.getCurrentEnemys = function (floorId) {
 enemys.prototype._getCurrentEnemys_getEnemy = function (enemyId) {
     var enemy = core.material.enemys[enemyId];
     if (!enemy) return null;
-
-    // 检查朝向；displayIdInBook
     return core.material.enemys[enemy.displayIdInBook] || core.material.enemys[(enemy.faceIds || {}).down] || enemy;
 }
 
@@ -445,7 +423,6 @@ enemys.prototype._getCurrentEnemys_addEnemy = function (enemyId, enemys, used, x
         x = null;
         y = null;
     } else {
-        // 检查enemys里面是否使用了存在的内容
         for (var i = 0; i < enemys.length; ++i) {
             var one = enemys[i];
             if (id == one.id && one.locs != null &&
