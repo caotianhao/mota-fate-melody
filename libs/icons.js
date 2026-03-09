@@ -1,4 +1,3 @@
-
 "use strict";
 
 function icons() {
@@ -7,9 +6,6 @@ function icons() {
 
 icons.prototype._init = function () {
     this.icons = icons_4665ee12_3a1f_44a4_bea3_0fccba634dc1;
-    //delete(icons_4665ee12_3a1f_44a4_bea3_0fccba634dc1);
-
-    // tileset的起点
     this.tilesetStartOffset = 10000;
 }
 
@@ -20,7 +16,6 @@ icons.prototype.getIcons = function () {
     return icons;
 }
 
-////// 根据道具ID获得其cls //////
 icons.prototype.getClsFromId = function (id) {
     for (var cls in core.material.icons) {
         if (cls != 'hero' && id in core.material.icons[cls])
@@ -48,12 +43,9 @@ icons.prototype._getAnimateFrames = function (cls) {
     return 1;
 }
 
-////// 根据图块数字或ID获得所在的tileset和坐标信息 //////
 icons.prototype.getTilesetOffset = function (id) {
-
     if (typeof id == 'string') {
         id = core.getIdOfThis(id);
-        // Tileset的ID必须是 X+数字 的形式
         if (!/^X\d+$/.test(id)) return null;
         id = parseInt(id.substring(1));
     }
