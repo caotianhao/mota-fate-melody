@@ -192,8 +192,6 @@ items.prototype.removeItem = function (itemId, itemNum) {
     return true;
 }
 
-// ---------- 装备相关 ------------ //
-
 items.prototype.getEquipTypeByName = function (name) {
     var names = core.status.globalAttribute.equipName;
     var types = [];
@@ -231,7 +229,6 @@ items.prototype.canEquip = function (equipId, hint) {
         return false;
     }
 
-    // 可装备条件
     var canUseItemEffect = core.material.items[equipId].canUseItemEffect;
     if (canUseItemEffect) {
         try {
