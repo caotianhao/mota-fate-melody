@@ -1,10 +1,3 @@
-
-/*
-control.js：游戏主要逻辑控制
-主要负责status相关内容，以及各种变量获取/存储
-寻路算法和人物行走也在此文件内
- */
-
 "use strict";
 
 function control() {
@@ -59,22 +52,15 @@ control.prototype._init = function () {
     this.registerResize("tools", this._resize_tools);
 }
 
-// ------ requestAnimationFrame 相关 ------ //
-
-////// 注册一个 animationFrame //////
-// name：名称，可用来作为注销使用；needPlaying：是否只在游戏运行时才执行（在标题界面不执行）
-// func：要执行的函数，或插件中的函数名；可接受timestamp（从页面加载完毕到当前所经过的时间）作为参数
 control.prototype.registerAnimationFrame = function (name, needPlaying, func) {
     this.unregisterAnimationFrame(name);
     this.renderFrameFuncs.push({ name: name, needPlaying: needPlaying, func: func });
 }
 
-////// 注销一个 animationFrame //////
 control.prototype.unregisterAnimationFrame = function (name) {
     this.renderFrameFuncs = this.renderFrameFuncs.filter(function (x) { return x.name != name; });
 }
 
-////// 设置requestAnimationFrame //////
 control.prototype._setRequestAnimationFrame = function () {
     this._checkRequestAnimationFrame();
     core.animateFrame.totalTime = Math.max(core.animateFrame.totalTime, core.getLocalStorage('totalTime', 0));
@@ -362,9 +348,6 @@ control.prototype._animationFrame_parallelDo = function (timestamp) {
     core.control.controldata.parallelDo(timestamp);
 }
 
-// ------ 标题界面的处理 ------ //
-
-////// 显示游戏开始界面 //////
 control.prototype.showStartAnimate = function (noAnimate, callback) {
     this._showStartAnimate_resetDom();
     if (core.flags.startUsingCanvas || noAnimate)
@@ -401,19 +384,15 @@ control.prototype._showStartAnimate_finished = function (start, callback) {
     if (callback) callback();
 }
 
-////// 隐藏游戏开始界面 //////
 control.prototype.hideStartAnimate = function (callback) {
     core.hideWithAnimate(core.dom.startPanel, 20, callback);
 }
 
-////// 游戏是否已经开始 //////
 control.prototype.isPlaying = function () {
     return core.status.played;
 }
 
-////// 清除游戏状态和数据 //////
 control.prototype.clearStatus = function () {
-    // 停止各个Timeout和Interval
     for (var i in core.timeout) {
         clearTimeout(core.timeout[i]);
         core.timeout[i] = null;
@@ -445,14 +424,10 @@ control.prototype._initStatistics = function (totalTime) {
         }
 }
 
-// ------ 自动寻路，人物行走 ------ //
-
-////// 清除自动寻路路线 //////
 control.prototype.clearAutomaticRouteNode = function (x, y) {
     core.clearMap('route', x * 32 + 5 - core.status.automaticRoute.offsetX, y * 32 + 5 - core.status.automaticRoute.offsetY, 27, 27);
 }
 
-////// 停止自动寻路操作 //////
 control.prototype.stopAutomaticRoute = function () {
     if (!core.status.played) return;
     core.status.automaticRoute.autoHeroMove = false;
@@ -468,7 +443,6 @@ control.prototype.stopAutomaticRoute = function () {
         core.deleteCanvas('route');
 }
 
-////// 保存剩下的寻路，并停止 //////
 control.prototype.saveAndStopAutomaticRoute = function () {
     var automaticRoute = core.status.automaticRoute;
     if (automaticRoute.moveStepBeforeStop.length == 0) {
@@ -479,7 +453,6 @@ control.prototype.saveAndStopAutomaticRoute = function () {
     this.stopAutomaticRoute();
 }
 
-////// 继续剩下的自动寻路操作 //////
 control.prototype.continueAutomaticRoute = function () {
     // 此函数只应由events.afterOpenDoor和events.afterBattle调用
     var moveStep = core.status.automaticRoute.moveStepBeforeStop;
@@ -492,20 +465,17 @@ control.prototype.continueAutomaticRoute = function () {
     }
 }
 
-////// 清空剩下的自动寻路列表 //////
 control.prototype.clearContinueAutomaticRoute = function (callback) {
     core.deleteCanvas('route');
     core.status.automaticRoute.moveStepBeforeStop = [];
     if (callback) callback();
 }
 
-////// 设置自动寻路路线 //////
 control.prototype.setAutomaticRoute = function (destX, destY, stepPostfix) {
     if (!core.status.played || core.status.lockControl) return;
     if (this._setAutomaticRoute_isMoving(destX, destY)) return;
     if (this._setAutomaticRoute_isTurning(destX, destY, stepPostfix)) return;
     if (this._setAutomaticRoute_clickMoveDirectly(destX, destY, stepPostfix)) return;
-    // 找寻自动寻路路线
     var moveStep = core.automaticRoute(destX, destY);
     if (moveStep.length == 0 && (destX != core.status.hero.loc.x || destY != core.status.hero.loc.y || stepPostfix.length == 0))
         return;
@@ -514,7 +484,6 @@ control.prototype.setAutomaticRoute = function (destX, destY, stepPostfix) {
     core.status.automaticRoute.destY = destY;
     this._setAutomaticRoute_drawRoute(moveStep);
     this._setAutomaticRoute_setAutoSteps(moveStep);
-    // 立刻移动
     core.setAutoHeroMove();
 }
 
@@ -559,7 +528,6 @@ control.prototype._setAutomaticRoute_isTurning = function (destX, destY, stepPos
 }
 
 control.prototype._setAutomaticRoute_clickMoveDirectly = function (destX, destY, stepPostfix) {
-    // 单击瞬间移动
     if (core.status.heroStop && core.status.heroMoving == 0) {
         if (stepPostfix.length <= 1 && !core.hasFlag('__noClickMove__') && core.control.tryMoveDirectly(destX, destY))
             return true;
@@ -568,7 +536,6 @@ control.prototype._setAutomaticRoute_clickMoveDirectly = function (destX, destY,
 }
 
 control.prototype._setAutomaticRoute_drawRoute = function (moveStep) {
-    // 计算绘制区域的宽高，并尽可能小的创建route层
     var sx = core.bigmap.width * 32, sy = core.bigmap.height * 32, dx = 0, dy = 0;
     moveStep.forEach(function (t) {
         sx = Math.min(sx, t.x * 32); dx = Math.max(dx, t.x * 32);
@@ -597,7 +564,6 @@ control.prototype._setAutomaticRoute_drawRoute = function (moveStep) {
 }
 
 control.prototype._setAutomaticRoute_setAutoSteps = function (moveStep) {
-    // 路线转autoStepRoutes
     var step = 0, currStep = null;
     moveStep.forEach(function (t) {
         var dir = t.direction;
@@ -612,7 +578,6 @@ control.prototype._setAutomaticRoute_setAutoSteps = function (moveStep) {
     core.status.automaticRoute.autoStepRoutes.push({ 'direction': currStep, 'step': step });
 }
 
-////// 设置勇士的自动行走路线 //////
 control.prototype.setAutoHeroMove = function (steps) {
     steps = steps || core.status.automaticRoute.autoStepRoutes;
     if (steps.length == 0) return;
@@ -623,7 +588,6 @@ control.prototype.setAutoHeroMove = function (steps) {
     core.moveHero(steps[0].direction);
 }
 
-////// 设置行走的效果动画 //////
 control.prototype.setHeroMoveInterval = function (callback) {
     if (core.status.heroMoving > 0) return;
     if (core.status.replay.speed == 24) {
@@ -648,16 +612,13 @@ control.prototype.setHeroMoveInterval = function (callback) {
     }, core.values.moveSpeed / 8 * toAdd / core.status.replay.speed);
 }
 
-////// 每移动一格后执行的事件 //////
 control.prototype.moveOneStep = function (callback) {
     return this.controldata.moveOneStep(callback);
 }
 
-////// 实际每一步的行走过程 //////
 control.prototype.moveAction = function (callback) {
     if (core.status.heroMoving > 0) return;
     var noPass = core.noPass(core.nextX(), core.nextY()), canMove = core.canMoveHero();
-    // 下一个点如果不能走
     if (noPass || !canMove) return this._moveAction_noPass(canMove, callback);
     this._moveAction_moving(callback);
 }
@@ -693,7 +654,6 @@ control.prototype._moveAction_moving = function (callback) {
 
 control.prototype._moveAction_popAutomaticRoute = function () {
     var automaticRoute = core.status.automaticRoute;
-    // 检查自动寻路是否被弹出
     if (automaticRoute.autoHeroMove) {
         automaticRoute.movedStep++;
         automaticRoute.lastDirection = core.getHeroLoc('direction');
@@ -712,9 +672,7 @@ control.prototype._moveAction_popAutomaticRoute = function () {
     }
 }
 
-////// 让勇士开始移动 //////
 control.prototype.moveHero = function (direction, callback) {
-    // 如果正在移动，直接return
     if (core.status.heroMoving != 0) return;
     if (core.isset(direction))
         core.setHeroLoc('direction', direction);
@@ -724,14 +682,12 @@ control.prototype.moveHero = function (direction, callback) {
 }
 
 control.prototype._moveHero_moving = function () {
-    // ------ 我已经看不懂这个函数了，反正好用就行23333333
     core.status.heroStop = false;
     core.status.automaticRoute.moveDirectly = false;
     var move = function () {
         if (!core.status.heroStop) {
             if (core.hasFlag('debug') && core.status.ctrlDown) {
                 if (core.status.heroMoving != 0) return;
-                // 检测是否穿出去
                 var nx = core.nextX(), ny = core.nextY();
                 if (nx < 0 || nx >= core.bigmap.width || ny < 0 || ny >= core.bigmap.height) return;
                 core.eventMoveHero([core.getHeroLoc('direction')], core.values.moveSpeed, move);
@@ -745,12 +701,10 @@ control.prototype._moveHero_moving = function () {
     move();
 }
 
-////// 当前是否正在移动 //////
 control.prototype.isMoving = function () {
     return !core.status.heroStop || core.status.heroMoving > 0;
 }
 
-////// 停止勇士的一切行动，等待勇士行动结束后，再执行callback //////
 control.prototype.waitHeroToStop = function (callback) {
     var lastDirection = core.status.automaticRoute.lastDirection;
     core.stopAutomaticRoute();
@@ -769,7 +723,6 @@ control.prototype.waitHeroToStop = function (callback) {
     }
 }
 
-////// 转向 //////
 control.prototype.turnHero = function (direction) {
     if (direction) {
         core.setHeroLoc('direction', direction);
@@ -783,12 +736,10 @@ control.prototype.turnHero = function (direction) {
     core.checkRouteFolding();
 }
 
-////// 瞬间移动 //////
 control.prototype.moveDirectly = function (destX, destY, ignoreSteps) {
     return this.controldata.moveDirectly(destX, destY, ignoreSteps);
 }
 
-////// 尝试瞬间移动 //////
 control.prototype.tryMoveDirectly = function (destX, destY) {
     if (this.nearHero(destX, destY)) return false;
     var canMoveArray = core.maps.generateMovableArray();
@@ -808,7 +759,6 @@ control.prototype.tryMoveDirectly = function (destX, destY) {
     return false;
 }
 
-////// 绘制勇士 //////
 control.prototype.drawHero = function (status, offset, frame) {
     if (!core.isPlaying() || !core.status.floorId || core.status.gameOver) return;
     var x = core.getHeroLoc('x'), y = core.getHeroLoc('y'), direction = core.getHeroLoc('direction');
@@ -826,7 +776,6 @@ control.prototype.drawHero = function (status, offset, frame) {
     core.status.heroCenter.px = 32 * x + offsetX + 16;
     core.status.heroCenter.py = 32 * y + offsetY + 32 - core.material.icons.hero.height / 2;
 
-    // 重置hero层画布
     core.setGameCanvasTranslate('hero', 0, 0);
     delete core.canvas.hero._px;
     delete core.canvas.hero._py;
@@ -916,9 +865,6 @@ control.prototype.setHeroOpacity = function (opacity, moveMode, time, callback) 
     core.animateFrame.asyncId[animate] = callback;
 }
 
-// ------ 画布、位置、阻激夹域，显伤 ------ //
-
-////// 设置画布偏移
 control.prototype.setGameCanvasTranslate = function (canvas, x, y) {
     var c = core.dom.gameCanvas[canvas];
     x = x * core.domStyle.scale;
@@ -935,11 +881,10 @@ control.prototype.setGameCanvasTranslate = function (canvas, x, y) {
     }
 };
 
-////// 加减画布偏移
 control.prototype.addGameCanvasTranslate = function (x, y) {
     for (var ii = 0, canvas; canvas = core.dom.gameCanvas[ii]; ii++) {
         var id = canvas.getAttribute('id');
-        if (id == 'ui' || id == 'data') continue; // UI层和data层不移动
+        if (id == 'ui' || id == 'data') continue;
         var offsetX = x, offsetY = y;
         if (core.bigmap.canvas.indexOf(id) >= 0) {
             if (core.bigmap.v2) {
@@ -990,13 +935,11 @@ control.prototype.updateViewport = function () {
 
 }
 
-////// 设置视野范围 //////
 control.prototype.setViewport = function (px, py) {
     var originOffsetX = core.bigmap.offsetX, originOffsetY = core.bigmap.offsetY;
     core.bigmap.offsetX = core.clamp(px, 0, 32 * core.bigmap.width - core._PX_);
     core.bigmap.offsetY = core.clamp(py, 0, 32 * core.bigmap.height - core._PY_);
     this.updateViewport();
-    // ------ hero层也需要！
     var px = parseFloat(core.canvas.hero._px) || 0;
     var py = parseFloat(core.canvas.hero._py) || 0;
     px += originOffsetX - core.bigmap.offsetX;
@@ -1006,7 +949,6 @@ control.prototype.setViewport = function (px, py) {
     core.canvas.hero._py = py;
 }
 
-////// 移动视野范围 //////
 control.prototype.moveViewport = function (x, y, moveMode, time, callback) {
     time = time || 0;
     time /= Math.max(core.status.replay.speed, 1)
@@ -1037,25 +979,21 @@ control.prototype.moveViewport = function (x, y, moveMode, time, callback) {
     core.animateFrame.asyncId[animate] = callback;
 }
 
-////// 获得勇士面对位置的x坐标 //////
 control.prototype.nextX = function (n) {
     if (n == null) n = 1;
     return core.getHeroLoc('x') + core.utils.scan[core.getHeroLoc('direction')].x * n;
 }
 
-////// 获得勇士面对位置的y坐标 //////
 control.prototype.nextY = function (n) {
     if (n == null) n = 1;
     return core.getHeroLoc('y') + core.utils.scan[core.getHeroLoc('direction')].y * n;
 }
 
-////// 某个点是否在勇士旁边 //////
 control.prototype.nearHero = function (x, y, n) {
     if (n == null) n = 1;
     return Math.abs(x - core.getHeroLoc('x')) + Math.abs(y - core.getHeroLoc('y')) <= n;
 }
 
-////// 聚集跟随者 //////
 control.prototype.gatherFollowers = function () {
     var x = core.getHeroLoc('x'), y = core.getHeroLoc('y'), dir = core.getHeroLoc('direction');
     core.status.hero.followers.forEach(function (t) {
@@ -1066,7 +1004,6 @@ control.prototype.gatherFollowers = function () {
     });
 }
 
-////// 更新跟随者坐标 //////
 control.prototype.updateFollowers = function () {
     core.status.hero.followers.forEach(function (t) {
         if (!t.stop) {
@@ -1089,7 +1026,6 @@ control.prototype.updateFollowers = function () {
     })
 }
 
-////// 瞬移更新跟随者坐标 //////
 control.prototype._moveDirectyFollowers = function (x, y) {
     var route = core.automaticRoute(x, y);
     if (route.length == 0) route = [{ x: x, y: y, direction: core.getHeroLoc('direction') }];
@@ -1143,7 +1079,6 @@ control.prototype.checkBlock = function () {
 }
 
 control.prototype._checkBlock_disableQuickShop = function () {
-    // 禁用快捷商店
     if (core.flags.disableShopOnDamage) {
         Object.keys(core.status.shops).forEach(function (shopId) {
             core.setShopVisited(shopId, false);
@@ -1151,7 +1086,6 @@ control.prototype._checkBlock_disableQuickShop = function () {
     }
 }
 
-////// 阻击 //////
 control.prototype._checkBlock_repulse = function (repulse) {
     if (!repulse || repulse.length == 0) return;
     var actions = [];
@@ -1162,16 +1096,13 @@ control.prototype._checkBlock_repulse = function (repulse) {
     core.insertAction(actions);
 }
 
-////// 捕捉 //////
 control.prototype._checkBlock_ambush = function (ambush) {
     if (!ambush || ambush.length == 0) return;
-    // 捕捉效果
     var actions = [];
     ambush.forEach(function (t) {
         actions.push({ "type": "move", "loc": [t[0], t[1]], "steps": [t[3]], "time": 250, "keep": false, "async": true });
     });
     actions.push({ "type": "waitAsync" });
-    // 强制战斗
     ambush.forEach(function (t) {
         actions.push({
             "type": "function", "function": "function() { " +
@@ -1182,19 +1113,16 @@ control.prototype._checkBlock_ambush = function (ambush) {
     core.insertAction(actions);
 }
 
-////// 更新全地图显伤 //////
 control.prototype.updateDamage = function (floorId, ctx) {
     floorId = floorId || core.status.floorId;
     if (!floorId || core.status.gameOver || main.mode != 'play') return;
     var onMap = ctx == null;
 
-    // 没有怪物手册
     if (!core.hasItem('book')) return;
     core.status.damage.posX = core.bigmap.posX;
     core.status.damage.posY = core.bigmap.posY;
     if (!onMap) {
         var width = core.floors[floorId].width, height = core.floors[floorId].height;
-        // 地图过大的缩略图不绘制显伤
         if (width * height > core.bigmap.threshold) return;
     }
     this._updateDamage_damage(floorId, onMap);
@@ -1210,7 +1138,6 @@ control.prototype._updateDamage_damage = function (floorId, onMap) {
     core.status.maps[floorId].blocks.forEach(function (block) {
         var x = block.x, y = block.y;
 
-        // v2优化，只绘制范围内的部分
         if (onMap && core.bigmap.v2) {
             if (x < core.bigmap.posX - core.bigmap.extend || x > core.bigmap.posX + core._WIDTH_ + core.bigmap.extend
                 || y < core.bigmap.posY - core.bigmap.extend || y > core.bigmap.posY + core._HEIGHT_ + core.bigmap.extend) {
@@ -1264,7 +1191,6 @@ control.prototype._updateDamage_extraDamage = function (floorId, onMap) {
     }
 }
 
-////// 重绘地图显伤 //////
 control.prototype.drawDamage = function (ctx) {
     if (core.status.gameOver || !core.status.damage || main.mode != 'play') return;
     var onMap = false;
@@ -1275,7 +1201,6 @@ control.prototype.drawDamage = function (ctx) {
     }
 
     if (onMap && core.bigmap.v2) {
-        // 检查是否需要重算...
         if (Math.abs(core.bigmap.posX - core.status.damage.posX) >= core.bigmap.extend - 1
             || Math.abs(core.bigmap.posY - core.status.damage.posY) >= core.bigmap.extend - 1) {
             return this.updateDamage();
@@ -1315,9 +1240,6 @@ control.prototype._drawDamage_draw = function (ctx, onMap) {
     });
 }
 
-// ------ 录像相关 ------ //
-
-////// 选择录像文件 //////
 control.prototype.chooseReplayFile = function () {
     core.readFile(function (obj) {
         if (obj.name != core.firstData.name) return alert("存档和游戏不一致！");
@@ -1333,7 +1255,6 @@ control.prototype.chooseReplayFile = function () {
     }, null, ".h5route");
 }
 
-////// 开始播放 //////
 control.prototype.startReplay = function (list) {
     if (!core.isPlaying()) return;
     core.status.replay.replaying = true;
@@ -1504,7 +1425,6 @@ control.prototype._replay_SL = function () {
     core.ui._drawSLPanel(10 * page + offset);
 }
 
-////// 回放时查看怪物手册 //////
 control.prototype._replay_book = function () {
     if (!core.isPlaying() || !core.isReplaying()) return;
     if (!core.status.replay.pausing) {
@@ -1530,7 +1450,6 @@ control.prototype._replay_book = function () {
     core.useItem('book', true);
 }
 
-////// 回放录像时浏览地图 //////
 control.prototype._replay_viewMap = function () {
     if (!core.isPlaying() || !core.isReplaying()) return;
     if (!core.status.replay.pausing) {
@@ -1582,12 +1501,10 @@ control.prototype._replay_equipbox = function () {
     core.ui._drawEquipbox();
 }
 
-////// 是否正在播放录像 //////
 control.prototype.isReplaying = function () {
     return (core.status.replay || {}).replaying;
 }
 
-////// 回放 //////
 control.prototype.replay = function (force) {
     if (!core.isPlaying() || !core.isReplaying()
         || core.status.replay.animate || core.status.event.id || core.status.replay.failed) return;
@@ -1601,22 +1518,15 @@ control.prototype.replay = function (force) {
     this._replay_error(action);
 }
 
-////// 注册一个录像行为 //////
-// name：自定义名称，可用于注销使用
-// func：具体执行录像的函数，可为一个函数或插件中的函数名；
-//       需要接受一个action参数，代表录像回放时的下一个操作
-// func返回true代表成功处理了此录像行为，false代表没有处理此录像行为。
 control.prototype.registerReplayAction = function (name, func) {
     this.unregisterReplayAction(name);
     this.replayActions.push({ name: name, func: func });
 }
 
-////// 注销一个录像行为 //////
 control.prototype.unregisterReplayAction = function (name) {
     this.replayActions = this.replayActions.filter(function (b) { return b.name != name; });
 }
 
-////// 执行录像行为，会在注册的函数中依次执行直到得到true为止 //////
 control.prototype._doReplayAction = function (action) {
     for (var i in this.replayActions) {
         try {
@@ -1877,7 +1787,6 @@ control.prototype._replayAction_getNext = function (action) {
 
 control.prototype._replayAction_moveDirectly = function (action) {
     if (action.indexOf("move:") != 0) return false;
-    // 忽略连续的瞬移事件；如果大地图某一边超过计算范围则不合并
     if (!core.hasFlag('poison') && core.status.thisMap.width < 2 * core.bigmap.extend + core._WIDTH_
         && core.status.thisMap.height < 2 * core.bigmap.extend + core._HEIGHT_) {
         while (core.status.replay.toReplay.length > 0 &&
@@ -1940,9 +1849,6 @@ control.prototype._replayAction_no = function (action) {
     return true;
 }
 
-// ------ 存读档相关 ------ //
-
-////// 自动存档 //////
 control.prototype.autosave = function (removeLast) {
     if (core.hasFlag('__forbidSave__')) return;
     var x = null;
@@ -1950,7 +1856,7 @@ control.prototype.autosave = function (removeLast) {
         x = core.status.route.pop();
         core.status.route.push("turn:" + core.getHeroLoc('direction'));
     }
-    if (core.status.event.id == 'action' && !removeLast) // 事件中自动存档，读档后是否回到事件触发前
+    if (core.status.event.id == 'action' && !removeLast)
         core.setFlag("__events__", core.clone(core.status.event.data));
     if (core.saves.autosave.data == null) {
         core.saves.autosave.data = [];
@@ -1974,7 +1880,6 @@ control.prototype.autosave = function (removeLast) {
     }
 }
 
-/////// 实际进行自动存档 //////
 control.prototype.checkAutosave = function () {
     if (!core.animateFrame || !core.saves || !core.saves.autosave) return;
     core.setLocalStorage('totalTime', core.animateFrame.totalTime);
@@ -1986,7 +1891,6 @@ control.prototype.checkAutosave = function () {
     }
 }
 
-////// 实际进行存读档事件 //////
 control.prototype.doSL = function (id, type) {
     switch (type) {
         case 'save': this._doSL_save(id); break;
@@ -2190,7 +2094,6 @@ control.prototype._syncSave_http = function (type, saves) {
     })
 }
 
-////// 从服务器加载存档 //////
 control.prototype.syncLoad = function () {
     core.myprompt("请输入存档编号+密码", null, function (idpassword) {
         if (!idpassword) return core.ui._drawSyncSave();
@@ -2265,19 +2168,16 @@ control.prototype._syncLoad_write = function (data) {
     }
 }
 
-////// 存档到本地 //////
 control.prototype.saveData = function () {
     return this.controldata.saveData();
 }
 
-////// 从本地读档 //////
 control.prototype.loadData = function (data, callback) {
     return this.controldata.loadData(data, callback);
 }
 
 control.prototype.getSave = function (index, callback) {
     if (index == 0) {
-        // --- 自动存档先从缓存中获取
         if (core.saves.autosave.data != null)
             callback(core.saves.autosave.data);
         else {
@@ -2331,7 +2231,6 @@ control.prototype.getAllSaves = function (callback) {
     });
 }
 
-////// 获得所有存在存档的存档位 //////
 control.prototype.getSaveIndexes = function (callback) {
     var indexes = {};
     core.keysLocalForage(function (err, keys) {
@@ -2354,12 +2253,10 @@ control.prototype._getSaveIndexes_getIndex = function (indexes, name) {
     }
 }
 
-////// 判断某个存档位是否存在存档 //////
 control.prototype.hasSave = function (index) {
     return core.saves.ids[index] || false;
 }
 
-////// 删除某个存档
 control.prototype.removeSave = function (index, callback) {
     if (index == 0 || index == "autoSave") {
         index = "autoSave";
@@ -2395,9 +2292,6 @@ control.prototype._updateFavoriteSaves = function () {
     core.setLocalStorage("favoriteName", core.saves.favoriteName);
 }
 
-// ------ 属性，状态，位置，buff，变量，锁定控制等 ------ //
-
-////// 设置勇士属性 //////
 control.prototype.setStatus = function (name, value) {
     if (!core.status.hero) return;
     if (name == 'x' || name == 'y' || name == 'direction')
@@ -2406,12 +2300,10 @@ control.prototype.setStatus = function (name, value) {
         core.status.hero[name] = value;
 }
 
-////// 增减勇士属性 //////
 control.prototype.addStatus = function (name, value) {
     this.setStatus(name, this.getStatus(name) + value);
 }
 
-////// 获得勇士属性 //////
 control.prototype.getStatus = function (name) {
     if (!core.status.hero) return null;
     if (name == 'x' || name == 'y' || name == 'direction')
@@ -2422,40 +2314,33 @@ control.prototype.getStatus = function (name) {
     return core.status.hero[name];
 }
 
-////// 从status中获得属性，如果不存在则从勇士属性中获取 //////
 control.prototype.getStatusOrDefault = function (status, name) {
     if (status && name in status)
         return Math.floor(status[name]);
     return Math.floor(this.getStatus(name));
 }
 
-////// 获得勇士实际属性（增幅后的） //////
 control.prototype.getRealStatus = function (name) {
     return this.getRealStatusOrDefault(null, name);
 }
 
-////// 从status中获得实际属性（增幅后的），如果不存在则从勇士属性中获取 //////
 control.prototype.getRealStatusOrDefault = function (status, name) {
     return Math.floor(this.getStatusOrDefault(status, name) * this.getBuff(name));
 }
 
-////// 获得勇士原始属性（无装备和衰弱影响） //////
 control.prototype.getNakedStatus = function (name) {
     var value = this.getStatus(name);
     if (value == null) return value;
-    // 装备增幅
     core.status.hero.equipment.forEach(function (v) {
         if (!v || !(core.material.items[v] || {}).equip) return;
         value -= core.material.items[v].equip.value[name] || 0;
     });
-    // 衰弱扣除
     if (core.hasFlag('weak') && core.values.weakValue >= 1 && (name == 'atk' || name == 'def')) {
         value += core.values.weakValue;
     }
     return value;
 }
 
-////// 获得某个属性的名字 //////
 control.prototype.getStatusLabel = function (name) {
     if (this.controldata.getStatusLabel) {
         return this.controldata.getStatusLabel(name) || name;
@@ -2466,32 +2351,25 @@ control.prototype.getStatusLabel = function (name) {
     }[name] || name;
 }
 
-////// 设置某个属性的增幅值 //////
 control.prototype.setBuff = function (name, value) {
-    // 仅保留三位有效buff值
     value = parseFloat(value.toFixed(3));
     this.setFlag('__' + name + '_buff__', value);
 }
 
-////// 加减某个属性的增幅值 //////
 control.prototype.addBuff = function (name, value) {
     var buff = this.getBuff(name) + value;
-    // 仅保留三位有效buff值
     buff = parseFloat(buff.toFixed(3));
     this.setFlag('__' + name + '_buff__', buff);
 }
 
-////// 获得某个属性的增幅值 //////
 control.prototype.getBuff = function (name) {
     return core.getFlag('__' + name + '_buff__', 1);
 }
 
-////// 获得或移除毒衰咒效果 //////
 control.prototype.triggerDebuff = function (action, type) {
     return this.controldata.triggerDebuff(action, type);
 }
 
-////// 设置勇士的位置 //////
 control.prototype.setHeroLoc = function (name, value, noGather) {
     if (!core.status.hero) return;
     core.status.hero.loc[name] = value;
@@ -2501,7 +2379,6 @@ control.prototype.setHeroLoc = function (name, value, noGather) {
     core.ui.drawStatusBar();
 }
 
-////// 获得勇士的位置 //////
 control.prototype.getHeroLoc = function (name) {
     if (!core.status.hero) return;
     if (main.mode == 'editor') {
@@ -2512,14 +2389,12 @@ control.prototype.getHeroLoc = function (name) {
     return core.status.hero.loc[name];
 }
 
-////// 获得某个等级的名称 //////
 control.prototype.getLvName = function (lv) {
     if (!core.status.hero) return null;
     if (lv == null) lv = core.status.hero.lv;
     return ((core.firstData.levelUp || [])[lv - 1] || {}).title || lv;
 }
 
-////// 获得下个等级所需经验；如果不存在下个等级，返回null。 //////
 control.prototype.getNextLvUpNeed = function () {
     if (!core.status.hero) return null;
     if (core.status.hero.lv >= core.firstData.levelUp.length) return null;
@@ -2529,78 +2404,65 @@ control.prototype.getNextLvUpNeed = function () {
     else return need;
 }
 
-////// 设置某个自定义变量或flag //////
 control.prototype.setFlag = function (name, value) {
     if (value == null) return this.removeFlag(name);
     if (!core.status.hero) return;
     core.status.hero.flags[name] = value;
 }
 
-////// 增加某个flag数值 //////
 control.prototype.addFlag = function (name, value) {
     if (!core.status.hero) return;
     core.setFlag(name, core.getFlag(name, 0) + value);
 }
 
-////// 获得某个自定义变量或flag //////
 control.prototype.getFlag = function (name, defaultValue) {
     if (!core.status.hero) return defaultValue;
     var value = core.status.hero.flags[name];
     return value != null ? value : defaultValue;
 }
 
-////// 是否存在某个自定义变量或flag，且值为true //////
 control.prototype.hasFlag = function (name) {
     return !!core.getFlag(name);
 }
 
-////// 删除某个自定义变量或flag //////
 control.prototype.removeFlag = function (name) {
     if (!core.status.hero) return;
     delete core.status.hero.flags[name];
 }
 
-////// 获得某个点的独立开关 //////
 control.prototype.getSwitch = function (x, y, floorId, name, defaultValue) {
     var prefix = [floorId || core.status.floorId || ":f", x != null ? x : "x", y != null ? y : "y"].join("@");
     return this.getFlag(prefix + "@" + name, defaultValue);
 }
 
-////// 设置某个点的独立开关 //////
 control.prototype.setSwitch = function (x, y, floorId, name, value) {
     var prefix = [floorId || core.status.floorId || ":f", x != null ? x : "x", y != null ? y : "y"].join("@");
     return this.setFlag(prefix + "@" + name, value);
 }
 
-////// 增加某个点的独立开关 //////
 control.prototype.addSwitch = function (x, y, floorId, name, value) {
     var prefix = [floorId || core.status.floorId || ":f", x != null ? x : "x", y != null ? y : "y"].join("@");
     return this.addFlag(prefix + "@" + name, value);
 }
 
-////// 判定某个点的独立开关 //////
 control.prototype.hasSwitch = function (x, y, floorId, name) {
     var prefix = [floorId || core.status.floorId || ":f", x != null ? x : "x", y != null ? y : "y"].join("@");
     return this.hasFlag(prefix + "@" + name);
 }
 
-////// 删除某个点的独立开关 //////
 control.prototype.removeSwitch = function (x, y, floorId, name) {
     var prefix = [floorId || core.status.floorId || ":f", x != null ? x : "x", y != null ? y : "y"].join("@");
     return this.removeFlag(prefix + "@" + name);
 }
 
-////// 锁定状态栏，常常用于事件处理 //////
 control.prototype.lockControl = function () {
     core.status.lockControl = true;
 }
 
-////// 解锁状态栏 //////
 control.prototype.unlockControl = function () {
     core.status.lockControl = false;
 }
 
-////// 开启debug模式 //////
 control.prototype.debug = function () {
     core.setFlag('debug', true);
     core.drawText("\t[调试模式开启]此模式下按住Ctrl键（或Ctrl+Shift键）可以穿墙并忽略一切事件。\n此模式下将无法上传成绩。");
@@ -2608,7 +2470,6 @@ control.prototype.debug = function () {
 
 control.prototype._bindRoutePush = function () {
     core.status.route.push = function (element) {
-        // 忽视移动、转向、瞬移
         if (["up", "down", "left", "right", "turn"].indexOf(element) < 0 && !element.startsWith("move:")) {
             core.clearRouteFolding();
         }
@@ -2616,12 +2477,10 @@ control.prototype._bindRoutePush = function () {
     }
 }
 
-////// 清除录像折叠信息 //////
 control.prototype.clearRouteFolding = function () {
     core.status.routeFolding = {};
 }
 
-////// 检查录像折叠 //////
 control.prototype.checkRouteFolding = function () {
     // 未开启、未开始游戏、录像播放中、正在事件中：不执行
     if (!core.flags.enableRouteFolding || !core.isPlaying() || core.isReplaying() || core.status.event.id) {
@@ -2645,15 +2504,11 @@ control.prototype.checkRouteFolding = function () {
     core.status.routeFolding[index] = { hero: hero, length: core.status.route.length };
 }
 
-// ------ 天气，色调，BGM ------ //
-
 control.prototype.getMappedName = function (name) {
     return core.getFlag('__nameMap__', {})[name] || (main.nameMap || {})[name] || name;
 }
 
-////// 更改天气效果 //////
 control.prototype.setWeather = function (type, level) {
-    // 非雨雪
     if (type == null || !this.weathers[type]) {
         core.deleteCanvas('weather')
         core.animateFrame.weather.type = null;
@@ -2662,10 +2517,8 @@ control.prototype.setWeather = function (type, level) {
     }
     if (level == null) level = core.animateFrame.weather.level;
     level = core.clamp(parseInt(level) || 5, 1, 10);
-    // 当前天气：则忽略
     if (type == core.animateFrame.weather.type && level == core.animateFrame.weather.level) return;
 
-    // 计算当前的宽高
     core.createCanvas('weather', 0, 0, core._PX_, core._PY_, 80);
     core.setOpacity('weather', 1.0);
     core.animateFrame.weather.type = type;
@@ -2680,16 +2533,11 @@ control.prototype.setWeather = function (type, level) {
     }
 }
 
-////// 注册一个天气 //////
-// name为天气类型，如 sun, rain, snow 等
-// initFunc 为设置为此天气时的初始化，接受level参数
-// frameFunc 为该天气下每帧的效果，接受和timestamp参数（从页面加载完毕到当前经过的时间）
 control.prototype.registerWeather = function (name, initFunc, frameFunc) {
     this.unregisterWeather(name);
     this.weathers[name] = { initFunc: initFunc, frameFunc: frameFunc };
 }
 
-////// 取消注册一个天气 //////
 control.prototype.unregisterWeather = function (name) {
     delete this.weathers[name];
     if (core.animateFrame.weather.type == name) {
@@ -2750,7 +2598,6 @@ control.prototype._weather_cloud = function (level) {
 
 control.prototype._weather_sun = function (level) {
     if (!core.animateFrame.weather.sun) return;
-    // 直接绘制
     core.clearMap('weather');
     core.drawImage(
         'weather', core.animateFrame.weather.sun, 0, 0, core.animateFrame.weather.sun.width, core.animateFrame.weather.sun.height, 0, 0, core._PX_, core._PY_
@@ -2759,7 +2606,6 @@ control.prototype._weather_sun = function (level) {
     core.animateFrame.weather.nodes = [{ opacity: level / 10, delta: 0.01 }];
 }
 
-////// 更改画面色调 //////
 control.prototype.setCurtain = function (color, time, moveMode, callback) {
     if (time == null) time = 750;
     if (time <= 0) time = 0;
@@ -2770,7 +2616,6 @@ control.prototype.setCurtain = function (color, time, moveMode, callback) {
     color[3] = core.clamp(color[3], 0, 1);
 
     if (time == 0) {
-        // 直接变色
         core.clearMap('curtain');
         core.fillRect('curtain', 0, 0, core._PX_, core._PY_, core.arrayToRGBA(color));
         core.status.curtainColor = color;
@@ -2813,7 +2658,6 @@ control.prototype._setCurtain_animate = function (nowColor, color, time, moveMod
     core.animateFrame.asyncId[animate] = cb;
 }
 
-////// 画面闪烁 //////
 control.prototype.screenFlash = function (color, time, times, moveMode, callback) {
     times = times || 1;
     time = time / 3;
