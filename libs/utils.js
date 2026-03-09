@@ -1,9 +1,3 @@
-
-/*
-utils.js 工具类
-
- */
-
 "use strict";
 
 function utils() {
@@ -27,10 +21,8 @@ function utils() {
 }
 
 utils.prototype._init = function () {
-    //
 }
 
-////// 将文字中的${和}（表达式）进行替换 //////
 utils.prototype.replaceText = function (text, prefix) {
     if (typeof text != 'string') return text;
     var index = text.indexOf("${");
@@ -57,8 +49,6 @@ utils.prototype.replaceValue = function (value) {
             value = value.replace(/item:([a-zA-Z0-9_]+)/g, "core.itemCount('$1')");
         if (value.indexOf('flag:') >= 0 || value.indexOf('flag：') >= 0)
             value = value.replace(/flag[:：]([a-zA-Z0-9_\u4E00-\u9FCC\u3040-\u30FF\u2160-\u216B\u0391-\u03C9]+)/g, "core.getFlag('$1', 0)");
-        //if (value.indexOf('switch:' >= 0))
-        //    value = value.replace(/switch:([a-zA-Z0-9_]+)/g, "core.getFlag('" + (prefix || ":f@x@y") + "@$1', 0)");
         if (value.indexOf('global:') >= 0 || value.indexOf('global：') >= 0)
             value = value.replace(/global[:：]([a-zA-Z0-9_\u4E00-\u9FCC\u3040-\u30FF\u2160-\u216B\u0391-\u03C9]+)/g, "core.getGlobal('$1', 0)");
         if (value.indexOf('enemy:') >= 0)
@@ -77,7 +67,6 @@ utils.prototype.replaceValue = function (value) {
     return value;
 }
 
-////// 计算表达式的值 //////
 utils.prototype.calValue = function (value, prefix) {
     if (!core.isset(value)) return null;
     if (typeof value === 'string') {
@@ -94,7 +83,6 @@ utils.prototype.calValue = function (value, prefix) {
     return value;
 }
 
-////// 向某个数组前插入另一个数组或元素 //////
 utils.prototype.unshift = function (a, b) {
     if (!(a instanceof Array) || b == null) return;
     if (b instanceof Array) {
@@ -106,7 +94,6 @@ utils.prototype.unshift = function (a, b) {
     return a;
 }
 
-////// 向某个数组后插入另一个数组或元素 //////
 utils.prototype.push = function (a, b) {
     if (!(a instanceof Array) || b == null) return;
     if (b instanceof Array) {
@@ -140,7 +127,6 @@ utils.prototype.decompress = function (value) {
     return null;
 }
 
-////// 设置本地存储 //////
 utils.prototype.setLocalStorage = function (key, value) {
     try {
         if (value == null) {
@@ -164,7 +150,6 @@ utils.prototype.setLocalStorage = function (key, value) {
     }
 }
 
-////// 获得本地存储 //////
 utils.prototype.getLocalStorage = function (key, defaultValue) {
     try {
         var value = JSON.parse(localStorage.getItem(core.firstData.name + "_" + key));
@@ -175,7 +160,6 @@ utils.prototype.getLocalStorage = function (key, defaultValue) {
     }
 }
 
-////// 移除本地存储 //////
 utils.prototype.removeLocalStorage = function (key) {
     localStorage.removeItem(core.firstData.name + "_" + key);
     if (key == 'autoSave') delete core.saves.ids[0];
@@ -327,7 +311,6 @@ utils.prototype.setGlobal = function (key, value) {
 utils.prototype.getGlobal = function (key, defaultValue) {
     var value;
     if (core.isReplaying()) {
-        // 不考虑key不一致的情况
         var action = core.status.replay.toReplay.shift();
         if (action.indexOf("input2:") == 0) {
             value = JSON.parse(core.decodeBase64(action.substring(7)));
@@ -335,8 +318,6 @@ utils.prototype.getGlobal = function (key, defaultValue) {
             core.status.route.push("input2:" + core.encodeBase64(JSON.stringify(value)));
         }
         else {
-            // 录像兼容性：尝试从flag和localStorage获得
-            // 注意这里不再二次记录 input2: 到录像
             core.status.replay.toReplay.unshift(action);
             value = core.getFlag('__global__' + key, core.getLocalStorage(key, defaultValue));
         }
@@ -349,16 +330,13 @@ utils.prototype.getGlobal = function (key, defaultValue) {
     return value;
 }
 
-////// 深拷贝一个对象 //////
 utils.prototype.clone = function (data, filter, recursion) {
     if (!core.isset(data)) return null;
-    // date
     if (data instanceof Date) {
         var copy = new Date();
         copy.setTime(data.getTime());
         return copy;
     }
-    // array
     if (data instanceof Array) {
         var copy = [];
         for (var i in data) {
@@ -367,11 +345,9 @@ utils.prototype.clone = function (data, filter, recursion) {
         }
         return copy;
     }
-    // 函数
     if (data instanceof Function) {
         return data;
     }
-    // object
     if (data instanceof Object) {
         var copy = {};
         for (var i in data) {
@@ -383,7 +359,6 @@ utils.prototype.clone = function (data, filter, recursion) {
     return data;
 }
 
-////// 深拷贝1D/2D数组优化 //////
 utils.prototype.cloneArray = function (data) {
     if (!(data instanceof Array)) return this.clone(data);
     if (data[0] instanceof Array) {
@@ -393,7 +368,6 @@ utils.prototype.cloneArray = function (data) {
     }
 }
 
-////// 裁剪图片 //////
 utils.prototype.splitImage = function (image, width, height) {
     if (typeof image == "string") {
         image = core.getMappedName(image);
@@ -418,14 +392,12 @@ utils.prototype.splitImage = function (image, width, height) {
     return ans;
 }
 
-////// 格式化时间为字符串 //////
 utils.prototype.formatDate = function (date) {
     if (!date) date = new Date();
     return "" + date.getFullYear() + "-" + core.setTwoDigits(date.getMonth() + 1) + "-" + core.setTwoDigits(date.getDate()) + " "
         + core.setTwoDigits(date.getHours()) + ":" + core.setTwoDigits(date.getMinutes()) + ":" + core.setTwoDigits(date.getSeconds());
 }
 
-////// 格式化时间为最简字符串 //////
 utils.prototype.formatDate2 = function (date) {
     if (!date) date = new Date();
     return "" + date.getFullYear() + core.setTwoDigits(date.getMonth() + 1) + core.setTwoDigits(date.getDate())
@@ -438,7 +410,6 @@ utils.prototype.formatTime = function (time) {
         + ":" + core.setTwoDigits(parseInt(time / 1000) % 60);
 }
 
-////// 两位数显示 //////
 utils.prototype.setTwoDigits = function (x) {
     return (parseInt(x) < 10 && parseInt(x) >= 0) ? "0" + x : x;
 }
@@ -450,11 +421,11 @@ utils.prototype.formatSize = function (size) {
 }
 
 utils.prototype.formatBigNumber = function (x, digits) {
-    if (digits === true) digits = 5; // 兼容旧版onMap参数
-    if (!digits || digits < 5) digits = 6; // 连同负号、小数点和后缀字母在内的总位数，至少需为5，默认为6
-    x = Math.trunc(parseFloat(x)); // 尝试识别为小数，然后向0取整
-    if (x == null || !Number.isFinite(x)) return '???'; // 无法识别的数或正负无穷大，显示'???'
-    var units = [ // 单位及其后缀字母，可自定义，如改成千进制下的K、M、G、T、P
+    if (digits === true) digits = 5;
+    if (!digits || digits < 5) digits = 6;
+    x = Math.trunc(parseFloat(x));
+    if (x == null || !Number.isFinite(x)) return '???';
+    var units = [
         { "val": 1e4, "suffix": "w" },
         { "val": 1e8, "suffix": "e" },
         { "val": 1e12, "suffix": "z" },
@@ -462,9 +433,9 @@ utils.prototype.formatBigNumber = function (x, digits) {
         { "val": 1e20, "suffix": "g" },
     ];
     if (Math.abs(x) > 1e20 * Math.pow(10, digits - 2))
-        return x.toExponential(0); // 绝对值过大以致于失去精度的数，直接使用科学记数法，系数只保留整数
+        return x.toExponential(0);
     var sign = x < 0 ? '-' : '';
-    if (sign) --digits; // 符号位单独处理，负号要占一位
+    if (sign) --digits;
     x = Math.abs(x);
 
     if (x < Math.pow(10, digits)) return sign + x;
@@ -479,7 +450,6 @@ utils.prototype.formatBigNumber = function (x, digits) {
     return sign + x.toExponential(0);
 }
 
-////// 变速移动 //////
 utils.prototype.applyEasing = function (name) {
     var list = {
         "easeIn": function (t) {
@@ -489,7 +459,6 @@ utils.prototype.applyEasing = function (name) {
             return 1 - Math.pow(1 - t, 3);
         },
         "easeInOut": function (t) {
-            // easeInOut试了一下感觉二次方效果明显点
             if (t < 0.5) return Math.pow(t, 2) * 2;
             else return 1 - Math.pow(1 - t, 2) * 2;
         },
@@ -504,7 +473,6 @@ utils.prototype.applyEasing = function (name) {
     return list[name] || list.linear;
 }
 
-////// 数组转RGB //////
 utils.prototype.arrayToRGB = function (color) {
     if (!(color instanceof Array)) return color;
     var nowR = this.clamp(parseInt(color[0]), 0, 255), nowG = this.clamp(parseInt(color[1]), 0, 255),
@@ -520,7 +488,6 @@ utils.prototype.arrayToRGBA = function (color) {
     return "rgba(" + nowR + "," + nowG + "," + nowB + "," + nowA + ")";
 }
 
-////// 加密路线 //////
 utils.prototype.encodeRoute = function (route) {
     var ans = "", lastMove = "", cnt = 0;
 
@@ -599,11 +566,9 @@ utils.prototype._encodeRoute_encodeOne = function (t) {
     return '(' + t + ')';
 }
 
-////// 解密路线 //////
 utils.prototype.decodeRoute = function (route) {
     if (!route) return route;
 
-    // 解压缩
     try {
         var v = LZString.decompressFromBase64(route);
         if (v != null && /^[-_a-zA-Z0-9+\/=:()]*$/.test(v)) {
@@ -653,7 +618,6 @@ utils.prototype._decodeRoute_number2id = function (number) {
 }
 
 utils.prototype._decodeRoute_decodeOne = function (decodeObj, c) {
-    // --- 特殊处理自定义项
     if (c == '(') {
         var idx = decodeObj.route.indexOf(')', decodeObj.index);
         if (idx >= 0) {
@@ -742,12 +706,10 @@ utils.prototype._decodeRoute_decodeOne = function (decodeObj, c) {
     }
 }
 
-////// 判断某对象是否不为null也不为NaN //////
 utils.prototype.isset = function (val) {
     return val != null && !(typeof val == 'number' && isNaN(val));
 }
 
-////// 获得子数组 //////
 utils.prototype.subarray = function (a, b) {
     if (!(a instanceof Array) || !(b instanceof Array) || a.length < b.length)
         return null;
@@ -771,14 +733,12 @@ utils.prototype.getCookie = function (name) {
     return match ? match[2] : null;
 }
 
-////// 设置statusBar的innerHTML，会自动斜体和放缩，也可以增加自定义css //////
 utils.prototype.setStatusBarInnerHTML = function (name, value, css) {
     if (!core.statusBar[name]) return;
     if (typeof value == 'number') value = this.formatBigNumber(value);
     var italic = /^[-a-zA-Z0-9`~!@#$%^&*()_=+\[{\]}\\|;:'",<.>\/?]*$/.test(value);
     var style = 'font-style: ' + (italic ? 'italic' : 'normal') + '; ';
     style += 'text-shadow: #000 1px 0 0, #000 0 1px 0, #000 -1px 0 0, #000 0 -1px 0; ';
-    // 判定是否需要缩放
     var length = this.strlen(value) || 1;
     style += 'font-size: ' + Math.min(1, 7 / length) + 'em; ';
     if (css) style += css;
@@ -812,9 +772,9 @@ utils.prototype.turnDirection = function (turn, direction) {
     if (typeof turn === 'number' && turn % 45 == 0) turn /= 45;
     else {
         switch (turn) {
-            case ':left': turn = 6; break; // turn left
-            case ':right': turn = 2; break; // turn right
-            case ':back': turn = 4; break; // turn back
+            case ':left': turn = 6; break;
+            case ':right': turn = 2; break;
+            case ':back': turn = 4; break;
             default: turn = 0; break;
         }
     }
@@ -843,14 +803,12 @@ utils.prototype.matchRegex = function (pattern, string) {
     }
 }
 
-////// Base64加密 //////
 utils.prototype.encodeBase64 = function (str) {
     return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function (match, p1) {
         return String.fromCharCode(parseInt(p1, 16))
     }))
 }
 
-////// Base64解密 //////
 utils.prototype.decodeBase64 = function (str) {
     return decodeURIComponent(atob(str).split('').map(function (c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
@@ -867,7 +825,6 @@ utils.prototype.rand = function (num) {
     return ans;
 }
 
-////// 生成随机数（录像方法） //////
 utils.prototype.rand2 = function (num) {
     num = num || 2147483648;
     num = Math.abs(num);
@@ -909,9 +866,7 @@ utils.prototype.__next_rand = function (_rand) {
     return _rand;
 }
 
-////// 读取一个本地文件内容 //////
 utils.prototype.readFile = function (success, error, accept, readType) {
-
     core.platform.successCallback = success;
     core.platform.errorCallback = error;
 
@@ -920,14 +875,12 @@ utils.prototype.readFile = function (success, error, accept, readType) {
         return;
     }
 
-    // step 0: 不为http/https，直接不支持
     if (!core.platform.isOnline) {
         alert("离线状态下不支持文件读取！");
         if (error) error();
         return;
     }
 
-    // Step 1: 如果不支持FileReader，直接不支持
     if (core.platform.fileReader == null) {
         alert("当前浏览器不支持FileReader！");
         if (error) error();
@@ -956,7 +909,6 @@ utils.prototype.readFile = function (success, error, accept, readType) {
     core.platform.fileInput.click();
 }
 
-////// 读取文件完毕 //////
 utils.prototype.readFileContent = function (content) {
     var obj = null;
     if (content.slice(0, 4) === 'data') {
@@ -964,7 +916,6 @@ utils.prototype.readFileContent = function (content) {
             core.platform.successCallback(content);
         return;
     }
-    // 检查base64
     try {
         obj = JSON.parse(LZString.decompressFromBase64(content));
     } catch (e) { }
@@ -986,21 +937,17 @@ utils.prototype.readFileContent = function (content) {
         core.platform.errorCallback();
 }
 
-////// 下载文件到本地 //////
 utils.prototype.download = function (filename, content) {
-
     if (window.jsinterface) {
         window.jsinterface.download(filename, content);
         return;
     }
 
-    // Step 0: 不为http/https，直接不支持
     if (!core.platform.isOnline) {
         alert("离线状态下不支持下载操作！");
         return;
     }
 
-    // Step 1: 如果是iOS平台，直接不支持
     if (core.platform.isIOS) {
         if (core.copy(content)) {
             alert("iOS平台下不支持直接下载文件！\n所有应下载内容已经复制到您的剪切板，请自行创建空白文件并粘贴。");
@@ -1010,10 +957,8 @@ utils.prototype.download = function (filename, content) {
         }
         return;
     }
-
-    // Step 2: 如果不是PC平台（Android），则只支持chrome
     if (!core.platform.isPC) {
-        if (!core.platform.isChrome || core.platform.isQQ || core.platform.isWeChat) { // 检测chrome
+        if (!core.platform.isChrome || core.platform.isQQ || core.platform.isWeChat) {
             if (core.copy(content)) {
                 alert("移动端只有Chrome浏览器支持直接下载文件！\n所有应下载内容已经复制到您的剪切板，请自行创建空白文件并粘贴。");
             }
@@ -1024,7 +969,6 @@ utils.prototype.download = function (filename, content) {
         }
     }
 
-    // Step 3: 如果是Safari浏览器，则提示并打开新窗口
     if (core.platform.isSafari) {
         alert("你当前使用的是Safari浏览器，不支持直接下载文件。\n即将打开一个新窗口为应下载内容，请自行全选复制然后创建空白文件并粘贴。");
         var blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
@@ -1034,7 +978,6 @@ utils.prototype.download = function (filename, content) {
         return;
     }
 
-    // Step 4: 下载
     var blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
     if (window.navigator.msSaveOrOpenBlob) {
         window.navigator.msSaveBlob(blob, filename);
@@ -1051,9 +994,7 @@ utils.prototype.download = function (filename, content) {
     }
 }
 
-////// 复制一段内容到剪切板 //////
 utils.prototype.copy = function (data) {
-
     if (window.jsinterface) {
         window.jsinterface.copy(data);
         return true;
@@ -1087,7 +1028,6 @@ utils.prototype.copy = function (data) {
     return successful;
 }
 
-////// 显示一段confirm //////
 utils.prototype.myconfirm = function (hint, yesCallback, noCallback) {
     main.dom.inputDiv.style.display = 'block';
     main.dom.inputMessage.innerHTML = hint.replace(/\n/g, '<br/>');
@@ -1100,7 +1040,6 @@ utils.prototype.myconfirm = function (hint, yesCallback, noCallback) {
     core.platform.errorCallback = noCallback;
 }
 
-////// 让用户输入一段文字 //////
 utils.prototype.myprompt = function (hint, value, callback) {
     main.dom.inputDiv.style.display = 'block';
     main.dom.inputMessage.innerHTML = hint.replace(/\n/g, '<br/>');
@@ -1112,11 +1051,9 @@ utils.prototype.myprompt = function (hint, value, callback) {
         main.dom.inputBox.focus();
     });
     core.status.holdingKeys = [];
-
     core.platform.successCallback = core.platform.errorCallback = callback;
 }
 
-////// 动画显示某对象 //////
 utils.prototype.showWithAnimate = function (obj, speed, callback) {
     obj.style.display = 'block';
     if (!speed || main.mode != 'play') {
@@ -1136,7 +1073,6 @@ utils.prototype.showWithAnimate = function (obj, speed, callback) {
     }, speed);
 }
 
-////// 动画使某对象消失 //////
 utils.prototype.hideWithAnimate = function (obj, speed, callback) {
     if (!speed || main.mode != 'play') {
         obj.style.display = 'none';
@@ -1156,7 +1092,6 @@ utils.prototype.hideWithAnimate = function (obj, speed, callback) {
     }, speed);
 }
 
-////// 生成浏览器唯一的 guid //////
 utils.prototype.getGuid = function () {
     var guid = localStorage.getItem('guid');
     if (guid != null) return guid;
@@ -1285,8 +1220,6 @@ utils.prototype.http = function (type, url, formData, success, error, mimeType, 
     else xhr.send();
 }
 
-// LZW-compress
-// https://gist.github.com/revolunet/843889
 function lzw_encode(s) {
     var dict = {};
     var data = (s + "").split("");
@@ -1313,7 +1246,6 @@ function lzw_encode(s) {
     return out.join("");
 }
 
-// Decompress an LZW-encoded string
 function lzw_decode(s) {
     var dict = {};
     var data = (s + "").split("");
