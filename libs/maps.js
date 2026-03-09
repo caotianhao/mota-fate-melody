@@ -1,4 +1,3 @@
-
 "use strict";
 
 function maps() {
@@ -7,7 +6,6 @@ function maps() {
 
 maps.prototype._init = function () {
     this.blocksInfo = maps_90f36752_8815_4be8_b32b_d7fad1d0542e;
-    //delete(maps_90f36752_8815_4be8_b32b_d7fad1d0542e);
 }
 
 maps.prototype._initFloors = function (floorId) {
@@ -17,9 +15,7 @@ maps.prototype._initFloors = function (floorId) {
         });
         return;
     }
-    // 战前事件兼容性
     if (!core.floors[floorId].beforeBattle) core.floors[floorId].beforeBattle = {}
-    // cannotMoveIn兼容性
     if (!core.floors[floorId].cannotMoveIn) core.floors[floorId].cannotMoveIn = {}
 }
 
@@ -44,9 +40,6 @@ maps.prototype._setHDCanvasSize = function (ctx, width, height) {
     ctx.canvas.setAttribute('isHD', 1);
 }
 
-// ------ 加载地图与地图的存档读档（压缩与解压缩） ------ //
-
-////// 加载某个楼层（从剧本或存档中） //////
 maps.prototype.loadFloor = function (floorId, map) {
     var floor = core.floors[floorId];
     if (!map) map = core.cloneArray(floor.map);
@@ -79,7 +72,6 @@ maps.prototype._loadFloor_doNotCopy = function () {
     ];
 }
 
-/// 根据需求解析出blocks
 maps.prototype.extractBlocks = function (map) {
     map = map || core.status.floorId;
     if (typeof map == 'string') map = (core.status.maps || {})[map];
@@ -129,19 +121,16 @@ maps.prototype.extractBlocksForUI = function (map, flags) {
             var isDisabled = this.isMapBlockDisabled(floorId, j, i, flags);
             if (isDisabled) continue;
             if (isDisabled == null) {
-                // 检查是否初始禁用
                 var event = (floor.events || {})[j + "," + i];
                 if (event != null && event.enable === false) continue;
             }
             var opacity = this._getBlockOpacityFromFlag(floorId, j, i, flags);
             if (opacity == null) {
-                // 检查初始不透明度
                 var event = (floor.events || {})[j + "," + i];
                 if (event != null && event.opacity != null) opacity = event.opacity;
             }
             var filter = this._getBlockFilterFromFlag(floorId, j, i, flags);
             if (filter == null) {
-                // 检查初始filter
                 var event = (floor.events || {})[j + "," + i];
                 if (event != null && event.filter != null) filter = core.clone(event.filter);
             }
@@ -150,7 +139,6 @@ maps.prototype.extractBlocksForUI = function (map, flags) {
     }
 }
 
-////// 从ID获得数字 //////
 maps.prototype.getNumberById = function (id) {
     id = this.getIdOfThis(id);
     core.status.id2number = core.status.id2number || {};
@@ -163,11 +151,9 @@ maps.prototype._getNumberById = function (id) {
         if ((this.blocksInfo[number] || {}).id == id)
             return parseInt(number) || 0;
     }
-    // tilesets
     if (/^X\d+$/.test(id)) {
         if (core.icons.getTilesetOffset(id)) return parseInt(id.substring(1));
     }
-    // 特殊ID
     if (id == 'none') return 0;
     if (id == 'airwall') return 17;
     return 0;
@@ -190,7 +176,6 @@ maps.prototype.getIdOfThis = function (id) {
     return core.getBlockId(core.status.event.data.x, core.status.event.data.y) || id;
 }
 
-////// 数字和ID的对应关系 //////
 maps.prototype.initBlock = function (x, y, id, addInfo, eventFloor) {
     var disable = null;
     var opacity = null;
@@ -219,7 +204,6 @@ maps.prototype.initBlock = function (x, y, id, addInfo, eventFloor) {
     }
     delete block.event.canPass;
 
-    // 增加怪物的faceIds
     if (block.event.cls.indexOf("enemy") == 0) {
         var enemy = core.material.enemys[block.event.id];
         if (enemy && enemy.faceIds) {
@@ -237,7 +221,6 @@ maps.prototype.initBlock = function (x, y, id, addInfo, eventFloor) {
     return block;
 }
 
-////// 添加一些信息到block上 //////
 maps.prototype._addInfo = function (block) {
     if (block.event.cls.indexOf("enemy") == 0 && !block.event.trigger) {
         block.event.trigger = 'battle';
@@ -253,10 +236,8 @@ maps.prototype._addInfo = function (block) {
         block.event.height = 48;
 }
 
-////// 向该楼层添加剧本的自定义事件 //////
 maps.prototype._addEvent = function (block, x, y, event) {
     if (!event) return;
-    // event是字符串或数组？
     if (typeof event == "string") {
         event = { "data": [event] };
     }
@@ -265,34 +246,28 @@ maps.prototype._addEvent = function (block, x, y, event) {
     }
     event.data = event.data || [];
 
-    // 覆盖enable
     if (block.disable == null && event.enable != null) {
         block.disable = !event.enable;
     }
-    // 覆盖opacity
     if (block.opacity == null && event.opacity != null) {
         block.opacity = event.opacity;
     }
     if (block.filter == null && event.filter != null) {
         block.filter = core.clone(event.filter);
     }
-    // 覆盖animate
     if (event.animate === false) {
         block.event.animate = 1;
     }
-    // 覆盖所有属性
     for (var key in event) {
         if (key != "enable" && key != "animate" && key != "opacity" && key != "filter" && event[key] != null) {
             block.event[key] = core.clone(event[key]);
         }
     }
-    // 给无trigger的增加trigger:action
     if (!block.event.trigger) {
         block.event.trigger = 'action';
     }
 }
 
-////// 初始化所有地图 //////
 maps.prototype._initMaps = function () {
     var floorIds = core.floorIds;
     var maps = {};
@@ -303,7 +278,6 @@ maps.prototype._initMaps = function () {
     return maps;
 }
 
-////// 压缩地图
 maps.prototype.compressMap = function (mapArr, floorId) {
     var floorMap = core.floors[floorId].map;
     if (core.utils.same(mapArr, floorMap)) return null;
