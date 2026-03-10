@@ -1,14 +1,4 @@
-
-/**
- * 初始化 start
- */
-
 "use strict";
-
-// /**
-//  * @type {CoreMixin}
-//  */
-// const core = (() => {
 
 function core() {
     this._WIDTH_ = 13;
@@ -69,38 +59,36 @@ function core() {
         "lastAsyncId": null
     }
     this.musicStatus = {
-        'audioContext': null, // WebAudioContext
-        'bgmStatus': false, // 是否播放BGM
-        'soundStatus': true, // 是否播放SE
-        'playingBgm': null, // 正在播放的BGM
-        'pauseTime': 0, // 上次暂停的时间
-        'lastBgm': null, // 上次播放的bgm
+        'audioContext': null,
+        'bgmStatus': false,
+        'soundStatus': true,
+        'playingBgm': null,
+        'pauseTime': 0,
+        'lastBgm': null,
         'gainNode': null,
-        'playingSounds': {}, // 正在播放的SE
-        'userVolume': 1.0, // 用户音量
-        'designVolume': 1.0, //设计音量
-        'bgmSpeed': 100, // 背景音乐速度
-        'bgmUsePitch': null, // 是否同时修改音调
-        'cachedBgms': [], // 缓存BGM内容
-        'cachedBgmCount': 8, // 缓存的bgm数量
+        'playingSounds': {},
+        'userVolume': 1.0,
+        'designVolume': 1.0,
+        'bgmSpeed': 100,
+        'bgmUsePitch': null,
+        'cachedBgms': [],
+        'cachedBgmCount': 8,
     }
     this.platform = {
-        'isOnline': true, // 是否http
-        'isPC': true, // 是否是PC
-        'isAndroid': false, // 是否是Android
-        'isIOS': false, // 是否是iOS
+        'isOnline': true,
+        'isPC': true,
+        'isAndroid': false,
+        'isIOS': false,
         'string': 'PC',
-        'isWeChat': false, // 是否是微信
-        'isQQ': false, // 是否是QQ
-        'isChrome': false, // 是否是Chrome
-        'supportCopy': false, // 是否支持复制到剪切板
-
-        'fileInput': null, // FileInput
-        'fileReader': null, // 是否支持FileReader
-        'successCallback': null, // 读取成功
-        'errorCallback': null, // 读取失败
+        'isWeChat': false,
+        'isQQ': false,
+        'isChrome': false,
+        'supportCopy': false,
+        'fileInput': null,
+        'fileReader': null,
+        'successCallback': null,
+        'errorCallback': null,
     }
-    // 样式
     this.domStyle = {
         scale: 1.0,
         ratio: 1.0,
@@ -112,18 +100,18 @@ function core() {
     }
     this.bigmap = {
         canvas: ["bg", "event", "event2", "fg", "damage"],
-        offsetX: 0, // in pixel
+        offsetX: 0,
         offsetY: 0,
-        posX: 0, // 
+        posX: 0,
         posY: 0,
-        width: main.mode == 'editor' ? this.__SIZE__ : this._WIDTH_, // map width and height
+        width: main.mode == 'editor' ? this.__SIZE__ : this._WIDTH_,
         height: main.mode == 'editor' ? this.__SIZE__ : this._HEIGHT_,
         v2: false,
         threshold: 1024,
         extend: 10,
         scale: 1.0,
-        tempCanvas: null, // A temp canvas for drawing
-        cacheCanvas: null, // A cache canvas
+        tempCanvas: null,
+        cacheCanvas: null,
     }
     this.saves = {
         "saveIndex": null,
@@ -132,8 +120,8 @@ function core() {
             "data": null,
             "time": 0,
             "updated": false,
-            "storage": true, // 是否把自动存档写入文件a
-            "max": 20, // 自动存档最大回退数
+            "storage": true,
+            "max": 20,
             "now": 0,
         },
         "favorite": [],
@@ -144,19 +132,17 @@ function core() {
         'played': false,
         'gameOver': false,
 
-        // 勇士属性
         'hero': {},
         'heroCenter': { 'px': null, 'py': null },
 
-        // 当前地图
         'floorId': null,
         'thisMap': null,
         'maps': null,
         'bgmaps': {},
         'fgmaps': {},
         'mapBlockObjs': {},
-        'checkBlock': {}, // 每个点的阻激夹域信息
-        'damage': {  // 每个点的显伤绘制
+        'checkBlock': {},
+        'damage': {
             'posX': 0,
             'posY': 0,
             'data': [],
@@ -164,12 +150,9 @@ function core() {
         },
 
         'lockControl': false,
-
-        // 勇士移动状态
         'heroMoving': 0,
         'heroStop': true,
 
-        // 自动寻路相关
         'automaticRoute': {
             'autoHeroMove': false,
             'autoStep': 0,
@@ -187,7 +170,6 @@ function core() {
             "moveDirectly": false,
         },
 
-        // 按下键的时间：为了判定双击
         'downTime': null,
         'ctrlDown': false,
         'preview': {
@@ -198,12 +180,11 @@ function core() {
             'py': 0,
         },
 
-        // 路线&回放
         'route': [],
         'replay': {
             'replaying': false,
             'pausing': false,
-            'animate': false, // 正在某段动画中
+            'animate': false,
             'failed': false,
             'toReplay': [],
             'totalList': [],
@@ -211,10 +192,8 @@ function core() {
             'steps': 0,
             'save': [],
         },
-        // 录像折叠
         'routeFolding': {},
 
-        // event事件
         'shops': {},
         'event': {
             'id': null,
@@ -250,7 +229,6 @@ function core() {
         },
         'curtainColor': null,
 
-        // 动画
         'globalAnimateObjs': [],
         'floorAnimateObjs': [],
         'boxAnimateObjs': [],
