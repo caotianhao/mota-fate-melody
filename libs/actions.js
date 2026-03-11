@@ -925,13 +925,11 @@ actions.prototype._keyUpConfirmBox = function (keycode) {
     }
     if (keycode == 13 || keycode == 32 || keycode == 67) {
         if (core.status.event.selection == 0 && core.status.event.data.yes) {
-            // core.playSound('确定');
             core.status.event.selection = null;
             core.status.event.data.yes();
             return;
         }
         if (core.status.event.selection == 1 && core.status.event.data.no) {
-            // core.playSound('确定');
             core.status.event.selection = null;
             core.status.event.data.no();
             return;
@@ -1903,7 +1901,7 @@ actions.prototype._clickSL_favorite = function (page, offset) {
         }
         else if (core.hasSave(index)) {
             core.saves.favorite.push(index);
-            core.saves.favorite = core.saves.favorite.sort(function (a, b) { return a - b; }); // 保证有序
+            core.saves.favorite = core.saves.favorite.sort(function (a, b) { return a - b; });
             core.drawTip("收藏成功！");
         }
         core.control._updateFavoriteSaves();
@@ -2817,7 +2815,6 @@ actions.prototype._clickReplay_replaySince = function () {
 }
 
 actions.prototype._clickReplay_download = function () {
-    // if (core.hasFlag('debug')) return core.drawText("\t[系统提示]调试模式下无法下载录像");
     core.download(core.firstData.name + "_" + core.formatDate2() + ".h5route",
         LZString.compressToBase64(JSON.stringify({
             'name': core.firstData.name,
@@ -2825,7 +2822,6 @@ actions.prototype._clickReplay_download = function () {
             'seed': core.getFlag('__seed__'),
             'route': core.encodeRoute(core.status.route)
         })));
-
 }
 
 actions.prototype._keyUpReplay = function (keycode) {
@@ -2907,7 +2903,7 @@ actions.prototype._clickKeyBoard = function (x, y) {
     }
     if (y == this._HY_ - 2 && x >= m - 5 && x <= m + 4) {
         core.ui.closePanel();
-        core.keyUp(x == m + 4 ? 48 : 49 + x + 5 - m); // 1-9: 49-57; 0: 48
+        core.keyUp(x == m + 4 ? 48 : 49 + x + 5 - m);
     }
     var lines = [
         ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
