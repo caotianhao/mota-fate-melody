@@ -2183,9 +2183,10 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"canUseItemEffect": "true"
 	},
 	"I1560": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
+		"cls": "constants",
+		"name": "妖精之魂",
+		"canUseItemEffect": null,
+		"text": "......我会拯救你，哪怕付出性命"
 	},
 	"I1561": {
 		"cls": "items",
