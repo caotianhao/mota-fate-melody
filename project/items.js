@@ -21,29 +21,29 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	"redGem": {
 		"cls": "items",
 		"name": "红宝石",
-		"text": "攻击+${core.values.redGem}",
-		"itemEffect": "core.status.hero.atk += core.values.redGem * core.status.thisMap.ratio",
-		"itemEffectTip": "，攻击+${core.values.redGem * core.status.thisMap.ratio}",
-		"useItemEffect": "core.status.hero.atk += core.values.redGem",
-		"canUseItemEffect": "true"
+		"text": null,
+		"itemEffect": "core.status.hero.atk += 1",
+		"itemEffectTip": "，攻击+1",
+		"useItemEffect": null,
+		"canUseItemEffect": null
 	},
 	"blueGem": {
 		"cls": "items",
 		"name": "蓝宝石",
-		"text": "，防御+${core.values.blueGem}",
-		"itemEffect": "core.status.hero.def += core.values.blueGem * core.status.thisMap.ratio",
-		"itemEffectTip": "，防御+${core.values.blueGem * core.status.thisMap.ratio}",
-		"useItemEffect": "core.status.hero.def += core.values.blueGem",
-		"canUseItemEffect": "true"
+		"text": null,
+		"itemEffect": "core.status.hero.def += 1",
+		"itemEffectTip": "，防御+1",
+		"useItemEffect": null,
+		"canUseItemEffect": null
 	},
 	"greenGem": {
 		"cls": "items",
 		"name": "绿宝石",
-		"text": "，护盾+${core.values.greenGem}",
-		"itemEffect": "core.status.hero.mdef += core.values.greenGem * core.status.thisMap.ratio",
-		"itemEffectTip": "，护盾+${core.values.greenGem * core.status.thisMap.ratio}",
-		"useItemEffect": "core.status.hero.mdef += core.values.greenGem",
-		"canUseItemEffect": "true"
+		"text": null,
+		"itemEffect": "core.status.hero.mdef += 5",
+		"itemEffectTip": "，护盾+5",
+		"useItemEffect": null,
+		"canUseItemEffect": null
 	},
 	"yellowGem": {
 		"cls": "items",
@@ -96,38 +96,38 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	"redPotion": {
 		"cls": "items",
 		"name": "红血瓶",
-		"text": "，生命+${core.values.redPotion}",
-		"itemEffect": "core.status.hero.hp += core.values.redPotion * core.status.thisMap.ratio",
-		"itemEffectTip": "，生命+${core.values.redPotion * core.status.thisMap.ratio}",
-		"useItemEffect": "core.status.hero.hp += core.values.redPotion",
-		"canUseItemEffect": "true"
+		"text": null,
+		"itemEffect": "core.status.hero.hp += 100",
+		"itemEffectTip": "，生命+100",
+		"useItemEffect": null,
+		"canUseItemEffect": null
 	},
 	"bluePotion": {
 		"cls": "items",
 		"name": "蓝血瓶",
-		"text": "，生命+${core.values.bluePotion}",
-		"itemEffect": "core.status.hero.hp += core.values.bluePotion * core.status.thisMap.ratio",
-		"itemEffectTip": "，生命+${core.values.bluePotion * core.status.thisMap.ratio}",
-		"useItemEffect": "core.status.hero.hp += core.values.bluePotion",
-		"canUseItemEffect": "true"
+		"text": null,
+		"itemEffect": "core.status.hero.hp += 250",
+		"itemEffectTip": "，生命+250",
+		"useItemEffect": null,
+		"canUseItemEffect": null
 	},
 	"yellowPotion": {
 		"cls": "items",
 		"name": "黄血瓶",
-		"text": "，生命+${core.values.yellowPotion}",
-		"itemEffect": "core.status.hero.hp += core.values.yellowPotion * core.status.thisMap.ratio",
-		"itemEffectTip": "，生命+${core.values.yellowPotion * core.status.thisMap.ratio}",
-		"useItemEffect": "core.status.hero.hp += core.values.yellowPotion",
-		"canUseItemEffect": "true"
+		"text": null,
+		"itemEffect": "core.status.hero.hp += 500",
+		"itemEffectTip": "，生命+500",
+		"useItemEffect": null,
+		"canUseItemEffect": null
 	},
 	"greenPotion": {
 		"cls": "items",
 		"name": "绿血瓶",
-		"text": "，生命+${core.values.greenPotion}",
-		"itemEffect": "core.status.hero.hp += core.values.greenPotion * core.status.thisMap.ratio",
-		"itemEffectTip": "，生命+${core.values.greenPotion * core.status.thisMap.ratio}",
-		"useItemEffect": "core.status.hero.hp += core.values.greenPotion",
-		"canUseItemEffect": "true"
+		"text": null,
+		"itemEffect": "core.status.hero.hp += 1000",
+		"itemEffectTip": "，生命+1000",
+		"useItemEffect": null,
+		"canUseItemEffect": null
 	},
 	"sword0": {
 		"cls": "items",
@@ -672,8 +672,8 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	"I1276": {
 		"cls": "items",
 		"name": "二阶红宝石",
-		"canUseItemEffect": "true",
-		"text": "，攻击+3",
+		"canUseItemEffect": null,
+		"text": null,
 		"itemEffect": "core.status.hero.atk += 3",
 		"itemEffectTip": "，攻击+3",
 		"useItemEffect": null
@@ -711,8 +711,8 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	"I1283": {
 		"cls": "items",
 		"name": "二阶蓝宝石",
-		"canUseItemEffect": "true",
-		"text": "，防御+3",
+		"canUseItemEffect": null,
+		"text": null,
 		"itemEffect": "core.status.hero.def += 3",
 		"itemEffectTip": "，防御+3 ",
 		"useItemEffect": null
@@ -750,8 +750,8 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	"I1290": {
 		"cls": "items",
 		"name": "二阶绿宝石",
-		"canUseItemEffect": "true",
-		"text": "，护盾+15",
+		"canUseItemEffect": null,
+		"text": null,
 		"itemEffect": "core.status.hero.mdef += 15",
 		"itemEffectTip": "，护盾+15"
 	},
