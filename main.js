@@ -1,23 +1,12 @@
 /// <reference path="./runtime.d.ts" />
 function main() {
-    //------------------------ 用户修改内容 ------------------------//
-
-    this.version = '2.10.3'; // 游戏版本号；如果更改了游戏内容建议修改此version以免造成缓存问题。
-
-    this.useCompress = false; // 是否使用压缩文件
-    // 当你即将发布你的塔时，请使用“JS代码压缩工具”将所有js代码进行压缩，然后将这里的useCompress改为true。
-    // 请注意，只有useCompress是false时才会读取floors目录下的文件，为true时会直接读取libs目录下的floors.min.js文件。
-    // 如果要进行剧本的修改请务必将其改成false。
-
-    this.bgmRemote = false; // 是否采用远程BGM
-    this.bgmRemoteRoot = 'https://h5mota.com/music/'; // 远程BGM的根目录
-
-    this.isCompetition = false; // 是否是比赛模式
-
-    this.savePages = 1000; // 存档页数，每页可存5个；默认为1000页5000个存档
-    this.criticalUseLoop = 1; // 循环临界的分界
-
-    //------------------------ 用户修改内容 END ------------------------//
+    this.version = '2.10.3';
+    this.useCompress = false;
+    this.bgmRemote = false;
+    this.bgmRemoteRoot = 'https://h5mota.com/music/';
+    this.isCompetition = false;
+    this.savePages = 1000;
+    this.criticalUseLoop = 1;
 
     this.dom = {
         body: document.body,
@@ -277,7 +266,6 @@ main.prototype.init = function (mode, callback) {
                 });
                 main.core.init(coreData, callback);
                 main.core.resize();
-                // 自动放缩最大化
                 if (!main.replayChecking) {
                     if (core.getLocalStorage('autoScale') == null) {
                         core.setLocalStorage('autoScale', true);
@@ -337,9 +325,7 @@ main.prototype.init = function (mode, callback) {
     });
 };
 
-////// 动态加载所有核心JS文件 //////
 main.prototype.loadJs = function (dir, loadList, callback) {
-    // 加载js
     main.setMainTipsText('正在加载核心js文件...');
 
     if (this.useCompress) {
@@ -360,7 +346,6 @@ main.prototype.loadJs = function (dir, loadList, callback) {
     }
 };
 
-////// 加载某一个JS文件 //////
 main.prototype.loadMod = function (dir, modName, callback, onerror) {
     var script = document.createElement('script');
     var name = modName;
@@ -377,12 +362,9 @@ main.prototype.loadMod = function (dir, modName, callback, onerror) {
     main.dom.body.appendChild(script);
 };
 
-////// 动态加载所有楼层（剧本） //////
 main.prototype.loadFloors = function (callback) {
-    // 加载js
     main.setMainTipsText('正在加载楼层文件...');
     if (this.useCompress) {
-        // 读取压缩文件
         var script = document.createElement('script');
         script.src = 'project/floors.min.js?v=' + this.version;
         main.dom.body.appendChild(script);
@@ -393,7 +375,6 @@ main.prototype.loadFloors = function (callback) {
         return;
     }
 
-    // 高层塔优化
     var script = document.createElement('script');
     script.src =
         '__all_floors__.js?v=' +
@@ -409,7 +390,6 @@ main.prototype.loadFloors = function (callback) {
         script.onabort =
         script.ontimeout =
             function (e) {
-                // console.clear();
                 for (var i = 0; i < main.floorIds.length; i++) {
                     main.loadFloor(main.floorIds[i], function (modName) {
                         main.setMainTipsText(
@@ -428,7 +408,6 @@ main.prototype.loadFloors = function (callback) {
     main.dom.body.appendChild(script);
 };
 
-////// 加载某一个楼层 //////
 main.prototype.loadFloor = function (floorId, callback) {
     var script = document.createElement('script');
     script.src = 'project/floors/' + floorId + '.js?v=' + this.version;
@@ -438,7 +417,6 @@ main.prototype.loadFloor = function (floorId, callback) {
     };
 };
 
-////// 加载过程提示 //////
 main.prototype.setMainTipsText = function (text) {
     main.dom.mainTips.innerHTML = text;
 };
@@ -457,7 +435,6 @@ main.prototype.log = function (e, error) {
 main.prototype.createOnChoiceAnimation = function () {
     var borderColor =
         main.dom.startButtonGroup.style.caretColor || 'rgb(255, 215, 0)';
-    // get rgb value
     var rgb =
         /^rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*(,\s*\d+\s*)?\)$/.exec(
             borderColor
@@ -484,7 +461,6 @@ main.prototype.createOnChoiceAnimation = function () {
     }
 };
 
-////// 选项 //////
 main.prototype.selectButton = function (index) {
     var select = function (children) {
         index = (index + children.length) % children.length;
@@ -508,7 +484,6 @@ main.prototype.selectButton = function (index) {
     }
 };
 
-////// 创建字体 //////
 main.prototype.importFonts = function (fonts) {
     if (!(fonts instanceof Array) || fonts.length == 0) return;
     var style = document.createElement('style');
@@ -527,7 +502,6 @@ main.prototype.importFonts = function (fonts) {
 };
 
 main.prototype.listen = function () {
-    ////// 窗口大小变化时 //////
     window.onresize = function () {
         try {
             main.core.resize();
@@ -536,7 +510,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 在界面上按下某按键时 //////
     main.dom.body.onkeydown = function (e) {
         if (main.editorOpened) return;
         try {
@@ -551,7 +524,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 在界面上放开某按键时 //////
     main.dom.body.onkeyup = function (e) {
         if (main.editorOpened) return;
         try {
@@ -561,19 +533,15 @@ main.prototype.listen = function () {
                     main.dom.levelChooseButtons.style.display == 'block')
             ) {
                 if (e.keyCode == 38 || e.keyCode == 33)
-                    // up/pgup
                     main.selectButton((main.selectedButton || 0) - 1);
                 else if (e.keyCode == 40 || e.keyCode == 34)
-                    // down/pgdn
                     main.selectButton((main.selectedButton || 0) + 1);
                 else if (e.keyCode == 67 || e.keyCode == 13 || e.keyCode == 32)
-                    // C/Enter/Space
                     main.selectButton(main.selectedButton);
                 else if (
                     e.keyCode == 27 &&
                     main.dom.levelChooseButtons.style.display == 'block'
                 ) {
-                    // ESC
                     main.core.showStartAnimate(true);
                 }
                 e.stopPropagation();
@@ -618,12 +586,10 @@ main.prototype.listen = function () {
         };
     });
 
-    ////// 开始选择时 //////
     main.dom.body.onselectstart = function () {
         return false;
     };
 
-    ////// 鼠标按下时 //////
     main.dom.data.onmousedown = function (e) {
         try {
             e.stopPropagation();
@@ -635,7 +601,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 鼠标移动时 //////
     main.dom.data.onmousemove = function (e) {
         try {
             e.stopPropagation();
@@ -647,7 +612,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 鼠标放开时 //////
     main.dom.data.onmouseup = function (e) {
         try {
             e.stopPropagation();
@@ -659,7 +623,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 鼠标滑轮滚动时 //////
     main.dom.data.onmousewheel = function (e) {
         try {
             if (e.wheelDelta) main.core.onmousewheel(Math.sign(e.wheelDelta));
@@ -669,7 +632,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 手指在触摸屏开始触摸时 //////
     main.dom.data.ontouchstart = function (e) {
         try {
             e.preventDefault();
@@ -685,7 +647,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 手指在触摸屏上移动时 //////
     main.dom.data.ontouchmove = function (e) {
         try {
             e.preventDefault();
@@ -701,7 +662,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 手指离开触摸屏时 //////
     main.dom.data.ontouchend = function (e) {
         try {
             e.preventDefault();
@@ -723,7 +683,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 点击状态栏中的怪物手册时 //////
     main.statusBar.image.book.onclick = function (e) {
         e.stopPropagation();
 
@@ -735,11 +694,9 @@ main.prototype.listen = function () {
         if (main.core.isPlaying()) main.core.openBook(true);
     };
 
-    ////// 点击状态栏中的楼层传送器/装备栏时 //////
     main.statusBar.image.fly.onclick = function (e) {
         e.stopPropagation();
 
-        // 播放录像时
         if (core.isReplaying()) {
             core.stopReplay();
             return;
@@ -754,7 +711,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 点击状态栏中的工具箱时 //////
     main.statusBar.image.toolbox.onclick = function (e) {
         e.stopPropagation();
 
@@ -768,7 +724,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 双击状态栏中的工具箱时 //////
     main.statusBar.image.toolbox.ondblclick = function (e) {
         e.stopPropagation();
 
@@ -779,7 +734,6 @@ main.prototype.listen = function () {
         if (main.core.isPlaying()) main.core.openEquipbox(true);
     };
 
-    ////// 点击状态栏中的虚拟键盘时 //////
     main.statusBar.image.keyboard.onclick = function (e) {
         e.stopPropagation();
 
@@ -791,7 +745,6 @@ main.prototype.listen = function () {
         if (main.core.isPlaying()) main.core.openKeyBoard(true);
     };
 
-    ////// 点击状态栏中的快捷商店时 //////
     main.statusBar.image.shop.onclick = function (e) {
         e.stopPropagation();
 
@@ -803,14 +756,12 @@ main.prototype.listen = function () {
         if (main.core.isPlaying()) main.core.openQuickShop(true);
     };
 
-    ////// 点击金币时也可以开启快捷商店 //////
     main.statusBar.image.money.onclick = function (e) {
         e.stopPropagation();
 
         if (main.core.isPlaying()) main.core.openQuickShop(true);
     };
 
-    ////// 点击楼梯图标也可以浏览地图 //////
     main.statusBar.image.floor.onclick = function (e) {
         e.stopPropagation();
 
@@ -824,7 +775,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 点击状态栏中的存档按钮时 //////
     main.statusBar.image.save.onclick = function (e) {
         e.stopPropagation();
 
@@ -836,7 +786,6 @@ main.prototype.listen = function () {
         if (main.core.isPlaying()) main.core.save(true);
     };
 
-    ////// 点击状态栏中的读档按钮时 //////
     main.statusBar.image.load.onclick = function (e) {
         e.stopPropagation();
 
@@ -848,7 +797,6 @@ main.prototype.listen = function () {
         if (main.core.isPlaying()) main.core.load(true);
     };
 
-    ////// 点击状态栏中的系统菜单时 //////
     main.statusBar.image.settings.onclick = function (e) {
         e.stopPropagation();
 
@@ -860,12 +808,10 @@ main.prototype.listen = function () {
         if (main.core.isPlaying()) main.core.openSettings(true);
     };
 
-    ////// 点击工具栏时 //////
     main.dom.hard.onclick = function () {
         main.core.control.setToolbarButton(!core.domStyle.toolbarBtn);
     };
 
-    ////// 手机端的按钮1-7 //////
     main.statusBar.image.btn1.onclick = function (e) {
         e.stopPropagation();
         main.core.onkeyUp({
@@ -935,7 +881,6 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 点击“开始游戏”时 //////
     main.dom.playGame.onclick = function () {
         main.dom.startButtons.style.display = 'none';
         main.core.control.checkBgm();
@@ -949,13 +894,11 @@ main.prototype.listen = function () {
         }
     };
 
-    ////// 点击“载入游戏”时 //////
     main.dom.loadGame.onclick = function () {
         main.core.control.checkBgm();
         main.core.load();
     };
 
-    ////// 点击“录像回放”时 //////
     main.dom.replayGame.onclick = function () {
         main.core.control.checkBgm();
         main.core.chooseReplayFile();
@@ -990,6 +933,6 @@ main.prototype.listen = function () {
         core.platform.successCallback = core.platform.errorCallback = null;
         if (func) func(null);
     };
-}; //listen end
+};
 
 var main = new main();
