@@ -16,7 +16,7 @@ main.floors.MT35=
         {
             "type": "vibrate",
             "direction": "horizontal",
-            "time": 2000,
+            "time": 1500,
             "speed": 10,
             "power": 10
         },
@@ -47,7 +47,7 @@ main.floors.MT35=
                 4,
                 4
             ],
-            "time": 500,
+            "time": 400,
             "steps": [
                 "right:1",
                 "up:3",
