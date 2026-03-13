@@ -1050,9 +1050,18 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		}
 	},
 	"I1342": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
+		"cls": "equips",
+		"name": "勇者勋章",
+		"canUseItemEffect": "true",
+		"text": "勇者，不得不成为勇者",
+		"equip": {
+			"type": 2,
+			"value": {
+				"def": 75,
+				"atk": 25
+			},
+			"percentage": {}
+		}
 	},
 	"I1343": {
 		"cls": "items",
