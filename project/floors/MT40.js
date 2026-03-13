@@ -419,7 +419,7 @@ main.floors.MT40=
                     },
                     {
                         "type": "playSound",
-                        "name": "attack.mp3"
+                        "name": "bomb.mp3"
                     },
                     {
                         "type": "sleep",
@@ -479,7 +479,8 @@ main.floors.MT40=
                                 6,
                                 5
                             ]
-                        ]
+                        ],
+                        "time": 520
                     },
                     {
                         "type": "sleep",
