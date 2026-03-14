@@ -631,8 +631,10 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	},
 	"I1268": {
 		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
+		"name": "二阶红血瓶",
+		"canUseItemEffect": null,
+		"itemEffect": "core.status.hero.hp += 2000",
+		"itemEffectTip": "，生命+2000"
 	},
 	"I1269": {
 		"cls": "items",
