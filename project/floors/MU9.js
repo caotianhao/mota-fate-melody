@@ -106,7 +106,14 @@ main.floors.MU9=
         }
     },
     "beforeBattle": {},
-    "afterBattle": {},
+    "afterBattle": {
+        "6,2": [
+            {
+                "type": "setBlock",
+                "number": "I1485"
+            }
+        ]
+    },
     "afterGetItem": {},
     "afterOpenDoor": {},
     "autoEvent": {},

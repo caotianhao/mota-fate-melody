@@ -176,6 +176,11 @@ main.floors.MT43=
                         5
                     ]
                 ]
+            },
+            "\t[勇者,hero]\b[down,null]等等......不好！果然有埋伏！",
+            {
+                "type": "hide",
+                "remove": true
             }
         ]
     },

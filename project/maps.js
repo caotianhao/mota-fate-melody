@@ -230,7 +230,7 @@ var maps_90f36752_8815_4be8_b32b_d7fad1d0542e =
 	"334": {"cls":"animates","id":"A334"},
 	"335": {"cls":"animates","id":"A335","trigger":"openDoor","animate":1,"doorInfo":{"time":160,"openSound":"door.mp3","closeSound":"door.mp3","keys":{}}},
 	"336": {"cls":"animates","id":"A336"},
-	"337": {"cls":"animates","id":"A337"},
+	"337": {"cls":"animates","id":"A337","trigger":"openDoor","animate":1,"doorInfo":{"time":160,"openSound":"door.mp3","closeSound":"door.mp3","keys":{"I1485":1}},"name":"绿色骷髅门"},
 	"338": {"cls":"enemys","id":"E338"},
 	"339": {"cls":"enemys","id":"E339"},
 	"340": {"cls":"enemys","id":"E340"},
