@@ -1,6 +1,6 @@
 /// <reference path="./runtime.d.ts" />
 function main() {
-    this.version = '2.10.3';
+    this.version = '1.0';
     this.useCompress = false;
     this.bgmRemote = false;
     this.bgmRemoteRoot = 'https://h5mota.com/music/';
@@ -205,7 +205,7 @@ function main() {
     this.floors = {};
     this.canvas = {};
 
-    this.__VERSION__ = '2.10.3';
+    this.__VERSION__ = '1.0';
     this.__VERSION_CODE__ = 512;
 }
 
@@ -282,8 +282,8 @@ main.prototype.init = function (mode, callback) {
                                     );
                                 main.core.control.setDisplayScale(
                                     main.core.domStyle.availableScale.length -
-                                        1 -
-                                        index
+                                    1 -
+                                    index
                                 );
                                 if (
                                     !main.core.isPlaying() &&
@@ -389,22 +389,22 @@ main.prototype.loadFloors = function (callback) {
     script.onerror =
         script.onabort =
         script.ontimeout =
-            function (e) {
-                for (var i = 0; i < main.floorIds.length; i++) {
-                    main.loadFloor(main.floorIds[i], function (modName) {
-                        main.setMainTipsText(
-                            '楼层 ' + modName + '.js 加载完毕'
-                        );
-                        if (
-                            Object.keys(main.floors).length ===
-                            main.floorIds.length
-                        ) {
-                            main.dom.mainTips.style.display = 'none';
-                            callback();
-                        }
-                    });
-                }
-            };
+        function (e) {
+            for (var i = 0; i < main.floorIds.length; i++) {
+                main.loadFloor(main.floorIds[i], function (modName) {
+                    main.setMainTipsText(
+                        '楼层 ' + modName + '.js 加载完毕'
+                    );
+                    if (
+                        Object.keys(main.floors).length ===
+                        main.floorIds.length
+                    ) {
+                        main.dom.mainTips.style.display = 'none';
+                        callback();
+                    }
+                });
+            }
+        };
     main.dom.body.appendChild(script);
 };
 
@@ -916,7 +916,7 @@ main.prototype.listen = function () {
         if (main.core && main.core.control) {
             try {
                 main.core.control.checkAutosave();
-            } catch (e) {}
+            } catch (e) { }
         }
     };
 

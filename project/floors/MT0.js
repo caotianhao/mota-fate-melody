@@ -2,7 +2,7 @@ main.floors.MT0=
 {
     "floorId": "MT0",
     "title": "主塔 0 层",
-    "name": "0",
+    "name": "主塔 0 层",
     "canFlyTo": false,
     "canFlyFrom": false,
     "canUseQuickShop": true,
@@ -26,6 +26,42 @@ main.floors.MT0=
     [  2,  2,  2,  2,  2,  2, 88,  2,  2,  2,  2,  2,  2]
 ],
     "firstArrive": [
+        {
+            "type": "if",
+            "condition": "(flag:hard===1)",
+            "true": [
+                "简单难度补给：生命+200，黄钥匙*1，攻击+1，防御+1",
+                {
+                    "type": "setValue",
+                    "name": "status:hp",
+                    "operator": "+=",
+                    "value": "200"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:atk",
+                    "operator": "+=",
+                    "value": "1"
+                },
+                {
+                    "type": "setValue",
+                    "name": "status:def",
+                    "operator": "+=",
+                    "value": "1"
+                },
+                {
+                    "type": "setValue",
+                    "name": "item:yellowKey",
+                    "operator": "+=",
+                    "value": "1"
+                }
+            ]
+        },
+        {
+            "type": "sleep",
+            "time": 500,
+            "noSkip": true
+        },
         "\t[小妖精,fairy]喂！醒醒！",
         "\t[小妖精,fairy]喂你这家伙！口水都滴到咱的翅膀上了啊！",
         "\t[勇者,hero]诶......嘿嘿嘿嘿......公主大人......滋溜......",

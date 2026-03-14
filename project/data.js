@@ -151,12 +151,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 					85,
 					1
 				],
-				"action": [
-					{
-						"type": "comment",
-						"text": "在这里写该难度需执行的事件"
-					}
-				]
+				"action": []
 			},
 			{
 				"title": "普通",
@@ -166,18 +161,6 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 					255,
 					221,
 					32,
-					1
-				],
-				"action": []
-			},
-			{
-				"title": "困难",
-				"name": "Hard",
-				"hard": 3,
-				"color": [
-					255,
-					68,
-					64,
 					1
 				],
 				"action": []
@@ -232,7 +215,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 	"firstData": {
 		"title": "宿命的旋律",
 		"name": "fate1",
-		"version": "Ver 2.10.3",
+		"version": "Ver 1.0",
 		"floorId": "MT0",
 		"hero": {
 			"image": "brave.png",
@@ -243,10 +226,10 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 			"hp": 1000,
 			"manamax": -1,
 			"mana": 0,
-			"atk": 100000,
-			"def": 100000,
-			"mdef": 100000,
-			"money": 100000,
+			"atk": 10,
+			"def": 10,
+			"mdef": 0,
+			"money": 0,
 			"exp": 0,
 			"equipment": [],
 			"items": {
