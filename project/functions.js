@@ -242,7 +242,7 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 				hint += '，' + core.getStatusLabel('exp') + '+' + exp;
 			core.drawTip(hint, enemy.id);
 
-			if (core.getEquip(1) != 'shield4') {
+			if (core.getEquip(1) != 'shield4' && core.getEquip(1) != 'shield5') {
 				if (core.enemys.hasSpecial(special, 12)) {
 					core.triggerDebuff('get', 'poison');
 				}
@@ -918,7 +918,7 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 				type[loc] = type[loc] || {};
 
 				if (id == 'lavaNet' && !core.hasItem('amulet')) {
-					var lavaDmg = (core.getEquip(1) == 'shield2') ? core.values.lavaDamage / 10 : core.values.lavaDamage;
+					var lavaDmg = (core.getEquip(1) == 'shield5') ? 0 : (core.getEquip(1) == 'shield2') ? core.values.lavaDamage / 10 : core.values.lavaDamage;
 					damage[loc] = (damage[loc] || 0) + lavaDmg;
 					type[loc][(block.event.name || "血网") + "伤害"] = true;
 				}

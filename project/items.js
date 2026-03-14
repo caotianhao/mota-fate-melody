@@ -207,13 +207,14 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	"sword5": {
 		"cls": "equips",
 		"name": "神圣剑",
-		"text": "一把很普通的神圣剑",
+		"text": "世间最锋利的剑",
 		"equip": {
 			"type": 0,
 			"animate": "sword",
 			"value": {
-				"atk": 160
-			}
+				"atk": 240
+			},
+			"percentage": {}
 		},
 		"itemEffect": null,
 		"itemEffectTip": null
@@ -292,18 +293,20 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"itemEffectTip": null
 	},
 	"shield5": {
-		"cls": "items",
+		"cls": "equips",
 		"name": "神圣盾",
-		"text": "一个很普通的神圣盾",
+		"text": "世间最坚固的盾，免疫熔岩伤害跟异常效果",
 		"equip": {
 			"type": 1,
 			"value": {
-				"def": 100,
-				"mdef": 100
-			}
+				"mdef": 500,
+				"def": 240,
+				"atk": 60
+			},
+			"percentage": {}
 		},
-		"itemEffect": "core.status.hero.def += 100;core.status.hero.mdef += 100",
-		"itemEffectTip": "，防御+100，护盾+100"
+		"itemEffect": null,
+		"itemEffectTip": null
 	},
 	"superPotion": {
 		"cls": "items",
