@@ -244,7 +244,113 @@ main.floors.MT50=
     ],
     "eachArrive": [],
     "parallelDo": "",
-    "events": {},
+    "events": {
+        "6,3": {
+            "trigger": null,
+            "enable": false,
+            "noPass": null,
+            "displayDamage": true,
+            "opacity": 1,
+            "filter": {
+                "blur": 0,
+                "hue": 0,
+                "grayscale": 0,
+                "invert": false,
+                "shadow": 0
+            },
+            "data": [
+                "\t[暗妖精,N1584]勇者大人，魔塔马上就要倒塌了！！",
+                "\t[勇者,hero]......",
+                "\t[暗妖精,N1584]快拉着我的手！我会飞的！",
+                "\t[勇者,hero]......嗯......",
+                {
+                    "type": "hideStatusBar"
+                },
+                {
+                    "type": "setCurtain",
+                    "color": [
+                        0,
+                        0,
+                        0,
+                        1
+                    ],
+                    "time": 800,
+                    "keep": true
+                },
+                "魔塔，正如其字面意思，魔塔就是魔物修建的高塔。",
+                "这座屹立百年的魔塔，终于在今天倒塌了。",
+                "人类长久以来的敌对势力终于彻底灭绝。",
+                "即便公主的尸体在魔塔废墟里被发现，举国上下的人民也开始了长达三天三夜的欢庆。",
+                "国王为公主消香玉陨一事悲痛不已，不过他究竟是因为女儿的死还是与邻国联姻的取消而悲痛，我们不得而知。",
+                "国王顽固地认为公主是被魔物逼死的，于是下令让军队将这个世界上所有残存的魔物屠杀殆尽。",
+                "至于勇者，他的尸体没有在废墟里找到，没人知道他是死是活，也没有人知道他的下落。",
+                "但也没有人会去刻意在意他这个小角色的死活。",
+                "这个老套的故事就这样结束了，真是个皆大欢喜的结局啊。",
+                {
+                    "type": "sleep",
+                    "time": 500,
+                    "noSkip": true
+                },
+                "不是吗？",
+                {
+                    "type": "changeFloor",
+                    "floorId": "END",
+                    "loc": [
+                        6,
+                        11
+                    ],
+                    "direction": "up"
+                },
+                {
+                    "type": "setCurtain",
+                    "time": 800
+                }
+            ]
+        },
+        "6,1": {
+            "trigger": null,
+            "enable": false,
+            "noPass": null,
+            "displayDamage": true,
+            "opacity": 1,
+            "filter": {
+                "blur": 0,
+                "hue": 0,
+                "grayscale": 0,
+                "invert": false,
+                "shadow": 0
+            },
+            "data": [
+                {
+                    "type": "vibrate",
+                    "direction": "horizontal",
+                    "time": 500,
+                    "speed": 10,
+                    "power": 10
+                },
+                "\t[勇者,hero]......",
+                "\t[勇者,hero]我绝对会拯救你的。",
+                "\t[勇者,hero]哪怕付出这样的代价，我也不会后悔。",
+                {
+                    "type": "vibrate",
+                    "direction": "horizontal",
+                    "time": 500,
+                    "speed": 10,
+                    "power": 10
+                },
+                {
+                    "type": "show",
+                    "loc": [
+                        [
+                            6,
+                            3
+                        ]
+                    ],
+                    "time": 500
+                }
+            ]
+        }
+    },
     "changeFloor": {
         "6,12": {
             "floorId": ":before",
@@ -253,7 +359,19 @@ main.floors.MT50=
     },
     "beforeBattle": {},
     "afterBattle": {},
-    "afterGetItem": {},
+    "afterGetItem": {
+        "6,0": [
+            {
+                "type": "show",
+                "loc": [
+                    [
+                        6,
+                        1
+                    ]
+                ]
+            }
+        ]
+    },
     "afterOpenDoor": {},
     "autoEvent": {},
     "cannotMove": {},
@@ -262,7 +380,7 @@ main.floors.MT50=
     [  0,  0,  0,  0,  0,  1, 56,  1,  0,  0,  0,  0,  0],
     [  0,  0,  0,  1,  1,  1,  0,  1,  1,  1,  0,  0,  0],
     [  0,  0,  0,  1,  1,  1, 85,  1,  1,  1,  0,  0,  0],
-    [  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0],
+    [  0,  0,  0,  1,  0,  0,1584,  0,  0,  1,  0,  0,  0],
     [  0,  0,  0,  1,  0,  0,132,  0,  0,  1,  0,  0,  0],
     [  0,  0,  0,  1,  0,  0,245,  0,  0,  1,  0,  0,  0],
     [  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0],

@@ -72,7 +72,7 @@ var enemys_fcae963b_31c9_42b4_b48c_bb48d09f3f80 =
 	"blackKing": {"name":"黑衣魔王","hp":1000,"atk":500,"def":0,"money":1000,"exp":1000,"point":0,"special":0,"notBomb":true},
 	"yellowKing": {"name":"黄衣魔王","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":0},
 	"greenKing": {"name":"青衣武士","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":0},
-	"redKing": {"name":"红衣魔王","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":0},
+	"redKing": {"name":"魔王","hp":7000,"atk":950,"def":750,"money":0,"exp":1500,"point":0,"special":0},
 	"blueKing": {"name":"魔王近卫","hp":1925,"atk":650,"def":500,"money":20,"exp":20,"point":0,"special":[2]},
 	"keiskeiFairy": {"name":"铃兰花妖","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":0},
 	"tulipFairy": {"name":"郁金香花妖","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":0},
