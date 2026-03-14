@@ -455,6 +455,9 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 				mon_def *= (1 + def_buff / 100);
 			}
 
+			if (core.hasSpecial(mon_special, 28) && !core.hasItem('I1558'))
+				mon_atk *= 2;
+
 			return {
 				"hp": Math.floor(mon_hp),
 				"atk": Math.floor(mon_atk),
@@ -497,9 +500,6 @@ var functions_d6ad677b_427a_4623_b50f_a445a3b0ef8a =
 
 			if (core.hasSpecial(mon_special, 20) && !core.hasItem("cross"))
 				return null;
-
-			if (core.hasSpecial(mon_special, 28) && !core.hasItem('I1558'))
-				mon_atk *= 2;
 
 			var init_damage = 0;
 			if (core.hasSpecial(mon_special, 11)) {
