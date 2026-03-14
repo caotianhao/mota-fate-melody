@@ -192,7 +192,59 @@ main.floors.MT40=
             }
         ]
     },
-    "afterGetItem": {},
+    "afterGetItem": {
+        "6,5": [
+            {
+                "type": "openDoor",
+                "loc": [
+                    4,
+                    5
+                ],
+                "floorId": "MT39"
+            },
+            {
+                "type": "openDoor",
+                "loc": [
+                    8,
+                    5
+                ],
+                "floorId": "MT39"
+            },
+            {
+                "type": "openDoor",
+                "loc": [
+                    6,
+                    2
+                ]
+            },
+            {
+                "type": "openDoor",
+                "loc": [
+                    6,
+                    10
+                ]
+            },
+            {
+                "type": "openDoor",
+                "loc": [
+                    3,
+                    4
+                ],
+                "floorId": "MT38"
+            },
+            {
+                "type": "hide",
+                "loc": [
+                    [
+                        1,
+                        4
+                    ]
+                ],
+                "floorId": "MT38",
+                "remove": true
+            }
+        ]
+    },
     "afterOpenDoor": {},
     "autoEvent": {
         "6,3": {
