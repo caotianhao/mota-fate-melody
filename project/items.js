@@ -2175,9 +2175,10 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"canUseItemEffect": "true"
 	},
 	"I1558": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
+		"cls": "constants",
+		"name": "安桖之叶",
+		"canUseItemEffect": null,
+		"text": "抚慰狂暴的魔物，让爆攻效果无效化"
 	},
 	"I1559": {
 		"cls": "items",
