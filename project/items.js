@@ -309,13 +309,13 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"itemEffectTip": null
 	},
 	"superPotion": {
-		"cls": "items",
+		"cls": "constants",
 		"name": "圣水",
-		"itemEffect": "core.status.hero.hp *= 2",
-		"itemEffectTip": "，生命值翻倍",
-		"useItemEffect": "core.status.hero.hp *= 2;core.playSound('回血');",
-		"canUseItemEffect": "true",
-		"text": "生命值翻倍"
+		"itemEffect": null,
+		"itemEffectTip": null,
+		"useItemEffect": null,
+		"canUseItemEffect": null,
+		"text": "我拯救了一切，也毁灭了一切"
 	},
 	"book": {
 		"cls": "constants",
