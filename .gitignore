@@ -52,7 +52,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-.github
 node_modules
 _codelab
 _saves
