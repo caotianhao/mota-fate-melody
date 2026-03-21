@@ -722,11 +722,6 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"name": "新物品",
 		"canUseItemEffect": "true"
 	},
-	"I1287": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
-	},
 	"I1288": {
 		"cls": "items",
 		"name": "新物品",
@@ -744,11 +739,6 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"text": null,
 		"itemEffect": "core.status.hero.mdef += 15",
 		"itemEffectTip": "，护盾+15"
-	},
-	"I1291": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
 	},
 	"I1292": {
 		"cls": "items",
@@ -856,11 +846,6 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"canUseItemEffect": "true"
 	},
 	"I1317": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
-	},
-	"I1318": {
 		"cls": "items",
 		"name": "新物品",
 		"canUseItemEffect": "true"
