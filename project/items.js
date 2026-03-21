@@ -591,11 +591,6 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"name": "新物品",
 		"canUseItemEffect": "true"
 	},
-	"I1264": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
-	},
 	"I1265": {
 		"cls": "constants",
 		"name": "血瓶数据显示开关",
@@ -669,11 +664,6 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"name": "新物品",
 		"canUseItemEffect": "true"
 	},
-	"I1275": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
-	},
 	"I1276": {
 		"cls": "items",
 		"name": "二阶红宝石",
@@ -723,11 +713,6 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"useItemEffect": null
 	},
 	"I1284": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
-	},
-	"I1285": {
 		"cls": "items",
 		"name": "新物品",
 		"canUseItemEffect": "true"
@@ -795,11 +780,6 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"name": "新物品",
 		"canUseItemEffect": "true"
 	},
-	"I1298": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
-	},
 	"I1299": {
 		"cls": "items",
 		"name": "新物品",
@@ -815,17 +795,7 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"name": "新物品",
 		"canUseItemEffect": "true"
 	},
-	"I1302": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
-	},
 	"I1303": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
-	},
-	"I1304": {
 		"cls": "items",
 		"name": "新物品",
 		"canUseItemEffect": "true"
@@ -836,11 +806,6 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"canUseItemEffect": "true"
 	},
 	"I1306": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
-	},
-	"I1307": {
 		"cls": "items",
 		"name": "新物品",
 		"canUseItemEffect": "true"
@@ -936,11 +901,6 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"canUseItemEffect": "true"
 	},
 	"I1326": {
-		"cls": "items",
-		"name": "新物品",
-		"canUseItemEffect": "true"
-	},
-	"I1327": {
 		"cls": "items",
 		"name": "新物品",
 		"canUseItemEffect": "true"
