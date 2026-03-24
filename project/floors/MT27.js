@@ -27,10 +27,48 @@ main.floors.MT27=
         }
     },
     "beforeBattle": {},
-    "afterBattle": {},
+    "afterBattle": {
+        "8,3": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MT27_9_2",
+                "operator": "+=",
+                "value": "1"
+            }
+        ],
+        "10,3": [
+            {
+                "type": "setValue",
+                "name": "flag:door_MT27_9_2",
+                "operator": "+=",
+                "value": "1"
+            }
+        ]
+    },
     "afterGetItem": {},
     "afterOpenDoor": {},
-    "autoEvent": {},
+    "autoEvent": {
+        "9,2": {
+            "0": {
+                "condition": "flag:door_MT27_9_2==2",
+                "currentFloor": true,
+                "priority": 0,
+                "delayExecute": false,
+                "multiExecute": false,
+                "data": [
+                    {
+                        "type": "openDoor"
+                    },
+                    {
+                        "type": "setValue",
+                        "name": "flag:door_MT27_9_2",
+                        "operator": "=",
+                        "value": "null"
+                    }
+                ]
+            }
+        }
+    },
     "cannotMove": {},
     "cannotMoveIn": {},
     "map": [
