@@ -85,7 +85,7 @@ control.prototype._checkRequestAnimationFrame = function () {
         var vendors = ['webkit', 'moz'];
         for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
             window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
-            window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||    
+            window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||
                 window[vendors[x] + 'CancelRequestAnimationFrame'];
         }
 
@@ -2309,7 +2309,7 @@ control.prototype.getStatusLabel = function (name) {
     }
     return {
         name: "名称", lv: "等级", hpmax: "生命上限", hp: "生命", manamax: "魔力上限", mana: "魔力",
-        atk: "攻击", def: "防御", mdef: "护盾", money: "金币", exp: "经验", point: "加点", steps: "步数"
+        atk: "攻击", def: "防御", mdef: "护盾", money: "金币", exp: "魔力", point: "加点", steps: "步数"
     }[name] || name;
 }
 

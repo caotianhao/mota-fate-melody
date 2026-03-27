@@ -2970,7 +2970,7 @@ ui.prototype._drawStatistics = function (floorIds) {
         + "，总游戏时长" + core.formatTime(statistics.totalTime)
         + "。\n瞬间移动次数：" + statistics.moveDirectly + "，共计少走" + statistics.ignoreSteps + "步。"
         + "\n\n总计通过血瓶恢复生命值为" + core.formatBigNumber(statistics.hp) + "点。\n\n"
-        + "总计打死了" + statistics.battle + "个怪物，得到了" + core.formatBigNumber(statistics.money) + "金币，" + core.formatBigNumber(statistics.exp) + "点经验。\n\n"
+        + "总计打死了" + statistics.battle + "个怪物，得到了" + core.formatBigNumber(statistics.money) + "金币，" + core.formatBigNumber(statistics.exp) + "点魔力。\n\n"
         + "受到的总伤害为" + core.formatBigNumber(statistics.battleDamage + statistics.poisonDamage + statistics.extraDamage)
         + "，其中战斗伤害" + core.formatBigNumber(statistics.battleDamage) + "点"
         + (core.flags.statusBarItems.indexOf('enableDebuff') >= 0 ? ("，中毒伤害" + core.formatBigNumber(statistics.poisonDamage) + "点") : "")
@@ -3088,7 +3088,7 @@ ui.prototype._drawStatistics_generateText = function (obj, type, data) {
     var text = type + "地图中：\n";
     text += "共有怪物" + data.monster.count + "个";
     if (core.flags.statusBarItems.indexOf('enableMoney') >= 0) text += "，总金币数" + data.monster.money;
-    if (core.flags.statusBarItems.indexOf('enableExp') >= 0) text += "，总经验数" + data.monster.exp;
+    if (core.flags.statusBarItems.indexOf('enableExp') >= 0) text += "，总魔力数" + data.monster.exp;
     if (core.flags.enableAddPoint) text += "，总加点数" + data.monster.point;
     text += "。\n";
 
