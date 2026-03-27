@@ -7,7 +7,7 @@ main.floors.EX1=
     "height": 13,
     "canFlyTo": false,
     "canFlyFrom": false,
-    "canUseQuickShop": true,
+    "canUseQuickShop": false,
     "cannotViewMap": true,
     "images": [],
     "ratio": 1,
