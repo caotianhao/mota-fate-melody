@@ -92,7 +92,8 @@ main.floors.MT1=
             "\t[普通老人,man]我们一定会再次见面的，如影随形，来去无踪......",
             {
                 "type": "hide",
-                "remove": true
+                "remove": true,
+                "time": 500
             },
             "\t[勇者,hero]凭空消失了......",
             "\t[勇者,hero]这人无论如何都跟普通沾不上边吧......"
