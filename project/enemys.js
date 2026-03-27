@@ -29,7 +29,7 @@ var enemys_fcae963b_31c9_42b4_b48c_bb48d09f3f80 =
 	"skeletonPriest": {"name":"骷髅法师","hp":100,"atk":100,"def":0,"money":0,"exp":0,"point":0,"special":18,"value":20},
 	"skeletonKing": {"name":"鬼帝","hp":9800,"atk":835,"def":445,"money":50,"exp":2000,"point":0,"special":[20]},
 	"demonPriest": {"name":"魔神法师","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":0},
-	"goldHornSlime": {"name":"稀有金属史莱姆","hp":0,"atk":0,"def":0,"money":0,"exp":0,"point":0,"special":[3]},
+	"goldHornSlime": {"name":"稀有金属史莱姆","hp":650,"atk":23,"def":40,"money":25,"exp":0,"point":0,"special":[3]},
 	"silverSlime": {"name":"疫病化身","hp":100,"atk":10,"def":10,"money":0,"exp":50,"point":0,"special":[12,13,14]},
 	"whiteHornSlime": {"name":"恶魇史莱姆","hp":700,"atk":280,"def":120,"money":15,"exp":5,"point":0,"special":[1,14]},
 	"redSwordsman": {"name":"一斩武者","hp":400,"atk":995,"def":100,"money":15,"exp":10,"point":0,"special":[1,28]},
