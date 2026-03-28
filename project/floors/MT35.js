@@ -63,7 +63,10 @@ main.floors.MT35=
     "changeFloor": {
         "1,1": {
             "floorId": "MT36",
-            "stair": "downFloor",
+            "loc": [
+                6,
+                9
+            ],
             "direction": "up"
         },
         "6,11": {
