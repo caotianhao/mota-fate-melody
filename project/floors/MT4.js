@@ -160,23 +160,19 @@ main.floors.MT4=
                 ]
             },
             {
-                "type": "setBlock",
-                "number": "specialDoor",
+                "type": "closeDoor",
+                "id": "specialDoor",
                 "loc": [
-                    [
-                        2,
-                        8
-                    ]
+                    2,
+                    8
                 ]
             },
             {
-                "type": "setBlock",
-                "number": "specialDoor",
+                "type": "closeDoor",
+                "id": "specialDoor",
                 "loc": [
-                    [
-                        10,
-                        6
-                    ]
+                    10,
+                    6
                 ]
             }
         ]
@@ -309,7 +305,8 @@ main.floors.MT4=
                         ]
                     }
                 ]
-            }
+            },
+            "1": null
         }
     },
     "cannotMove": {},
