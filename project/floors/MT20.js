@@ -15,13 +15,11 @@ main.floors.MT20=
     "firstArrive": [
         "\t[勇者,hero]这层的氛围有点不对劲......怎么回事？",
         {
-            "type": "setBlock",
-            "number": "specialDoor",
+            "type": "closeDoor",
+            "id": "specialDoor",
             "loc": [
-                [
-                    6,
-                    1
-                ]
+                6,
+                1
             ]
         }
     ],
