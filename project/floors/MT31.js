@@ -16,7 +16,7 @@ main.floors.MT31=
         {
             "type": "vibrate",
             "direction": "horizontal",
-            "time": 2000,
+            "time": 800,
             "speed": 10,
             "power": 10
         },
