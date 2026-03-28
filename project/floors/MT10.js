@@ -399,39 +399,28 @@ main.floors.MT10=
                 "\t[勇者,hero]嗯，我会奋战到最后一刻......连你们的份一起。"
             ]
         },
-        "6,7": {
-            "trigger": "action",
-            "enable": true,
-            "noPass": null,
-            "displayDamage": true,
-            "opacity": 1,
-            "filter": {
-                "blur": 0,
-                "hue": 0,
-                "grayscale": 0,
-                "invert": false,
-                "shadow": 0
+        "6,7": [
+            "\t[骷髅将军,skeletonKnight]没想到你竟然真的能拼命到这种程度...",
+            "\t[勇者,hero]我也没有想到，毕竟我就是个没什么志气的人这种事情，我自己是再清楚不过的了。",
+            "\t[勇者,hero]我是踩在无数亡魂肩上才得以与你正面对决的......各种意义上。",
+            "\t[骷髅将军,skeletonKnight]恼人至极！为什么你们就是不肯放弃呢？",
+            "\t[骷髅将军,skeletonKnight]难道乖乖引颈受戮，然后作为一具骷髅人轻轻松松地活下去有什么不好吗？！",
+            "\t[勇者,hero]可笑，我们就是为了活下去才会站在你这种混账东西的面前啊！",
+            "\t[骷髅将军,skeletonKnight]不可理喻，简直不可理喻！",
+            "\t[勇者,hero]活人跟死人本来就没什么道理可讲，拔剑吧！",
+            "\t[骷髅将军,skeletonKnight]呵呵......很好！你果然是个值得一战的对手。",
+            {
+                "type": "hide",
+                "remove": true
             },
-            "data": [
-                "\t[骷髅将军,skeletonKnight]没想到你竟然真的能拼命到这种程度...",
-                "\t[勇者,hero]我也没有想到，毕竟我就是个没什么志气的人这种事情，我自己是再清楚不过的了。",
-                "\t[勇者,hero]我是踩在无数亡魂肩上才得以与你正面对决的......各种意义上。",
-                "\t[骷髅将军,skeletonKnight]恼人至极！为什么你们就是不肯放弃呢？",
-                "\t[骷髅将军,skeletonKnight]难道乖乖引颈受戮，然后作为一具骷髅人轻轻松松地活下去有什么不好吗？！",
-                "\t[勇者,hero]可笑，我们就是为了活下去才会站在你这种混账东西的面前啊！",
-                "\t[骷髅将军,skeletonKnight]不可理喻，简直不可理喻！",
-                "\t[勇者,hero]活人跟死人本来就没什么道理可讲，拔剑吧！",
-                "\t[骷髅将军,skeletonKnight]呵呵......很好！你果然是个值得一战的对手。",
-                {
-                    "type": "battle",
-                    "id": "skeletonKnight"
-                },
-                {
-                    "type": "hide",
-                    "remove": true
-                }
-            ]
-        },
+            {
+                "type": "battle",
+                "loc": [
+                    6,
+                    8
+                ]
+            }
+        ],
         "6,9": {
             "trigger": null,
             "enable": false,
@@ -704,6 +693,156 @@ main.floors.MT10=
                 "name": "flag:10F_EVENT_10_8",
                 "operator": "+=",
                 "value": "1"
+            }
+        ],
+        "6,8": [
+            {
+                "type": "setBlock",
+                "number": "N301",
+                "loc": [
+                    [
+                        6,
+                        8
+                    ]
+                ]
+            },
+            "\t[勇者,hero]唔......这家伙......！！（吐出一口血）",
+            "\t[骷髅将军,skeletonKnight]哈哈哈哈！看到了吗？这就是屠杀无数生灵换取的力量！本大爷的力量！",
+            "\t[骷髅将军,skeletonKnight]到此为止了！愚蠢的人类！",
+            {
+                "type": "vibrate",
+                "direction": "horizontal",
+                "time": 1000,
+                "speed": 10,
+                "power": 10
+            },
+            {
+                "type": "setBlock",
+                "number": "N1582",
+                "loc": [
+                    [
+                        7,
+                        7
+                    ]
+                ],
+                "time": 500
+            },
+            {
+                "type": "setBlock",
+                "number": "N1582",
+                "loc": [
+                    [
+                        5,
+                        7
+                    ]
+                ],
+                "time": 500
+            },
+            {
+                "type": "setBlock",
+                "number": "N1582",
+                "loc": [
+                    [
+                        7,
+                        9
+                    ]
+                ],
+                "time": 500
+            },
+            {
+                "type": "setBlock",
+                "number": "N1582",
+                "loc": [
+                    [
+                        5,
+                        9
+                    ]
+                ],
+                "time": 500
+            },
+            "\t[败亡勇者们,N1582]你的对手可不仅仅是他一个人！",
+            "\t[骷髅将军,skeletonKnight]什么？！我的刀下鬼们竟然......！",
+            "\t[勇者,hero]咳咳......看见了吗，骷髅将军。",
+            "\t[勇者,hero]我们人类的确弱小而不可理喻，我们当然也会恐惧，也会逃避，这都是无法避免的事情。",
+            "\t[勇者,hero]但即便如此我们也会继续奋力前进。",
+            "\t[骷髅将军,skeletonKnight]为什么，明明害怕得发抖还要耍帅！",
+            "\t[骷髅将军,skeletonKnight]明明知道不是我的对手还有挥剑的力气！",
+            "\t[骷髅将军,skeletonKnight]你们究竟为什么要拼命到这种地步！",
+            "\t[勇者,hero]你这种连生命都没有的可怜虫，当然是不可能理解的。",
+            "\t[勇者,hero]看着吧！人类的赞歌！就是勇气的赞歌！",
+            {
+                "type": "move",
+                "loc": [
+                    5,
+                    7
+                ],
+                "time": 500,
+                "steps": [
+                    "rightdown:1"
+                ]
+            },
+            {
+                "type": "move",
+                "loc": [
+                    7,
+                    7
+                ],
+                "time": 500,
+                "steps": [
+                    "leftdown:1"
+                ]
+            },
+            {
+                "type": "move",
+                "loc": [
+                    5,
+                    9
+                ],
+                "time": 500,
+                "steps": [
+                    "rightup:1"
+                ]
+            },
+            {
+                "type": "move",
+                "loc": [
+                    7,
+                    9
+                ],
+                "time": 500,
+                "steps": [
+                    "leftup:1"
+                ]
+            },
+            {
+                "type": "animate",
+                "name": "zone",
+                "loc": [
+                    6,
+                    8
+                ]
+            },
+            "\t[骷髅将军,skeletonKnight]咕啊！！！！！",
+            {
+                "type": "hide",
+                "loc": [
+                    [
+                        6,
+                        8
+                    ]
+                ],
+                "remove": true,
+                "time": 500
+            },
+            {
+                "type": "show",
+                "loc": [
+                    [
+                        6,
+                        9
+                    ]
+                ],
+                "time": 500
             }
         ]
     },
