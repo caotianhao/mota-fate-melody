@@ -64,7 +64,6 @@ var enemys_fcae963b_31c9_42b4_b48c_bb48d09f3f80 =
 	"E553": {"name":"起源施咒者","hp":1500,"atk":550,"def":300,"money":30,"exp":25,"point":0,"special":[2,28]},
 	"E558": {"name":"彷徨幽鬼","hp":700,"atk":180,"def":100,"money":5,"exp":5,"point":0,"special":[2,22],"value":null,"damage":200},
 	"E572": {"name":"鬼奴","hp":800,"atk":300,"def":80,"money":0,"exp":40,"point":0,"special":[]},
-	"E603": {"name":"魔导重铠堡垒","hp":999,"atk":200,"def":500,"money":25,"exp":20,"point":0,"special":[2,8]},
 	"E679": {"name":"追魂","hp":1500,"atk":500,"def":100,"money":0,"exp":60,"point":0,"special":[2]},
 	"E737": {"name":"地狱史莱姆","hp":1000,"atk":999,"def":0,"money":30,"exp":25,"point":0,"special":[17,28]},
 	"E763": {"name":"魔导神磐堡垒","hp":20,"atk":200,"def":735,"money":25,"exp":20,"point":0,"special":[2,3]},

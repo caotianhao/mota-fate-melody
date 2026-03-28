@@ -143,7 +143,6 @@ var maps_90f36752_8815_4be8_b32b_d7fad1d0542e =
 	"553": {"cls":"enemys","id":"E553"},
 	"558": {"cls":"enemys","id":"E558"},
 	"572": {"cls":"enemys","id":"E572"},
-	"603": {"cls":"enemys","id":"E603"},
 	"679": {"cls":"enemys","id":"E679"},
 	"737": {"cls":"enemys","id":"E737"},
 	"763": {"cls":"enemys","id":"E763"},
