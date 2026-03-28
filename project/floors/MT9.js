@@ -137,8 +137,12 @@ main.floors.MT9=
             "stair": "upFloor"
         },
         "6,1": {
-            "floorId": ":next",
-            "stair": "downFloor"
+            "floorId": "MT10",
+            "loc": [
+                6,
+                2
+            ],
+            "direction": "down"
         }
     },
     "beforeBattle": {},

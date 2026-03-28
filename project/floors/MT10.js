@@ -14,12 +14,6 @@ main.floors.MT10=
     "defaultGround": "ground",
     "firstArrive": [
         {
-            "type": "moveHero",
-            "steps": [
-                "down:2"
-            ]
-        },
-        {
             "type": "closeDoor",
             "id": "specialDoor",
             "loc": [
