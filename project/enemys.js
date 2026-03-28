@@ -37,7 +37,7 @@ var enemys_fcae963b_31c9_42b4_b48c_bb48d09f3f80 =
 	"skeletonWarrior": {"name":"骷髅士兵","hp":60,"atk":65,"def":25,"money":6,"exp":3,"point":0,"special":0},
 	"whiteSlimeman": {"name":"疫病史莱姆","hp":600,"atk":185,"def":90,"money":5,"exp":12,"point":0,"special":[21],"value":null,"atkValue":2,"defValue":3},
 	"slimeman": {"name":"拟态史莱姆","hp":200,"atk":65,"def":30,"money":4,"exp":3,"point":0,"special":[],"atkValue":2,"defValue":3},
-	"yellowGateKeeper": {"name":"初级卫兵","hp":100,"atk":120,"def":0,"money":10,"exp":0,"point":0,"special":0},
+	"yellowGateKeeper": {"name":"妨害者","hp":450,"atk":55,"def":55,"money":10,"exp":10,"point":0,"special":0},
 	"blueGateKeeper": {"name":"保卫者","hp":1500,"atk":600,"def":500,"money":20,"exp":20,"point":0,"special":0},
 	"redGateKeeper": {"name":"捍卫者","hp":2200,"atk":780,"def":950,"money":20,"exp":20,"point":0,"special":0},
 	"magicMaster": {"name":"黑暗大法师","hp":2000,"atk":350,"def":400,"money":100,"exp":100,"point":0,"special":[2],"value":null,"add":true,"notBomb":true},
