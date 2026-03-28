@@ -17,6 +17,7 @@ main.floors.MT1=
         "\t[勇者,hero]呼，那么接下来就得硬着头皮上了。",
         {
             "type": "moveHero",
+            "time": 1000,
             "steps": [
                 "up:2"
             ]
@@ -78,7 +79,8 @@ main.floors.MT1=
                 "\t[勇者,hero]她好像很生气啊。",
                 {
                     "type": "hide",
-                    "remove": true
+                    "remove": true,
+                    "time": 500
                 }
             ]
         },

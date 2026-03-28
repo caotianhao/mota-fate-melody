@@ -103,7 +103,8 @@ main.floors.MT15=
             },
             {
                 "type": "hide",
-                "remove": true
+                "remove": true,
+                "time": 500
             }
         ],
         "11,11": [

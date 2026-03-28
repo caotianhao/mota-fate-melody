@@ -143,7 +143,8 @@ main.floors.MT0=
                     3
                 ]
             ],
-            "remove": true
+            "remove": true,
+            "time": 500
         }
     ],
     "parallelDo": "",

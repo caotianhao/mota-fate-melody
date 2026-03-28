@@ -20,7 +20,8 @@ main.floors.MT14=
             "\t[普通老人,man]银剑对某些魔物有特殊的回血效果，务必好好利用。",
             {
                 "type": "hide",
-                "remove": true
+                "remove": true,
+                "time": 500
             }
         ]
     },

@@ -58,7 +58,8 @@ main.floors.MT11=
             "\t[勇者,hero]......那我还真是谢谢你全家了啊！",
             {
                 "type": "hide",
-                "remove": true
+                "remove": true,
+                "time": 500
             }
         ],
         "4,4": [
@@ -78,7 +79,8 @@ main.floors.MT11=
             "\t[勇者,hero]嗯，我知道了。",
             {
                 "type": "hide",
-                "remove": true
+                "remove": true,
+                "time": 500
             }
         ]
     },
