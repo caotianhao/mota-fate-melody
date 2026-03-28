@@ -127,6 +127,7 @@ var maps_90f36752_8815_4be8_b32b_d7fad1d0542e =
 	"278": {"cls":"enemys","id":"devilKnight"},
 	"279": {"cls":"enemys","id":"grayPriest"},
 	"300": {"cls":"terrains","id":"ground"},
+	"301": {"cls":"npcs","id":"N301"},
 	"305": {"cls":"terrains","id":"grass"},
 	"308": {"cls":"terrains","id":"grass2"},
 	"311": {"cls":"terrains","id":"ground2"},
