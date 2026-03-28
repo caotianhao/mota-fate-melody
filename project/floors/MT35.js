@@ -62,8 +62,9 @@ main.floors.MT35=
     "events": {},
     "changeFloor": {
         "1,1": {
-            "floorId": ":next",
-            "stair": "downFloor"
+            "floorId": "MT36",
+            "stair": "downFloor",
+            "direction": "up"
         },
         "6,11": {
             "floorId": ":before",

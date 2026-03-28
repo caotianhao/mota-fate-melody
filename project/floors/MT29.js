@@ -56,8 +56,12 @@ main.floors.MT29=
             "stair": "upFloor"
         },
         "6,11": {
-            "floorId": ":next",
-            "stair": "downFloor"
+            "floorId": "MT30",
+            "loc": [
+                6,
+                2
+            ],
+            "direction": "down"
         }
     },
     "beforeBattle": {},

@@ -105,8 +105,12 @@ main.floors.MT19=
     },
     "changeFloor": {
         "6,0": {
-            "floorId": ":next",
-            "stair": "downFloor"
+            "floorId": "MT20",
+            "loc": [
+                6,
+                2
+            ],
+            "direction": "down"
         },
         "6,12": {
             "floorId": ":before",
