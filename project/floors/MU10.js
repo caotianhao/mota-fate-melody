@@ -14,6 +14,12 @@ main.floors.MU10=
     "defaultGround": "T1585",
     "firstArrive": [
         {
+            "type": "sleep",
+            "time": 100,
+            "noSkip": true
+        },
+        "\t[勇者,hero]好热......地板上覆盖满了凝固的熔岩......可恶......",
+        {
             "type": "closeDoor",
             "id": "specialDoor",
             "loc": [
@@ -21,7 +27,11 @@ main.floors.MU10=
                 11
             ]
         },
-        "\t[勇者,hero]好热......地板上覆盖满了凝固的熔岩......可恶......",
+        {
+            "type": "sleep",
+            "time": 500,
+            "noSkip": true
+        },
         "\t[勇者,hero]你就是鬼帝的手下，追魂的正体吧？",
         "\t[追魂,E679]鬼帝的手下？你是说那个只知道逃避的胆小鬼吗？",
         "\t[追魂,E679]哈哈哈哈哈！真是笑断肋骨了！本大爷怎么可能会是那种人的手下！",
