@@ -31,6 +31,9 @@ main.floors.END=
             "勇者笑了笑，伸手拭去了她脸上的泪水。",
             "\t[勇者,hero]初次见面，妖精小姐，我是勇者。",
             {
+                "type": "pauseBgm"
+            },
+            {
                 "type": "win",
                 "reason": "宿命的旋律·完",
                 "norank": 1
@@ -65,5 +68,10 @@ main.floors.END=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "end.ogg",
+    "weather": [
+        "sun",
+        10
+    ]
 }
