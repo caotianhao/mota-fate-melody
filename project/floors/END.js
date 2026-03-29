@@ -32,7 +32,7 @@ main.floors.END=
             "\t[勇者,hero]初次见面，妖精小姐，我是勇者。",
             {
                 "type": "win",
-                "reason": "happy ending",
+                "reason": "宿命的旋律·完",
                 "norank": 1
             }
         ]
