@@ -88,7 +88,6 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 		],
 		"bgms": [
 			"05.Innerlink.wav",
-			"ForSeasons.mp3",
 			"Resphoina.mp3",
 			"TheIsland.mp3",
 			"bgm.mp3",
@@ -184,7 +183,7 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 			"饰品2",
 			"特殊宝石"
 		],
-		"startBgm": null,
+		"startBgm": "bgm.mp3",
 		"styles": {
 			"startBackground": "project/images/bg.jpg",
 			"startVerticalBackground": "project/images/bg.jpg",
