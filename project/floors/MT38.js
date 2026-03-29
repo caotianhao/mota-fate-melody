@@ -72,5 +72,6 @@ main.floors.MT38=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "TheIsland.mp3"
 }

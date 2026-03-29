@@ -53,5 +53,6 @@ main.floors.MT32=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "TheIsland.mp3"
 }

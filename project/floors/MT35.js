@@ -101,5 +101,6 @@ main.floors.MT35=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "TheIsland.mp3"
 }
