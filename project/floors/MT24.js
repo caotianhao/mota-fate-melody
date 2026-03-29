@@ -63,5 +63,6 @@ main.floors.MT24=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "05.Innerlink.wav"
 }

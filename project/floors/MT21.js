@@ -85,5 +85,6 @@ main.floors.MT21=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "05.Innerlink.wav"
 }

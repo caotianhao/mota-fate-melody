@@ -93,5 +93,6 @@ main.floors.MT45=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "Resphoina.mp3"
 }

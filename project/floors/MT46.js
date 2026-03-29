@@ -53,5 +53,6 @@ main.floors.MT46=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "Resphoina.mp3"
 }

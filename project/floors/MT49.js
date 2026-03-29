@@ -182,5 +182,6 @@ main.floors.MT49=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "Resphoina.mp3"
 }

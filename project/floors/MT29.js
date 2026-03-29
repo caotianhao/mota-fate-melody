@@ -91,5 +91,6 @@ main.floors.MT29=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "05.Innerlink.wav"
 }

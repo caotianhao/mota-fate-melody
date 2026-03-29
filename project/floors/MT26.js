@@ -71,5 +71,6 @@ main.floors.MT26=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "05.Innerlink.wav"
 }
