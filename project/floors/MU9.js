@@ -101,8 +101,12 @@ main.floors.MU9=
             "stair": "downFloor"
         },
         "11,8": {
-            "floorId": ":before",
-            "stair": "upFloor"
+            "floorId": "MU10",
+            "loc": [
+                6,
+                10
+            ],
+            "direction": "up"
         }
     },
     "beforeBattle": {},

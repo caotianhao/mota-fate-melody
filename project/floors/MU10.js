@@ -14,12 +14,6 @@ main.floors.MU10=
     "defaultGround": "T1585",
     "firstArrive": [
         {
-            "type": "moveHero",
-            "steps": [
-                "up:2"
-            ]
-        },
-        {
             "type": "closeDoor",
             "id": "specialDoor",
             "loc": [
