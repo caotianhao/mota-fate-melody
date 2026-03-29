@@ -59,126 +59,147 @@ main.floors.MU10=
             "loc": [
                 5,
                 8
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 7,
                 8
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 1,
                 6
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 2,
                 6
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 3,
                 6
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 4,
                 6
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 1,
                 10
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 2,
                 10
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 3,
                 10
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 4,
                 10
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 8,
                 6
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 9,
                 6
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 10,
                 6
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 11,
                 6
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 8,
                 10
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 9,
                 10
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 10,
                 10
-            ]
+            ],
+            "async": true
         },
         {
             "type": "openDoor",
             "loc": [
                 11,
                 10
-            ]
+            ],
+            "async": true
+        },
+        {
+            "type": "waitAsync"
         }
     ],
     "eachArrive": [],
