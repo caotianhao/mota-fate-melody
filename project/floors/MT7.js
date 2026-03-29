@@ -66,5 +66,6 @@ main.floors.MT7=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "fullmoonplan.mp3"
 }

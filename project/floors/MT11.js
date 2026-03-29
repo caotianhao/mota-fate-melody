@@ -122,5 +122,5 @@ main.floors.MT11=
     "fgmap": [
 
 ],
-    "bgm": "bgm.mp3"
+    "bgm": "wange.mp3"
 }
