@@ -87,7 +87,12 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 			"zone"
 		],
 		"bgms": [
+			"05.Innerlink.wav",
+			"ForSeasons.mp3",
+			"Resphoina.mp3",
+			"TheIsland.mp3",
 			"bgm.mp3",
+			"dixia.mp3",
 			"end.ogg"
 		],
 		"sounds": [
