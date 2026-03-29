@@ -93,7 +93,10 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 			"TheIsland.mp3",
 			"bgm.mp3",
 			"dixia.mp3",
-			"end.ogg"
+			"end.ogg",
+			"fairy.mp3",
+			"fullmoonplan.mp3",
+			"wange.mp3"
 		],
 		"sounds": [
 			"094-Attack06.ogg",

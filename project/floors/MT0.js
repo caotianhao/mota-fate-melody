@@ -216,5 +216,6 @@ main.floors.MT0=
     "height": 13,
     "autoEvent": {},
     "beforeBattle": {},
-    "cannotMoveIn": {}
+    "cannotMoveIn": {},
+    "bgm": "fairy.mp3"
 }

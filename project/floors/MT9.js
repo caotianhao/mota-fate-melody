@@ -172,5 +172,6 @@ main.floors.MT9=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "fullmoonplan.mp3"
 }

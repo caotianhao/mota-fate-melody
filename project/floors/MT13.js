@@ -53,5 +53,6 @@ main.floors.MT13=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "wange.mp3"
 }

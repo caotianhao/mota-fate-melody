@@ -331,5 +331,6 @@ main.floors.MT4=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "fullmoonplan.mp3"
 }

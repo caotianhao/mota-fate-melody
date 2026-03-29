@@ -918,5 +918,6 @@ main.floors.MT10=
     "weather": [
         "rain",
         6
-    ]
+    ],
+    "bgm": "fullmoonplan.mp3"
 }

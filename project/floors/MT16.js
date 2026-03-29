@@ -81,5 +81,6 @@ main.floors.MT16=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "wange.mp3"
 }

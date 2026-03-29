@@ -27,7 +27,7 @@ main.floors.MT8=
             }
         ]
     },
-    "bgm": null,
+    "bgm": "fullmoonplan.mp3",
     "changeFloor": {
         "8,0": {
             "floorId": ":before",

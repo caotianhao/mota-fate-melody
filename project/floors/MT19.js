@@ -291,5 +291,6 @@ main.floors.MT19=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "wange.mp3"
 }

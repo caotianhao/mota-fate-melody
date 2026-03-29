@@ -91,5 +91,6 @@ main.floors.EX1=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "wange.mp3"
 }

@@ -323,5 +323,6 @@ main.floors.MT1=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "fullmoonplan.mp3"
 }

@@ -130,5 +130,5 @@ main.floors.MT3=
     "fgmap": [
 
 ],
-    "bgm": null
+    "bgm": "fullmoonplan.mp3"
 }

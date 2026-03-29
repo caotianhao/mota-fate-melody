@@ -158,5 +158,6 @@ main.floors.MT20=
     "weather": [
         "rain",
         6
-    ]
+    ],
+    "bgm": "wange.mp3"
 }

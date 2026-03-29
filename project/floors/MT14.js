@@ -306,5 +306,6 @@ main.floors.MT14=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "wange.mp3"
 }
