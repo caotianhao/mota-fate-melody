@@ -619,42 +619,9 @@ var data_a1e2fb4a_e986_4524_b0da_9b7ba7c0874d =
 		"shops": [],
 		"levelUp": [
 			{
-				"need": "0",
-				"title": "",
-				"action": [
-					{
-						"type": "comment",
-						"text": "此处是初始等级，只需填写称号"
-					}
-				]
-			},
-			{
-				"need": "9999999999999999",
-				"title": "",
-				"action": [
-					{
-						"type": "setValue",
-						"name": "status:atk",
-						"operator": "+=",
-						"value": "10"
-					},
-					{
-						"type": "setValue",
-						"name": "status:def",
-						"operator": "+=",
-						"value": "10"
-					}
-				]
-			},
-			{
-				"need": "99999999999999999",
-				"title": "",
-				"action": [
-					{
-						"type": "tip",
-						"text": "恭喜升级"
-					}
-				]
+				"need": "值",
+				"title": "0",
+				"action": []
 			}
 		]
 	},
