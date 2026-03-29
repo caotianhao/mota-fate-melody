@@ -705,5 +705,6 @@ main.floors.MU10=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "dixia.mp3"
 }

@@ -144,5 +144,6 @@ main.floors.MU9=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "dixia.mp3"
 }

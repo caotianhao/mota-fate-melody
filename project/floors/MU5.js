@@ -152,5 +152,6 @@ main.floors.MU5=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "dixia.mp3"
 }

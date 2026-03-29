@@ -54,5 +54,6 @@ main.floors.MU3=
 ],
     "fgmap": [
 
-]
+],
+    "bgm": "dixia.mp3"
 }
