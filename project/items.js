@@ -293,7 +293,8 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 	"greenKey": {
 		"cls": "tools",
 		"name": "绿钥匙",
-		"text": "可以打开一扇绿门"
+		"text": "可以打开一扇绿门",
+		"hideInToolbox": true
 	},
 	"pickaxe": {
 		"cls": "tools",
