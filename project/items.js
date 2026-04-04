@@ -374,39 +374,6 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 			}
 		]
 	},
-	"I1268": {
-		"cls": "items",
-		"name": "二阶红血瓶",
-		"canUseItemEffect": null,
-		"itemEffect": "core.status.hero.hp += 2000",
-		"itemEffectTip": "，生命+2000"
-	},
-	"I1276": {
-		"cls": "items",
-		"name": "二阶红宝石",
-		"canUseItemEffect": null,
-		"text": null,
-		"itemEffect": "core.status.hero.atk += 3",
-		"itemEffectTip": "，攻击+3",
-		"useItemEffect": null
-	},
-	"I1283": {
-		"cls": "items",
-		"name": "二阶蓝宝石",
-		"canUseItemEffect": null,
-		"text": null,
-		"itemEffect": "core.status.hero.def += 3",
-		"itemEffectTip": "，防御+3 ",
-		"useItemEffect": null
-	},
-	"I1290": {
-		"cls": "items",
-		"name": "二阶绿宝石",
-		"canUseItemEffect": null,
-		"text": null,
-		"itemEffect": "core.status.hero.mdef += 15",
-		"itemEffectTip": "，护盾+15"
-	},
 	"I1338": {
 		"cls": "equips",
 		"name": "蝠翼",
@@ -556,5 +523,38 @@ var items_296f5d02_12fd_4166_a7c1_b5e830c9ee3a =
 		"name": "妖精之魂",
 		"canUseItemEffect": null,
 		"text": "......我会拯救你，哪怕付出性命"
+	},
+	"r2Gem": {
+		"cls": "items",
+		"name": "二阶红宝石",
+		"canUseItemEffect": null,
+		"text": null,
+		"itemEffect": "core.status.hero.atk += 3",
+		"itemEffectTip": "，攻击+3",
+		"useItemEffect": null
+	},
+	"b2Gem": {
+		"cls": "items",
+		"name": "二阶蓝宝石",
+		"canUseItemEffect": null,
+		"text": null,
+		"itemEffect": "core.status.hero.def += 3",
+		"itemEffectTip": "，防御+3 ",
+		"useItemEffect": null
+	},
+	"g2Gem": {
+		"cls": "items",
+		"name": "二阶绿宝石",
+		"canUseItemEffect": null,
+		"text": null,
+		"itemEffect": "core.status.hero.mdef += 15",
+		"itemEffectTip": "，护盾+15"
+	},
+	"r2Potion": {
+		"cls": "items",
+		"name": "二阶红血瓶",
+		"canUseItemEffect": null,
+		"itemEffect": "core.status.hero.hp += 2000",
+		"itemEffectTip": "，生命+2000"
 	}
 }
