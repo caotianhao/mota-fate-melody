@@ -456,7 +456,11 @@ loader.prototype.loadBgm = function (name) {
 
 loader.prototype._preloadBgm = function (bgm) {
     bgm.volume = 0;
-    bgm.play();
+    const playResult = bgm.play();
+    if (playResult && playResult.catch) {
+        playResult.catch(() => {
+        });
+    }
 }
 
 loader.prototype.freeBgm = function (name) {

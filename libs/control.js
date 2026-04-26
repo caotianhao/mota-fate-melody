@@ -2670,7 +2670,11 @@ control.prototype._playBgm_play = function (bgm, startTime) {
     core.loader.loadBgm(bgm);
     core.material.bgms[bgm].volume = core.musicStatus.userVolume * core.musicStatus.designVolume;
     core.material.bgms[bgm].currentTime = startTime || 0;
-    core.material.bgms[bgm].play();
+    const playResult = core.material.bgms[bgm].play();
+    if (playResult && playResult.catch) {
+        playResult.catch(() => {
+        });
+    }
     core.musicStatus.playingBgm = bgm;
     core.musicStatus.lastBgm = bgm;
     core.setBgmSpeed(100);
